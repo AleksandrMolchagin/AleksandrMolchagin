@@ -13,8 +13,8 @@ class home extends Component {
     render(){
         return(
         <View>
-        <Window></Window>
-        <Window></Window>
+            <Window></Window>
+            <Window></Window>
         </View>
         );
     }
