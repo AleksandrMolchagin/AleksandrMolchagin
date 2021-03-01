@@ -2,50 +2,41 @@
   "name": "aleksandrmolchagin.com",
   "version": "0.1.0",
   "private": true,
-  "dependencies": {
-    "@testing-library/jest-dom": "^5.11.4",
-    "@testing-library/react": "^11.1.0",
-    "@testing-library/user-event": "^12.1.10",
-    "classnames": "^2.2.6",
-    "react": "^17.0.1",
-    "react-dom": "^17.0.1",
-    "react-draggable": "^4.4.3",
-    "react-native-elements": "^3.2.0",
-    "react-native-safe-area-context": "^3.1.9",
-    "react-native-vector-icons": "^8.1.0",
-    "react-native-web": "^0.15.0",
-    "react-router-dom": "^5.2.0",
-    "react-scripts": "^4.0.3",
-    "styled-components": "^5.2.1",
-    "web-vitals": "^1.0.1"
-  },
   "scripts": {
-    "start": "react-app-rewired start",
-    "build": "react-app-rewired build",
-    "test": "react-app-rewired test",
-    "eject": "react-scripts eject"
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "lint": "vue-cli-service lint"
   },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
+  "dependencies": {
+    "core-js": "^3.6.5",
+    "vue": "^3.0.0"
   },
   "devDependencies": {
-    "@babel/plugin-proposal-class-properties": "^7.13.0",
-    "customize-cra": "^1.0.0",
-    "react-app-rewired": "^2.1.8"
-  }
+    "@vue/cli-plugin-babel": "~4.5.0",
+    "@vue/cli-plugin-eslint": "~4.5.0",
+    "@vue/cli-service": "~4.5.0",
+    "@vue/compiler-sfc": "^3.0.0",
+    "babel-eslint": "^10.1.0",
+    "eslint": "^6.7.2",
+    "eslint-plugin-vue": "^7.0.0-0"
+  },
+  "eslintConfig": {
+    "root": true,
+    "env": {
+      "node": true
+    },
+    "extends": [
+      "plugin:vue/vue3-essential",
+      "eslint:recommended"
+    ],
+    "parserOptions": {
+      "parser": "babel-eslint"
+    },
+    "rules": {}
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead"
+  ]
 }
