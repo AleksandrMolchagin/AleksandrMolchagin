@@ -7,10 +7,10 @@
         :fit-parent="fit"
         :max-width="1000"
         :max-height="600"
-        :min-width="320"
-        :min-height="320"
-        :width="320"
-        :height="320"
+        :min-width="350"
+        :min-height="350"
+        :width="350"
+        :height="350"
         :left="left"
         :top="top"
         @mount="eHandler"
@@ -22,9 +22,10 @@
         @drag:end="eHandler"
       >
     <div class="resizable-content">
-        <div class="dragme">REVENGE OF THE SITH</div>
-        <v-card class tile = "card">
-            <v-card-text class = "card-text">
+        <div class="dragme">
+          <div class ="text">REVENGE OF THE SITH</div>
+        </div>
+            <section class = "card-text">
             War! The Republic is crumbling
             under attacks by the ruthless
             Sith Lord, Count Dooku.
@@ -44,8 +45,7 @@
             hostage, two Jedi Knights lead a
             desperate mission to rescue the
             captive Chancellor.…
-            </v-card-text>
-        </v-card>
+            </section>
     </div>
     </VueResizable>
 </div>
@@ -68,6 +68,7 @@ export default {
       top: `calc(50% - ${tH / 2}px)`,
       dragSelector: ".dragme"
     };
+
 }
 }
 </script>
@@ -90,8 +91,11 @@ a {
   color: #42b983;
 }
 .resizable-content {
+    display: flow-root;
     height: 100%;
     width: 100%;
+    border-radius: 0.66rem 0.66rem 0.66rem 0.66rem;
+    box-shadow: 0px 0px 3px grey;
 }
 .card {
     height:100%;
@@ -99,13 +103,21 @@ a {
 }
 .card-text{
     max-width: max-content;
+    margin: 1rem;
 }
 .dragme {
   width: 100%;
-  height: 30dp;
+  height: 2rem;
   background:#af2929;
+  border-radius: 0.66rem 0.66rem 0rem 0rem;
   color: white;
-  text-align: center;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+}
+.text{
+  text-align: center;
 }
 </style>
