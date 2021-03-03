@@ -1,6 +1,7 @@
 <template>
   <v-app>
     <v-main>
+      <GridApp/>
       <Window/>
     </v-main>
   </v-app>
@@ -8,13 +9,15 @@
 
 <script>
 import Window from './components/Window';
+import GridApp from './components/GridApp';
 
 
 export default {
   name: 'App',
 
   components: {
-    Window
+    Window,
+    GridApp
   },
 
   data: () => ({

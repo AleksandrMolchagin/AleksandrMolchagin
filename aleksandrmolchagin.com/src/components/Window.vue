@@ -52,7 +52,7 @@
 </template>
 
 <script>
-import VueResizable from 'vue-resizable'
+import VueResizable from 'vue-resizable';
 
 export default {
   name: 'Window',
@@ -94,6 +94,7 @@ a {
     display: flow-root;
     height: 100%;
     width: 100%;
+    background:white;
     border-radius: 0.66rem 0.66rem 0.66rem 0.66rem;
     box-shadow: 0px 0px 3px grey;
 }
