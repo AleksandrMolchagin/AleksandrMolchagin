@@ -27,23 +27,26 @@ export default {
 </script>
 <style scoped>
     .container{
-        position: fixed;
+        position: absolute;
         bottom: 0;
+        height: 9%;
         width: 100%;
-        height: 11%;
+        height: 5.5em;
         text-align: center;
         vertical-align: bottom;
         background: transparent;
         display: flex;
         align-items: center;
         justify-content: center;
+        z-index: 1;
+
     }
     .cube {
         padding: 1em;
         display: inline-block;
         border-radius: 0.66rem;
-        width: 4.5rem;
-        height:  4.5rem;
+        width: 4.5em;
+        height: 4.5em;
         margin: 4px;
         background: #eee;
         --color: rgb(100, 68, 177);

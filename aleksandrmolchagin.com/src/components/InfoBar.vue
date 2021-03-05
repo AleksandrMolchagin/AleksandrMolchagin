@@ -20,7 +20,7 @@ export default {
         position: relative;
         top: 0;
         width: 100%;
-        height: 3.5%;
+        height: 2rem;
         text-align: center;
         background: #cacaca62;
     }

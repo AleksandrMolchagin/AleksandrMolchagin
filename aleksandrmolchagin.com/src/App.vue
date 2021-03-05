@@ -29,17 +29,17 @@ export default {
 };
 </script>
 <style >
-  html, body, #root {
+  html, body, #app {
     height: 100%;
     width: 100%;
-    color: #333;
+    overflow: hidden;
     background-image: url("assets/bg.jpg");
     background-size: 100% 100%;
 
 
 }
   .main{
-      height: 85.7%;
+      height: 83.5%;
       width: 100%;
   }
 #element::-webkit-scrollbar {
