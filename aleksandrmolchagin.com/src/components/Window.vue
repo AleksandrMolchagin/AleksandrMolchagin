@@ -1,18 +1,15 @@
 <template>
-<div>
     <VueResizable class="resizable"
         ref="resizableComponent"
         :dragSelector="dragSelector"
         :active="handlers"
-        :fit-parent="fit"
-        :max-width="1000"
-        :max-height="600"
+        :fit-parent="true"
         :min-width="350"
         :min-height="350"
         :width="350"
         :height="350"
-        :left="left"
-        :top="top"
+        :left="100"
+        :top="100"
         @mount="eHandler"
         @resize:move="eHandler"
         @resize:start="eHandler"
@@ -44,11 +41,10 @@
             capital with their valuable
             hostage, two Jedi Knights lead a
             desperate mission to rescue the
-            captive Chancellor.…
+            captive Chancellor…
             </section>
     </div>
     </VueResizable>
-</div>
 </template>
 
 <script>
@@ -61,11 +57,7 @@ export default {
     msg: String
   },
   data() {
-    const tW = 150;
-    const tH = 150;
     return {
-      left: `calc( 50% - ${tW / 2}px)`,
-      top: `calc(50% - ${tH / 2}px)`,
       dragSelector: ".dragme"
     };
 
@@ -76,25 +68,18 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-h3 {
-  margin: 40px 0 0;
-}
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
+@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@300&display=swap');
+* {
+    margin: 0;
+    padding: 0;
 }
 .resizable-content {
-    display: flow-root;
+    font-family: 'Source Code Pro', monospace;
+    font-size: 0.9rem;
+    font-weight: bold;
     height: 100%;
     width: 100%;
-    background:white;
+    background:rgba(255, 255, 255, 0.966);
     border-radius: 0.66rem 0.66rem 0.66rem 0.66rem;
     box-shadow: 0px 0px 3px grey;
 }
@@ -109,7 +94,7 @@ a {
 .dragme {
   width: 100%;
   height: 2rem;
-  background:#af2929;
+  background:#af2929ec;
   border-radius: 0.66rem 0.66rem 0rem 0rem;
   color: white;
   cursor: pointer;

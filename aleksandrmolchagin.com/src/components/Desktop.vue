@@ -56,60 +56,20 @@ export default {
     },
 };
 </script>
-<style>
-    html, body, #root {
-        position: relative;
-        margin: 0;
-        padding: 0;
-        height: 100%;
-        color: #333;
-        background: #fdfdfd;
-    }
-    
-    .app {
-        position: relative;
+<style scoped>
+
+    .selecto-area {
+        position: fixed;
         min-height: 100%;
-        padding: 10px 20px;
-        text-align: center;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        box-sizing: border-box;
-    }
-    
-    .container {
-        max-width: 800px;
-        ;
-    }
-    
-    body {
-        background: #fff;
-    }
-    
-    .logo {
-        position: relative;
-        width: 150px;
-        height: 150px;
-        margin: 0px auto;
-        font-size: 0;
+        min-width: 100%;
+        max-height: 100%;
+        max-width: 100%;
         text-align: left;
+        align-items: center;
+        justify-content: right;
+        margin: 1em;
     }
-    
-    .logo.logos {
-        width: 320px;
-        text-align: center;
-    }
-    
-    .logos .selecto {
-        padding: 16px;
-    }
-    
-    .logo img {
-        position: relative;
-        height: 100%;
-        box-sizing: border-box;
-    }
-    
+  
     .cube {
         display: inline-block;
         border-radius: 0.66rem;
@@ -120,9 +80,6 @@ export default {
         --color: rgb(100, 68, 177);
     }
     
-    h1, .description {
-        text-align: center;
-    }
     
     .button {
         border: 1px solid #333;
@@ -143,21 +100,6 @@ export default {
     .button:hover {
         background: #333;
         color: white;
-    }
-    
-    .elements {
-        margin-top: 40px;
-        border: 2px solid #eee;
-    }
-    
-    .selecto-area {
-        position: relative;
-        min-height: 100%;
-        text-align: center;
-        display: flex;
-        align-items: center;
-        justify-content: right;
-        box-sizing: border-box;
     }
     
     #selecto1 .cube {
