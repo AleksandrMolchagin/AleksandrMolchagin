@@ -12,6 +12,11 @@ import InfoBar from './components/InfoBar';
 import Window from './components/Window';
 import Desktop from './components/Desktop';
 import AppBar from './components/AppBar';
+import Vue from 'vue'
+import VueAnimXYZ from '@animxyz/vue'
+import '@animxyz/core' // Import css here if you haven't elsewhere
+
+Vue.use(VueAnimXYZ)
 
 export default {
   name: 'App',

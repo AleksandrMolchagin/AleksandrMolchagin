@@ -2,6 +2,20 @@
 # yarn lockfile v1
 
 
+"@animxyz/core@^0.5.0":
+  version "0.5.0"
+  resolved "https://registry.yarnpkg.com/@animxyz/core/-/core-0.5.0.tgz#b7b0da9ab083f67a2927650e37452b0d7d7ef317"
+  integrity sha512-sqVhE7LfCt8o94ToMP+JYXFGiGjvb+dgL8288a9La2EXH3YxZS8pdBeevlp9XX/WLT138YMD4vTXI0bDJjDSKg==
+
+"@animxyz/vue@^0.5.0":
+  version "0.5.0"
+  resolved "https://registry.yarnpkg.com/@animxyz/vue/-/vue-0.5.0.tgz#c3f0d9daba242cd0cdb6c314c9e1f63ddac071c9"
+  integrity sha512-eOmrWmnE3kMRLL2x5MYs0LgO0yGdzw0tUj3tNUSWGyc6VQagbpp585vhy6SwgeNib2g23oFNp++DPBghaSWqNg==
+  dependencies:
+    "@animxyz/core" "^0.5.0"
+    clsx "^1.1.1"
+    vue-functional-data-merge "^3.1.0"
+
 "@babel/code-frame@^7.0.0", "@babel/code-frame@^7.12.13":
   version "7.12.13"
   resolved "https://registry.yarnpkg.com/@babel/code-frame/-/code-frame-7.12.13.tgz#dcfc826beef65e75c50e21d3837d7d95798dd658"
@@ -2540,6 +2554,11 @@ clone@^1.0.2:
   version "1.0.4"
   resolved "https://registry.yarnpkg.com/clone/-/clone-1.0.4.tgz#da309cc263df15994c688ca902179ca3c7cd7c7e"
   integrity sha1-2jCcwmPfFZlMaIypAheco8fNfH4=
+
+clsx@^1.1.1:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/clsx/-/clsx-1.1.1.tgz#98b3134f9abbdf23b2663491ace13c5c03a73188"
+  integrity sha512-6/bPho624p3S2pMyvP5kKBPXnI3ufHLObBFCfgx+LkeR5lg2XYy2hqZqUf45ypD8COn2bhgGJSUE+l5dhNBieA==
 
 coa@^2.0.2:
   version "2.0.2"
@@ -8384,10 +8403,20 @@ vue-eslint-parser@^7.0.0:
     esquery "^1.4.0"
     lodash "^4.17.15"
 
+vue-functional-data-merge@^3.1.0:
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/vue-functional-data-merge/-/vue-functional-data-merge-3.1.0.tgz#08a7797583b7f35680587f8a1d51d729aa1dc657"
+  integrity sha512-leT4kdJVQyeZNY1kmnS1xiUlQ9z1B/kdBFCILIjYYQDqZgLqCLa0UhjSSeRX6c3mUe6U5qYeM8LrEqkHJ1B4LA==
+
 vue-hot-reload-api@^2.3.0:
   version "2.3.4"
   resolved "https://registry.yarnpkg.com/vue-hot-reload-api/-/vue-hot-reload-api-2.3.4.tgz#532955cc1eb208a3d990b3a9f9a70574657e08f2"
   integrity sha512-BXq3jwIagosjgNVae6tkHzzIk6a8MHFtzAdwhnV5VlvPTFxDCvIttgSiHWjdGoTJvXtmRu5HacExfdarRcFhog==
+
+vue-kinesis@^1.2.3:
+  version "1.2.3"
+  resolved "https://registry.yarnpkg.com/vue-kinesis/-/vue-kinesis-1.2.3.tgz#56611e3f6db3ca30a60abd5b47848eb6a5252baa"
+  integrity sha512-/9pCCPRpaHnIyvvkBsCpAB5n1YKlJZV2u7bf1L1uPt/DlNRMfzzwoL0c9XAIPTV6fw7mnq+v7pOvfKprLjQCGw==
 
 "vue-loader-v16@npm:vue-loader@^16.1.0":
   version "16.1.2"
