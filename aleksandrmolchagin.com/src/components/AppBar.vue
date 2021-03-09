@@ -1,6 +1,6 @@
 <template>
     <div class="container">
-        <div class="cube"></div>
+        <div class="cube" id="SWRoS"></div>
         <div class="cube"></div>
         <div class="cube"></div>
         <div class="cube"></div>
@@ -50,5 +50,11 @@ export default {
         margin: 4px;
         background: #eee;
         --color: rgb(100, 68, 177);
+        box-shadow: 0px 0px 3px grey;
+    }
+    #SWRoS{
+        background-image: url("../assets/1.jpg");
+        background-position: center; 
+        background-size: cover;
     }
 </style>

@@ -81,7 +81,7 @@ export default {
     }
   },
   methods: {
-    maximizeWindow: function() {
+    maximizeWindow() {
       if (this.border == 0.66) {
         this.maximize = true;
         this.border = 0;
@@ -89,15 +89,15 @@ export default {
       else 
         this.minmizeWindow();
     },
-    minmizeWindow: function(){
+    minmizeWindow() {
       this.maximize = false;
       this.border = 0.66;
     },
-    hideWindow: function(){
+    hideWindow() {
       this.windowNotHide = false;
       setTimeout(() => this.index = "-1", 1000);
     }
-  }
+  },
 }
 </script>
 
@@ -121,8 +121,6 @@ export default {
       border-radius: var(--border) var(--border) var(--border) var(--border);
       box-shadow: 0px 0px 3px grey;
       z-index: 2;
-
-      
   }
   .card {
       height:100%;
