@@ -13,6 +13,7 @@
     </div>
 </template>
 <script>
+import { mapState, mapActions } from 'vuex'
 
 export default {
     name: 'AppBar',
@@ -21,10 +22,11 @@ export default {
     data() {
     },
     methods: {
-
     },
+
+    
 };
-</script>
+</script>s
 <style scoped>
     .container{
         position: absolute;
