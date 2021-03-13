@@ -34,6 +34,13 @@ export default {
 };
 </script>
 <style >
+  @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400&display=swap');
+  * {
+      margin: 0;
+      padding: 0;
+      font-family: 'Montserrat', sans-serif;      
+      font-size: 0.9rem;
+  }
   html, body, #app {
     height: 100%;
     width: 100%;
@@ -44,7 +51,7 @@ export default {
 
 }
   .main{
-      height: 83.5%;
+      height: 86.5%;
       width: 100%;
   }
 #element::-webkit-scrollbar {

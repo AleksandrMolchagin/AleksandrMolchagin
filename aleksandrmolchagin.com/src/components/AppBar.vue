@@ -13,7 +13,7 @@
     </div>
 </template>
 <script>
-import { mapState, mapActions } from 'vuex'
+//import { mapState, mapActions } from 'vuex'
 
 export default {
     name: 'AppBar',
@@ -30,6 +30,7 @@ export default {
 <style scoped>
     .container{
         position: absolute;
+        font-size: 1rem;
         bottom: 0;
         height: 9%;
         width: 100%;
@@ -50,11 +51,12 @@ export default {
         width: 4.5em;
         height: 4.5em;
         margin: 4px;
-        background: #eee;
+        background: #bbc1c3;
         --color: rgb(100, 68, 177);
-        box-shadow: 0px 0px 3px grey;
+        box-shadow: 0px 0px 1px black;
     }
     #SWRoS{
+        font-size: 1rem;
         background-image: url("../assets/1.jpg");
         background-position: center; 
         background-size: cover;

@@ -76,8 +76,10 @@ export default {
         width: 4.5rem;
         height:  4.5rem;
         margin: 4px;
-        background: #eee;
+        background: #bbc1c3;
         --color: rgb(100, 68, 177);
+        box-shadow: 0px 0px 1px black;
+
     }
     
     

@@ -11,39 +11,41 @@
         @mount="eHandler"
         @resize:move="eHandler" @resize:start="eHandler" @resize:end="eHandler"
         @drag:move="eHandler" @drag:start="eHandler" @drag:end="eHandler" @maximize="eHandler"
-      >
-        <XyzTransition appear xyz="fade flip-up flip-left duration-10">
-        <div class="resizable-content" :style="cssVars" v-if="windowNotHide">
-            <div class="tab">
-              <button class = "btnHide" v-on:click="hideWindow"></button>
-              <button class = "btnMax" v-on:click="maximizeWindow"></button>
-              <div class="dragme" v-on:click="minmizeWindow">
-              <div class ="text">REVENGE OF THE SITH</div>
-              </div>
-                <section class = "card-text">
-                War! The Republic is crumbling
-                under attacks by the ruthless
-                Sith Lord, Count Dooku.
-                There are heroes on both sides.
-                Evil is everywhere.
+      > 
+        <transition @trfull="maximizeWindow">
+          <XyzTransition appear xyz="fade down duration-8">
+          <div class="resizable-content" :style="cssVars" v-if="windowNotHide">
+              <div class="tab">
+                <button class = "btnHide" v-on:click="hideWindow"></button>
+                <button class = "btnMax" v-on:click="maximizeWindow"></button>
+                <div class="dragme" v-on:click="minmizeWindow">
+                <div class ="text">REVENGE OF THE SITH</div>
+                </div>
+                  <section class = "card-text">
+                  War! The Republic is crumbling
+                  under attacks by the ruthless
+                  Sith Lord, Count Dooku.
+                  There are heroes on both sides.
+                  Evil is everywhere.
 
-                In a stunning move, the
-                fiendish droid leader, General
-                Grievous, has swept into the
-                Republic capital and kidnapped
-                Chancellor Palpatine, leader of
-                the Galactic Senate.
+                  In a stunning move, the
+                  fiendish droid leader, General
+                  Grievous, has swept into the
+                  Republic capital and kidnapped
+                  Chancellor Palpatine, leader of
+                  the Galactic Senate.
 
-                As the Separatist Droid Army
-                attempts to flee the besieged
-                capital with their valuable
-                hostage, two Jedi Knights lead a
-                desperate mission to rescue the
-                captive Chancellor…
-                </section>
-              </div>
-        </div>
-      </XyzTransition>
+                  As the Separatist Droid Army
+                  attempts to flee the besieged
+                  capital with their valuable
+                  hostage, two Jedi Knights lead a
+                  desperate mission to rescue the
+                  captive Chancellor…
+                  </section>
+                </div>
+          </div>
+        </XyzTransition>
+      </transition>
     </VueResizable>
 </template>
 
@@ -68,7 +70,11 @@ export default {
           border: 0.66,
           cursor: 'move',
           windowNotHide: true,
-          index: "2"
+          index: "2",
+          shadow: 2,
+          shadow_size: 8,
+          back_color: "#bbc1c3ea",
+          show: true
       };
     },
   computed: {
@@ -77,6 +83,9 @@ export default {
         '--border': this.border + 'rem',
         '--cursor': this.cursor,
         '--index': this.index,
+        '--shadow': this.shadow + "px",
+        '--shadow-size': this.shadow_size + "px",
+        '--back-color': this.back_color
       }
     }
   },
@@ -85,6 +94,10 @@ export default {
       if (this.border == 0.66) {
         this.maximize = true;
         this.border = 0;
+        this.shadow = 0;
+        this.shadow_size = 0;
+        this.back_color = "#bbc1c3";
+        this.show = !this.show;
       }
       else 
         this.minmizeWindow();
@@ -92,10 +105,13 @@ export default {
     minmizeWindow() {
       this.maximize = false;
       this.border = 0.66;
+      this.shadow = 2;
+      this.shadow_size = 5;
+      this.back_color = "#bbc1c3ea";
     },
     hideWindow() {
       this.windowNotHide = false;
-      setTimeout(() => this.index = "-1", 1000);
+      setTimeout(() => this.index = "-1", 800);
     }
   },
 }
@@ -104,22 +120,17 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-  @import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@300&display=swap');
-  * {
-      margin: 0;
-      padding: 0;
+  * {    
       z-index: var(--index);
   }
   .resizable-content {
       position: relative;
-      font-family: 'Source Code Pro', monospace;
-      font-size: 0.9rem;
-      font-weight: bold;
       height: 100%;
       width: 100%;
-      background:rgba(255, 255, 255, 0.966);
+      color: black;
+      background: var(--back-color);
       border-radius: var(--border) var(--border) var(--border) var(--border);
-      box-shadow: 0px 0px 3px grey;
+      box-shadow: var(--shadow) var(--shadow) var(--shadow-size) rgba(0, 0, 0, 0.45);
       z-index: 2;
   }
   .card {
@@ -141,7 +152,7 @@ export default {
     position: relative;
     width: 100%;
     height: 2rem;
-    background:#af2929ec;
+    background:#585c5f;
     border-radius: var(--border) var(--border) 0rem 0rem;
     color: white;
     cursor: pointer;
@@ -149,38 +160,49 @@ export default {
     align-items: center;
     justify-content: center;
     user-select: none;
-
   }
   .text{
+    margin-top: 0rem;
     text-align: center;
 
   }
   .btnHide {
-    position: fixed;
+    position: absolute;
     display:block;
-    margin-top: 0.5em;
-    margin-left: 0.5em;
+    margin-top: 0.55em;
+    margin-left: 0.55em;
     height: 1em;
     width: 1em;
-    border-radius: 50%;
-    border: 0.4em solid orange;
+    border-radius: 100%;
+    border: 0.5em solid #bbc1c3;
     z-index: 3;
+  }
+  .btnHide:hover{
+    border: 0.275em solid #d5d826;
+    transition: border 0.25s;
   }
    .btnMax {
     position: fixed;
     display:block;
-    margin-top: 0.5em;
-    margin-left: 1.75em;
+    margin-top: 0.55em;
+    margin-left: 1.8em;
     height: 1em;
     width: 1em;
-    border-radius: 50%;
-    border: 0.4em solid greenyellow;
+    border-radius: 100%;
+    border: 0.5em solid #bbc1c3;
     z-index: 3;
+  }
+  .btnMax:hover{
+    border: 0.275em solid #3fd347;
+    transition: border 0.25s;
   }
   .item-zoom {
     --xyz-opacity: 0;
     --xyz-scale-x: 2;
     --xyz-scale-y: 2;
     --xyz-scale-z: 2;
+  }
+  .trfull {
+    transition: opacity 0.5s ease;
   }
 </style>
