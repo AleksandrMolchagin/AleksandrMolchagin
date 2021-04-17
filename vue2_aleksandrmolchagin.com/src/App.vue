@@ -1,9 +1,9 @@
 <template>
-  <div class="main" :style="cssVars">
-      <InfoBar/>
+  <div class="main">
+      <InfoBar class="AppBar"/>
       <Desktop/>
-        <Window/>
-      <InfoBar2/>
+      <Window/>
+      <AppBar class="AppBar"></AppBar>
   </div>
 </template>
 
@@ -11,15 +11,13 @@
 import InfoBar from './components/InfoBar';
 import Window from './components/Window';
 import Desktop from './components/Desktop';
-import InfoBar2 from './components/InfoBar2';
-import { createApp } from 'vue'
-import VueAnimXyz from '@animxyz/vue3'
+import AppBar from './components/AppBar';
+import Vue from 'vue'
+import VueAnimXYZ from '@animxyz/vue'
 import '@animxyz/core' // Import css here if you haven't elsewhere
-import App from './App.vue' // Your entry component
 
-const app = createApp(App)
 
-app.use(VueAnimXyz)
+Vue.use(VueAnimXYZ)
 
 export default {
   name: 'App',
@@ -28,12 +26,13 @@ export default {
     InfoBar,
     Desktop,
     Window,
-    InfoBar2
+    AppBar
   },
   computed: {
     cssVars() {
       return {
-        '--desktop_height': this.$store.state.desktop_height + 'vh',
+        '--infobar_height': $store.state.infobar_height + 'rem',
+        '--appbar_height': this.$store.state.appbar_height + 'rem',
       }
     }
   },
@@ -57,12 +56,14 @@ export default {
   }
 
   .main{
-      height: var(--desktop_height);
+      height: 86.5%;
       width: 100%;
   }
 
   #element::-webkit-scrollbar {
       display: none;
   }
-
+  .AppBar{
+    height: var(--infobar_height);
+  }
 </style>

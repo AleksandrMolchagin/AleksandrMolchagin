@@ -1,5 +1,5 @@
 <template>
-    <div class="elements selecto-area" id="selecto1" :style="cssVars">
+    <div class="elements selecto-area" id="selecto1">
         <div class="container">
             <vue-selecto
                 dragContainer=".elements"
@@ -28,10 +28,12 @@
     </div>
 </template>
 <script>
+import { VueSelecto } from "vue-selecto";
 
 export default {
     name: 'GridApp',
     components: {
+        VueSelecto,
     },
     data() {
         const cubes = [];

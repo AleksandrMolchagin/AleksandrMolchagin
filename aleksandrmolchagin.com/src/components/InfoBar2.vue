@@ -7,7 +7,7 @@
 <script>
 
 export default {
-    name: 'InfoBar',
+    name: 'InfoBar2',
     components: {
     },
     data() {
@@ -29,8 +29,8 @@ export default {
 </script>
 <style scoped>
     .container{
-        position: relative;
-        top: 0;
+        position: absolute;
+        bottom: 0;
         height: var(--height);
         width: 100%;
         text-align: center;

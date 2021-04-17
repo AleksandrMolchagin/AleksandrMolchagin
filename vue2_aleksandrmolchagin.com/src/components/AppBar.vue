@@ -1,5 +1,5 @@
 <template>
-    <div class="container" :style="cssVars">
+    <div class="container">
         <div class="cube" id="SWRoS"></div>
         <div class="cube"></div>
         <div class="cube"></div>
@@ -20,21 +20,11 @@ export default {
     components: {
     },
     data() {
-        return {
-            height: this.$store.state.appbar_height,
-            cube_height: this.$store.state.appbar_height - 1,
-        }
     },
     methods: {
     },
-    computed: {
-        cssVars() {
-            return {
-            '--height': this.height + 'vmax',
-            '--cube_height': this.cube_height + 'rem'
-            }
-        }
-    },
+
+    
 };
 </script>s
 <style scoped>
@@ -42,7 +32,7 @@ export default {
         position: absolute;
         font-size: 1rem;
         bottom: 0;
-        height: var(--height);
+        height: 5.5rem;
         width: 100%;
         text-align: center;
         vertical-align: bottom;
@@ -54,11 +44,12 @@ export default {
 
     }
     .cube {
+        padding: 1em;
         display: inline-block;
         border-radius: 0.66rem;
-        width: var(--cube_height);
-        height: var(--cube_height);
-        margin: 0.5vh;
+        width: 4.5em;
+        height: 4.5em;
+        margin: 4px;
         background: #bbc1c3;
         --color: rgb(100, 68, 177);
         box-shadow: 0px 0px 1px black;

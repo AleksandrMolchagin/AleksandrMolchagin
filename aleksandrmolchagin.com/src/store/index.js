@@ -1,12 +1,15 @@
-import Vue from 'vue'
-import Vuex from 'vuex'
-import windows from './modules/windows'
+import { createStore } from 'vuex'
 
-Vue.use(Vuex)
-
-export default new Vuex.Store({
+export default createStore({
+  state: {
+    infobar_height: 2,
+    appbar_height: 2,
+    desktop_height: 96 
+  },
+  mutations: {
+  },
+  actions: {
+  },
   modules: {
-    windows
-    },
-
+  }
 })

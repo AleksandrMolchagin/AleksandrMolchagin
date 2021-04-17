@@ -1,5 +1,5 @@
 <template>
-    <div class="container" :style="cssVars">
+    <div class="container">
       <div class ="title">Menu</div>
       <div class ="time">EN | 7:55AM</div>
     </div>
@@ -11,19 +11,9 @@ export default {
     components: {
     },
     data() {
-        return {
-            height: this.$store.state.infobar_height,
-        }
     },
     methods: {
 
-    },
-    computed: {
-        cssVars() {
-            return {
-            '--height': this.height + 'vh',
-            }
-        }
     },
 };
 </script>
@@ -31,7 +21,6 @@ export default {
     .container{
         position: relative;
         top: 0;
-        height: var(--height);
         width: 100%;
         text-align: center;
         background: #585c5f;

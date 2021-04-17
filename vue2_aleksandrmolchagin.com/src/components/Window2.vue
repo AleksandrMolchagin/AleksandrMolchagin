@@ -19,29 +19,9 @@
                 <button class = "btnHide" v-on:click="hideWindow"></button>
                 <button class = "btnMax" v-on:click="maximizeWindow"></button>
                 <div class="dragme" v-on:click="minmizeWindow">
-                <div class ="text">REVENGE OF THE SITH</div>
+                <div class ="text">Terminal</div>
                 </div>
-                  <section class = "card-text">
-                  War! The Republic is crumbling
-                  under attacks by the ruthless
-                  Sith Lord, Count Dooku.
-                  There are heroes on both sides.
-                  Evil is everywhere.
-
-                  In a stunning move, the
-                  fiendish droid leader, General
-                  Grievous, has swept into the
-                  Republic capital and kidnapped
-                  Chancellor Palpatine, leader of
-                  the Galactic Senate.
-
-                  As the Separatist Droid Army
-                  attempts to flee the besieged
-                  capital with their valuable
-                  hostage, two Jedi Knights lead a
-                  desperate mission to rescue the
-                  captive Chancellor…
-                  </section>
+ 
                 </div>
           </div>
         </XyzTransition>
@@ -53,14 +33,14 @@
 import VueResizable from 'vue-resizable';
 
 export default {
-  name: 'Window',
+  name: 'Window2',
   components: {VueResizable},  
   data() {
-    const tW = 150;
-    const tH = 150;
+    const tW = 50;
+    const tH = 50;
       return {
           handlers: ['r', 'rb', 'b', 'lb', 'l', 'lt', 't', 'rt'],
-          left: `calc( 50% - ${tW / 2}px)`, top: `calc(50% - ${tH / 2}px)`,
+          left: 0, top: 0,
           height: tH, width: tW,
           maxW: 10000, maxH: 10000,
           minW: 350, minH: 350,
@@ -70,10 +50,10 @@ export default {
           border: 0.66,
           cursor: 'move',
           windowNotHide: true,
-          index: "2",
+          index: "3",
           shadow: 2,
           shadow_size: 8,
-          back_color: "#bbc1c3ea",
+          back_color: "black",
           show: true
       };
     },
@@ -96,7 +76,7 @@ export default {
         this.border = 0;
         this.shadow = 0;
         this.shadow_size = 0;
-        this.back_color = "#bbc1c3";
+        this.back_color = "black";
         this.show = !this.show;
       }
       else 
@@ -107,7 +87,7 @@ export default {
       this.border = 0.66;
       this.shadow = 2;
       this.shadow_size = 5;
-      this.back_color = "#bbc1c3ea";
+      this.back_color = "black";
     },
     hideWindow() {
       this.windowNotHide = false;
@@ -175,7 +155,7 @@ export default {
     width: 1em;
     border-radius: 100%;
     border: 0.5em solid #bbc1c3;
-    z-index: 3;
+    z-index: calc(var(--index) + 1);
   }
   .btnHide:hover{
     border: 0.275em solid #d5d826;
@@ -190,7 +170,7 @@ export default {
     width: 1em;
     border-radius: 100%;
     border: 0.5em solid #bbc1c3;
-    z-index: 3;
+    z-index: calc(var(--index) + 1);
   }
   .btnMax:hover{
     border: 0.275em solid #3fd347;
