@@ -71,8 +71,8 @@ export default {
     .cube {
         display: inline-block;
         border-radius: 0.66rem;
-        width: 4.5rem;
-        height:  4.5rem;
+        width: 6vh;
+        height:  6vh;
         margin: 4px;
         background: #bbc1c3;
         --color: rgb(100, 68, 177);

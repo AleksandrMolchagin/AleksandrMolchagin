@@ -22,7 +22,7 @@ export default {
     data() {
         return {
             height: this.$store.state.appbar_height,
-            cube_height: this.$store.state.appbar_height - 1,
+            cube_height: this.$store.state.appbar_cube_height,
         }
     },
     methods: {
@@ -30,8 +30,8 @@ export default {
     computed: {
         cssVars() {
             return {
-            '--height': this.height + 'vmax',
-            '--cube_height': this.cube_height + 'rem'
+            '--height': this.height + 'vh',
+            '--cube_height': this.cube_height + 'vh'
             }
         }
     },
@@ -41,14 +41,12 @@ export default {
     .container{
         position: absolute;
         font-size: 1rem;
+        display: flex;
+        flex-direction: row;
         bottom: 0;
         height: var(--height);
         width: 100%;
-        text-align: center;
-        vertical-align: bottom;
         background: transparent;
-        display: flex;
-        align-items: center;
         justify-content: center;
         z-index: 1;
 

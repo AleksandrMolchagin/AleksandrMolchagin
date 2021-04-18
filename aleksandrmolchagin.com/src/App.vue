@@ -3,7 +3,7 @@
       <InfoBar/>
       <Desktop/>
         <Window/>
-      <InfoBar2/>
+      <AppBar/>
   </div>
 </template>
 
@@ -11,7 +11,7 @@
 import InfoBar from './components/InfoBar';
 import Window from './components/Window';
 import Desktop from './components/Desktop';
-import InfoBar2 from './components/InfoBar2';
+import AppBar from './components/AppBar';
 import { createApp } from 'vue'
 import VueAnimXyz from '@animxyz/vue3'
 import '@animxyz/core' // Import css here if you haven't elsewhere
@@ -28,7 +28,7 @@ export default {
     InfoBar,
     Desktop,
     Window,
-    InfoBar2
+    AppBar
   },
   computed: {
     cssVars() {
