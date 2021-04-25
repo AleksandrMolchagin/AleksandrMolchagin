@@ -43,7 +43,7 @@ export default {
         };
     },
     methods: {
-        onSelect(e) {
+    onSelect(e) {
             e.added.forEach(el => {
                 el.classList.add("selected");
             });

@@ -35,17 +35,17 @@ export default {
       return {
         '--desktop_height': this.$store.state.desktop_height + 'vh',
       }
-    }
+    },
   },
 };
 </script>
 <style >
-  @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400&display=swap');
   * {
       margin: 0;
       padding: 0;
-      font-family: 'Montserrat', sans-serif;      
-      font-size: 0.9rem;
+      font-family: 'Poppins', sans-serif;      
+      font-size: 1rem;
   }
 
   html, body, #app {

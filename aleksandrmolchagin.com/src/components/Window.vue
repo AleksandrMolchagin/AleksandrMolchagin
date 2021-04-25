@@ -14,9 +14,9 @@
       > 
         <transition @trfull="maximizeWindow">
           <XyzTransition appear xyz="fade down duration-8">
-          <div class="resizable-content" :style="cssVars" v-if="windowNotHide">
+          <div class="resizable-content" :style="cssVars" v-if="true">
               <div class="tab">
-                <button class = "btnHide" v-on:click="hideWindow"></button>
+                <button class = "btnHide" v-on:click="updateZIndex"></button>
                 <button class = "btnMax" v-on:click="maximizeWindow"></button>
                 <div class="dragme" v-on:click="minmizeWindow">
                 <div class ="text">REVENGE OF THE SITH</div>
@@ -63,18 +63,16 @@ export default {
           left: `calc( 50% - ${tW / 2}px)`, top: `calc(50% - ${tH / 2}px)`,
           height: tH, width: tW,
           maxW: 10000, maxH: 10000,
-          minW: 350, minH: 350,
+          minW: 400, minH: 350,
           fit: true, maximize: false, event: '',
           dragSelector: ".dragme",
           hide: false,
           border: 0.66,
           cursor: 'move',
-          windowNotHide: true,
-          index: "2",
           shadow: 2,
           shadow_size: 8,
           back_color: "#bbc1c3ea",
-          show: true
+          show: true,
       };
     },
   computed: {
@@ -82,14 +80,17 @@ export default {
       return {
         '--border': this.border + 'rem',
         '--cursor': this.cursor,
-        '--index': this.index,
+        '--index': this.$store.getters.getCurrentZIndex,
         '--shadow': this.shadow + "px",
         '--shadow-size': this.shadow_size + "px",
         '--back-color': this.back_color
       }
-    }
+    },
   },
   methods: {
+    updateZIndex(){
+        this.$store.dispatch('setZIndex');
+    },
     maximizeWindow() {
       if (this.border == 0.66) {
         this.maximize = true;
@@ -109,10 +110,6 @@ export default {
       this.shadow_size = 5;
       this.back_color = "#bbc1c3ea";
     },
-    hideWindow() {
-      this.windowNotHide = false;
-      setTimeout(() => this.index = "-1", 800);
-    }
   },
 }
 </script>

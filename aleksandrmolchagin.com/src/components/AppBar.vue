@@ -1,6 +1,6 @@
 <template>
     <div class="container" :style="cssVars">
-        <div class="cube" id="SWRoS"></div>
+        <button class="cube" id="SWRoS" @click="updateZIndex"></button>
         <div class="cube"></div>
         <div class="cube"></div>
         <div class="cube"></div>
@@ -26,6 +26,9 @@ export default {
         }
     },
     methods: {
+        updateZIndex(){
+            this.$store.dispatch('setZIndex');
+        },
     },
     computed: {
         cssVars() {
