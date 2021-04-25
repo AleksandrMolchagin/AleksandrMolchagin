@@ -27,7 +27,7 @@ export default {
     },
     methods: {
         updateZIndex(){
-            this.$store.dispatch('setZIndex');
+            this.$store.dispatch('setZIndex', 0);
         },
     },
     computed: {

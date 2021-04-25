@@ -1,5 +1,4 @@
 <template>
-
     <VueResizable class="resizable" :style="cssVars"  
         ref="resizableComponent"
         :dragSelector="dragSelector"
@@ -13,7 +12,7 @@
         @drag:move="eHandler" @drag:start="eHandler" @drag:end="eHandler" @maximize="eHandler"
       > 
         <transition @trfull="maximizeWindow">
-          <XyzTransition appear xyz="fade down duration-8">
+         <XyzTransition appear xyz="fade down duration-8">
           <div class="resizable-content" :style="cssVars" v-if="true">
               <div class="tab">
                 <button class = "btnHide" v-on:click="updateZIndex"></button>
@@ -63,8 +62,9 @@ export default {
           left: `calc( 50% - ${tW / 2}px)`, top: `calc(50% - ${tH / 2}px)`,
           height: tH, width: tW,
           maxW: 10000, maxH: 10000,
-          minW: 400, minH: 350,
-          fit: true, maximize: false, event: '',
+          minW: 375, minH: 375,
+          fit: true, 
+          event: '',
           dragSelector: ".dragme",
           hide: false,
           border: 0.66,
@@ -73,6 +73,7 @@ export default {
           shadow_size: 8,
           back_color: "#bbc1c3ea",
           show: true,
+          id: 0,
       };
     },
   computed: {
@@ -80,20 +81,23 @@ export default {
       return {
         '--border': this.border + 'rem',
         '--cursor': this.cursor,
-        '--index': this.$store.getters.getCurrentZIndex,
         '--shadow': this.shadow + "px",
         '--shadow-size': this.shadow_size + "px",
-        '--back-color': this.back_color
+        '--back-color': this.back_color,
+        '--index': this.$store.getters.getCurrentZIndex(this.id),
       }
+    },
+    maximize: function () {
+      return this.$store.getters.getCurrentFullScreen(this.id);
     },
   },
   methods: {
     updateZIndex(){
-        this.$store.dispatch('setZIndex');
+        this.$store.dispatch('setZIndex', this.id);
     },
     maximizeWindow() {
       if (this.border == 0.66) {
-        this.maximize = true;
+        this.$store.dispatch('setFullScreen', this.id);
         this.border = 0;
         this.shadow = 0;
         this.shadow_size = 0;
@@ -104,17 +108,17 @@ export default {
         this.minmizeWindow();
     },
     minmizeWindow() {
-      this.maximize = false;
-      this.border = 0.66;
-      this.shadow = 2;
-      this.shadow_size = 5;
-      this.back_color = "#bbc1c3ea";
+      if (this.maximize == true) {
+        this.$store.dispatch('setFullScreen', this.id);
+        this.border = 0.66;
+        this.shadow = 2;
+        this.shadow_size = 5;
+        this.back_color = "#bbc1c3ea";
+      }
     },
   },
 }
 </script>
-
-
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
   * {    

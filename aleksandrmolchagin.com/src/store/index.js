@@ -2,52 +2,56 @@ import { createStore } from 'vuex'
 
 export default createStore({
   state: {
+    
     infobar_height: 3,
     appbar_height: 7.5,
     appbar_cube_height: 6,
     desktop_height: 88.5,
 
-    apps: {
-
-      test: {
+    apps: [
+      {
         state: 1,
-        fullscreen: true,
-        z_index: 2,
-      },
-
-      terminal: {
-        state: 0,
         fullscreen: false,
         z_index: 2,
       }
-    },
+    ]
 
   },
   mutations: {
-    setNewState(id, newState){
-      this.apps.id.state = newState;
+
+    setFullScreen(state, array){
+      this.state.apps[array[1]].fullscreen = array[0];
     },
-    setFullScreen(state, newState){
-      this.state.apps.test.fullscreen = newState;
+    setZIndex(state, array){
+      this.state.apps[array[1]].z_index = array[0];
     },
-    setZIndex(name, newIndex){
-      this.state.apps.test.z_index = newIndex;
-    },
+    
   },
+
   actions: {
-    setFullScreen(state){
-      var newState = !this.state.apps.test.fullscreen;
-      state.commit('setFullScreen', newState);
+
+    setFullScreen(state, id){
+      var newState = !this.state.apps[id].fullscreen;
+      var array = [newState, id]
+      state.commit('setFullScreen', array);
     },
-    setZIndex(state){
+    setZIndex(state, id){
       var newIndex = -1;
-      if (this.state.apps.test.z_index == -1){ newIndex = 2}
-      state.commit('setZIndex', newIndex);
-    }
+      if (this.state.apps[id].z_index == -1){ newIndex = 2}
+      var array = [newIndex, id]
+      state.commit('setZIndex', array);
+    } 
+
   },
   getters:{
-    getCurrentFullScreen: state => state.apps.test.fullscreen,
-    getCurrentZIndex: state => state.apps.test.z_index
+
+    getCurrentFullScreen: (state) => (id) => {
+      return state.apps[id].fullscreen;
+    },
+    getCurrentZIndex: (state) => (id) => {
+      return state.apps[id].z_index;
+    }
+
   },
   modules: {
   }
