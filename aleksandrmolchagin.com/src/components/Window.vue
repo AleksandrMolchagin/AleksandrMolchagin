@@ -10,12 +10,10 @@
         @mount="eHandler"
         @resize:move="eHandler" @resize:start="eHandler" @resize:end="eHandler"
         @drag:move="eHandler" @drag:start="eHandler" @drag:end="eHandler" @maximize="eHandler"
-      > 
-        <transition @trfull="maximizeWindow">
-         <XyzTransition appear xyz="fade down duration-8">
+        > 
           <div class="resizable-content" :style="cssVars" v-if="true">
               <div class="tab">
-                <button class = "btnHide" v-on:click="updateZIndex"></button>
+                <button class = "btnHide" v-on:click="hide"></button>
                 <button class = "btnMax" v-on:click="maximizeWindow"></button>
                 <div class="dragme" v-on:click="minmizeWindow">
                 <div class ="text">REVENGE OF THE SITH</div>
@@ -43,8 +41,6 @@
                   </section>
                 </div>
           </div>
-        </XyzTransition>
-      </transition>
     </VueResizable>
 </template>
 
@@ -55,30 +51,39 @@ export default {
   name: 'Window',
   components: {VueResizable},  
   data() {
-    const tW = 150;
-    const tH = 150;
+    const tW = window.screen.availWidth;
+    const tH = window.screen.availHeight;
       return {
+          //App ID
+            id: 0,
+
+          //Resizing handlers and drag object
           handlers: ['r', 'rb', 'b', 'lb', 'l', 'lt', 't', 'rt'],
-          left: `calc( 50% - ${tW / 2}px)`, top: `calc(50% - ${tH / 2}px)`,
-          height: tH, width: tW,
-          maxW: 10000, maxH: 10000,
-          minW: 375, minH: 375,
-          fit: true, 
-          event: '',
           dragSelector: ".dragme",
-          hide: false,
-          border: 0.66,
+
+          //Location
+          left: `calc(${tW}px - ${tW / 2}px - 190px)`, 
+          top: `calc(${tH}px - ${tH / 2}px - 190px)`,
+
+          //Size
+          height: 380, width: 380,
+          minW: 380, minH: 380,
+          maxW: 10000, maxH: 10000,
+
+          //Other appereance parameters
+          fit: true, 
+          show: true,
           cursor: 'move',
+          border: 0.66,
           shadow: 2,
           shadow_size: 8,
           back_color: "#bbc1c3ea",
-          show: true,
-          id: 0,
       };
     },
   computed: {
     cssVars() {
       return {
+        //Appereance paramaters for CSS
         '--border': this.border + 'rem',
         '--cursor': this.cursor,
         '--shadow': this.shadow + "px",
@@ -92,11 +97,11 @@ export default {
     },
   },
   methods: {
-    updateZIndex(){
-        this.$store.dispatch('setZIndex', this.id);
+    hide(){
+        this.$store.dispatch('hide', this.id);
     },
     maximizeWindow() {
-      if (this.border == 0.66) {
+      if (this.maximize == false) {
         this.$store.dispatch('setFullScreen', this.id);
         this.border = 0;
         this.shadow = 0;
@@ -124,15 +129,17 @@ export default {
   * {    
       z-index: var(--index);
   }
+  .resizable{
+    position: absolute;
+  }
   .resizable-content {
-      position: relative;
       height: 100%;
       width: 100%;
       color: black;
       background: var(--back-color);
       border-radius: var(--border) var(--border) var(--border) var(--border);
       box-shadow: var(--shadow) var(--shadow) var(--shadow-size) rgba(0, 0, 0, 0.45);
-      z-index: 2;
+      z-index: var(--index);
   }
   .card {
       height:100%;
@@ -176,7 +183,7 @@ export default {
     width: 1em;
     border-radius: 100%;
     border: 0.5em solid #bbc1c3;
-    z-index: 3;
+    z-index: calc(var(--index) + 1);
   }
   .btnHide:hover{
     border: 0.275em solid #d5d826;
@@ -191,7 +198,7 @@ export default {
     width: 1em;
     border-radius: 100%;
     border: 0.5em solid #bbc1c3;
-    z-index: 3;
+    z-index: calc(var(--index) + 1);
   }
   .btnMax:hover{
     border: 0.275em solid #3fd347;

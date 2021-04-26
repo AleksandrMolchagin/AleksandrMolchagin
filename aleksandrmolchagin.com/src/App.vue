@@ -1,16 +1,19 @@
 <template>
   <div class="main" :style="cssVars">
       <InfoBar/>
-      <Desktop/>
-        <Window/>
+        <div class = "container">
+        <Desktop/>
+          <Window/><Terminal/>
+        </div>
       <AppBar/>
   </div>
 </template>
 
 <script>
 import InfoBar from './components/InfoBar';
-import Window from './components/Window';
 import Desktop from './components/Desktop';
+import Window from './components/Window';
+import Terminal from './components/Terminal';
 import AppBar from './components/AppBar';
 import { createApp } from 'vue'
 import VueAnimXyz from '@animxyz/vue3'
@@ -26,8 +29,8 @@ export default {
 
   components: {
     InfoBar,
-    Desktop,
-    Window,
+      Desktop,
+        Window, Terminal,
     AppBar
   },
   computed: {
@@ -57,12 +60,16 @@ export default {
   }
 
   .main{
-      height: var(--desktop_height);
+      height: 100%;
       width: 100%;
   }
 
   #element::-webkit-scrollbar {
       display: none;
+  }
+  .container{
+    height: var(--desktop_height);
+    position: relative;
   }
 
 </style>

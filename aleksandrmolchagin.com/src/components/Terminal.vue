@@ -1,5 +1,4 @@
 <template>
-
     <VueResizable class="resizable" :style="cssVars"  
         ref="resizableComponent"
         :dragSelector="dragSelector"
@@ -11,21 +10,19 @@
         @mount="eHandler"
         @resize:move="eHandler" @resize:start="eHandler" @resize:end="eHandler"
         @drag:move="eHandler" @drag:start="eHandler" @drag:end="eHandler" @maximize="eHandler"
-      > 
-        <transition @trfull="maximizeWindow">
-          <XyzTransition appear xyz="fade down duration-8">
-          <div class="resizable-content" :style="cssVars" v-if="windowNotHide">
+        > 
+          <div class="resizable-content" :style="cssVars" v-if="true">
               <div class="tab">
-                <button class = "btnHide" v-on:click="hideWindow"></button>
+                <button class = "btnHide" v-on:click="hide"></button>
                 <button class = "btnMax" v-on:click="maximizeWindow"></button>
                 <div class="dragme" v-on:click="minmizeWindow">
                 <div class ="text">Terminal</div>
                 </div>
- 
+                  <section class = "card-text">
+                    aleksandrmolchagin.com: ~$ welcome to the terminal
+                  </section>
                 </div>
           </div>
-        </XyzTransition>
-      </transition>
     </VueResizable>
 </template>
 
@@ -33,46 +30,61 @@
 import VueResizable from 'vue-resizable';
 
 export default {
-  name: 'Window2',
+  name: 'Window',
   components: {VueResizable},  
   data() {
-    const tW = 50;
-    const tH = 50;
+    const tW = window.screen.availWidth;
+    const tH = window.screen.availHeight;
       return {
+          //App ID
+            id: 1,
+
+          //Resizing handlers and drag object
           handlers: ['r', 'rb', 'b', 'lb', 'l', 'lt', 't', 'rt'],
-          left: 0, top: 0,
-          height: tH, width: tW,
-          maxW: 10000, maxH: 10000,
-          minW: 350, minH: 350,
-          fit: true, maximize: false, event: '',
           dragSelector: ".dragme",
-          hide: false,
-          border: 0.66,
+
+          //Location
+          left: `calc(${tW}px - ${tW / 2}px - 150px)`, 
+          top: `calc(${tH}px - ${tH / 2}px - 150px)`,
+
+          //Size
+          width: 600, height: 400,
+          minW: 600, minH: 400,
+          maxW: 10000, maxH: 10000,
+
+          //Other appereance parameters
+          fit: true, 
+          show: true,
           cursor: 'move',
-          windowNotHide: true,
-          index: "3",
+          border: 0.66,
           shadow: 2,
           shadow_size: 8,
           back_color: "black",
-          show: true
       };
     },
   computed: {
     cssVars() {
       return {
+        //Appereance paramaters for CSS
         '--border': this.border + 'rem',
         '--cursor': this.cursor,
-        '--index': this.index,
         '--shadow': this.shadow + "px",
         '--shadow-size': this.shadow_size + "px",
-        '--back-color': this.back_color
+        '--back-color': this.back_color,
+        '--index': this.$store.getters.getCurrentZIndex(this.id),
       }
-    }
+    },
+    maximize: function () {
+      return this.$store.getters.getCurrentFullScreen(this.id);
+    },
   },
   methods: {
+    hide(){
+        this.$store.dispatch('hide', this.id);
+    },
     maximizeWindow() {
-      if (this.border == 0.66) {
-        this.maximize = true;
+      if (this.maximize == false) {
+        this.$store.dispatch('setFullScreen', this.id);
         this.border = 0;
         this.shadow = 0;
         this.shadow_size = 0;
@@ -83,16 +95,14 @@ export default {
         this.minmizeWindow();
     },
     minmizeWindow() {
-      this.maximize = false;
-      this.border = 0.66;
-      this.shadow = 2;
-      this.shadow_size = 5;
-      this.back_color = "black";
+      if (this.maximize == true) {
+        this.$store.dispatch('setFullScreen', this.id);
+        this.border = 0.66;
+        this.shadow = 2;
+        this.shadow_size = 5;
+        this.back_color = "black";
+      }
     },
-    hideWindow() {
-      this.windowNotHide = false;
-      setTimeout(() => this.index = "-1", 800);
-    }
   },
 }
 </script>
@@ -103,15 +113,17 @@ export default {
   * {    
       z-index: var(--index);
   }
+  .resizable{
+    position: absolute;
+  }
   .resizable-content {
-      position: relative;
       height: 100%;
       width: 100%;
-      color: black;
+      color: red;
       background: var(--back-color);
       border-radius: var(--border) var(--border) var(--border) var(--border);
       box-shadow: var(--shadow) var(--shadow) var(--shadow-size) rgba(0, 0, 0, 0.45);
-      z-index: 2;
+      z-index: var(--index);
   }
   .card {
       height:100%;

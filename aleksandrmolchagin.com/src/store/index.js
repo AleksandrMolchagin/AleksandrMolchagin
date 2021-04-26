@@ -9,11 +9,14 @@ export default createStore({
     desktop_height: 88.5,
 
     apps: [
-      {
-        state: 1,
+      //window
+      { state: 1,
         fullscreen: false,
-        z_index: 2,
-      }
+        z_index: 3, },
+      //terminal
+      { state: 1,
+        fullscreen: false,
+        z_index: 2, }
     ]
 
   },
@@ -35,10 +38,17 @@ export default createStore({
       var array = [newState, id]
       state.commit('setFullScreen', array);
     },
+    
+    hide(state, id){
+      var hideIndex = -1;
+      var array = [hideIndex, id];
+      state.commit('setZIndex', array);
+    },
+
     setZIndex(state, id){
       var newIndex = -1;
-      if (this.state.apps[id].z_index == -1){ newIndex = 2}
-      var array = [newIndex, id]
+      if (this.state.apps[id].z_index == -1){ newIndex = 3}
+      var array = [newIndex, id]; 
       state.commit('setZIndex', array);
     } 
 

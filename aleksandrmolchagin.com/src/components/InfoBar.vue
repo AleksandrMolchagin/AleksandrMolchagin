@@ -30,13 +30,11 @@ export default {
 <style scoped>
     .container{
         position: relative;
-        top: 0;
         height: var(--height);
         width: 100%;
         text-align: center;
         background: #585c5f;
         color: white;
-        display: flex;
         align-items: center;
         user-select: none;
     }
