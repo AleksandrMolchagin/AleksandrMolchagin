@@ -1,5 +1,5 @@
 <template>
-    <VueResizable class="resizable" :style="cssVars"  
+    <VueResizable class="resizable" :style="cssVars" v-on:click="bringToFront"
         ref="resizableComponent"
         :dragSelector="dragSelector"
         :active="handlers" :fit-parent="fit" :maximize="maximize"
@@ -16,7 +16,7 @@
                 <button class = "btnHide" v-on:click="hide"></button>
                 <button class = "btnMax" v-on:click="maximizeWindow"></button>
                 <div class="dragme" v-on:click="minmizeWindow">
-                <div class ="text">REVENGE OF THE SITH</div>
+                <div class ="text">{{ name }}</div>
                 </div>
                   <section class = "card-text">
                   War! The Republic is crumbling
@@ -95,6 +95,9 @@ export default {
     maximize: function () {
       return this.$store.getters.getCurrentFullScreen(this.id);
     },
+    name: function(){
+      return this.$store.getters.getCurrentName(this.id);
+    },
   },
   methods: {
     hide(){
@@ -113,6 +116,7 @@ export default {
         this.minmizeWindow();
     },
     minmizeWindow() {
+      this.bringToFront();
       if (this.maximize == true) {
         this.$store.dispatch('setFullScreen', this.id);
         this.border = 0.66;
@@ -120,6 +124,9 @@ export default {
         this.shadow_size = 5;
         this.back_color = "#bbc1c3ea";
       }
+    },
+    bringToFront(){
+      this.$store.dispatch('setNewZIndex', this.id);
     },
   },
 }

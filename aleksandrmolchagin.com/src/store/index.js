@@ -10,13 +10,18 @@ export default createStore({
 
     apps: [
       //window
-      { state: 1,
+      { name: "REVENGE OF THE SITH",
         fullscreen: false,
-        z_index: 3, },
+        z_index: -1, },
       //terminal
-      { state: 1,
+      { name: "Terminal",
         fullscreen: false,
-        z_index: 2, }
+        z_index: 2, },
+
+      { name: "TerminalTest",
+        fullscreen: false,
+        z_index: 3, }
+        
     ]
 
   },
@@ -26,6 +31,7 @@ export default createStore({
       this.state.apps[array[1]].fullscreen = array[0];
     },
     setZIndex(state, array){
+      //alert('Send "' + this.state.apps[array[1]].name + '" to '+ array[0])
       this.state.apps[array[1]].z_index = array[0];
     },
     
@@ -40,17 +46,55 @@ export default createStore({
     },
     
     hide(state, id){
-      var hideIndex = -1;
-      var array = [hideIndex, id];
+      var newIndex = -1;
+      var array = [newIndex, id]; 
       state.commit('setZIndex', array);
     },
 
-    setZIndex(state, id){
-      var newIndex = -1;
-      if (this.state.apps[id].z_index == -1){ newIndex = 3}
-      var array = [newIndex, id]; 
-      state.commit('setZIndex', array);
-    } 
+    openClose(state, id){
+      var maxIndex = 2;
+      for (var k = 0; k <= this.state.apps.length - 1; k++){
+        if (this.state.apps[k].z_index > maxIndex)
+          maxIndex = this.state.apps[k].z_index;
+      }
+      if (this.state.apps[id].z_index == maxIndex){
+        this.dispatch('hide', id);
+
+      }
+      else if (this.state.apps[id].z_index == -1){
+        var array2 = [maxIndex+1, id]; 
+        state.commit('setZIndex', array2);
+        this.dispatch('setNewZIndex', id);
+      }
+      else{
+        this.dispatch('setNewZIndex', id);
+      }
+    },
+    
+    setNewZIndex(state, id){
+
+      if (this.state.apps[id].z_index == -1)
+        return;
+
+      var currentIndex = this.state.apps[id].z_index;
+      var maxIndex = -1;
+      for (var k = 0; k <= this.state.apps.length - 1; k++){
+        if (this.state.apps[k].z_index > maxIndex)
+          maxIndex = this.state.apps[k].z_index;
+      }
+
+      for (var i = currentIndex; i < maxIndex; i++){
+        for (var j = 0; j <= this.state.apps.length -1; j++) {
+          if  (this.state.apps[j].z_index == i+1){
+            var nId = j;
+          }
+        }
+        var array = [i+1, id];
+        state.commit('setZIndex', array);
+        array = [i, nId]
+        state.commit('setZIndex', array);
+      }
+    }
 
   },
   getters:{
@@ -60,6 +104,9 @@ export default createStore({
     },
     getCurrentZIndex: (state) => (id) => {
       return state.apps[id].z_index;
+    },
+    getCurrentName: (state) => (id) => {
+      return state.apps[id].name;
     }
 
   },

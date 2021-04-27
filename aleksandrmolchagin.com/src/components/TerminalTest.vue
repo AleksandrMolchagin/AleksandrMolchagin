@@ -37,7 +37,7 @@ export default {
     const tH = window.screen.availHeight;
       return {
           //App ID
-            id: 1,
+            id: 2,
 
           //Resizing handlers and drag object
           handlers: ['r', 'rb', 'b', 'lb', 'l', 'lt', 't', 'rt'],
@@ -59,7 +59,7 @@ export default {
           border: 0.66,
           shadow: 2,
           shadow_size: 8,
-          back_color: "black",
+          back_color: "red",
       };
     },
   computed: {
@@ -91,7 +91,7 @@ export default {
         this.border = 0;
         this.shadow = 0;
         this.shadow_size = 0;
-        this.back_color = "black";
+        this.back_color = "red";
         this.show = !this.show;
       }
       else 
@@ -104,7 +104,7 @@ export default {
         this.border = 0.66;
         this.shadow = 2;
         this.shadow_size = 5;
-        this.back_color = "black";
+        this.back_color = "red";
       }
     },
     bringToFront(){
@@ -126,7 +126,7 @@ export default {
   .resizable-content {
       height: 100%;
       width: 100%;
-      color: red;
+      color: black;
       background: var(--back-color);
       border-radius: var(--border) var(--border) var(--border) var(--border);
       box-shadow: var(--shadow) var(--shadow) var(--shadow-size) rgba(0, 0, 0, 0.45);

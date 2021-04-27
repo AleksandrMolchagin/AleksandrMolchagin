@@ -1,6 +1,6 @@
 <template>
     <div class="container" :style="cssVars">
-        <button class="cube" id="SWRoS" @click="updateZIndex"></button>
+        <button class="cube" id="SWRoS" @click="openClose"></button>
         <div class="cube"></div>
         <div class="cube"></div>
         <div class="cube"></div>
@@ -26,8 +26,8 @@ export default {
         }
     },
     methods: {
-        updateZIndex(){
-            this.$store.dispatch('setZIndex', 0);
+        openClose(){
+            this.$store.dispatch('openClose', 0);
         },
     },
     computed: {
