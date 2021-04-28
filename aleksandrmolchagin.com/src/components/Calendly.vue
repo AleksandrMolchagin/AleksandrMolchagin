@@ -1,5 +1,5 @@
 <template>
-    <VueResizable class="resizable" :style="cssVars"  v-on:click="bringToFront"
+    <VueResizable class="resizable" :style="cssVars" v-on:click="bringToFront"
         ref="resizableComponent"
         :dragSelector="dragSelector"
         :active="handlers" :fit-parent="fit" :maximize="maximize"
@@ -17,11 +17,12 @@
                 <button class = "btnMax" v-on:click="maximizeWindow"></button>
                 <div class="dragme" v-on:click="minmizeWindow">
                 <div class ="text">{{ name }}</div>
-                </div>
-                  <section class = "card-text">
-                    aleksandrmolchagin.com: ~$ welcome to the terminal
-                  </section>
-                </div>
+              </div>
+                <div class = "container">
+                    <div class="iframeToFront" v-on:click="bringToFront" ></div>
+                    <iframe allowtransparency = "true" style="background: #FFFFFFce;" src="https://calendly.com/aleksandrmolchagin"></iframe>
+                </div>  
+              </div>
           </div>
     </VueResizable>
 </template>
@@ -44,12 +45,12 @@ export default {
           dragSelector: ".dragme",
 
           //Location
-          left: `calc(${tW}px - ${tW / 2}px - 150px)`, 
-          top: `calc(${tH}px - ${tH / 2}px - 150px)`,
+          left: `calc(${tW}px - ${tW / 2}px - 200px)`, 
+          top: `calc(${tH}px - ${tH / 2}px - 350px)`,
 
           //Size
-          width: 600, height: 400,
-          minW: 600, minH: 400,
+          width: 400, height: 620,
+          minW: 400, minH: 620,
           maxW: 10000, maxH: 10000,
 
           //Other appereance parameters
@@ -59,7 +60,9 @@ export default {
           border: 0.66,
           shadow: 2,
           shadow_size: 8,
-          back_color: "red",
+          back_color: "white",
+          
+          iframe: "visible",
       };
     },
   computed: {
@@ -72,6 +75,8 @@ export default {
         '--shadow-size': this.shadow_size + "px",
         '--back-color': this.back_color,
         '--index': this.$store.getters.getCurrentZIndex(this.id),
+        '--height': this.height-42 + "px",
+        '--visibility': this.$store.getters.getCurrentVisibilityBlock(this.id),
       }
     },
     maximize: function () {
@@ -82,6 +87,13 @@ export default {
     },
   },
   methods: {
+    eHandler(data) {
+      this.width = data.width;
+      this.height = data.height;
+      this.left = data.left;
+      this.top = data.top;
+      this.event = data.eventName;
+    },
     hide(){
         this.$store.dispatch('hide', this.id);
     },
@@ -91,7 +103,7 @@ export default {
         this.border = 0;
         this.shadow = 0;
         this.shadow_size = 0;
-        this.back_color = "red";
+        this.back_color = "white";
         this.show = !this.show;
       }
       else 
@@ -104,10 +116,11 @@ export default {
         this.border = 0.66;
         this.shadow = 2;
         this.shadow_size = 5;
-        this.back_color = "red";
+        this.back_color = "white";
       }
     },
     bringToFront(){
+      this.iframe = "hidden";
       this.$store.dispatch('setNewZIndex', this.id);
     },
   },
@@ -203,5 +216,30 @@ export default {
   }
   .trfull {
     transition: opacity 0.5s ease;
+  }
+
+  .container {
+  height: var(--height);
+  overflow: hidden;
+  position: relative;
+  }
+  iframe {
+    border: 0;
+    height: var(--height);
+    width: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    z-index: var(--index)-1;
+  }
+  .iframeToFront{
+    background-color: transparent;
+    position: absolute;
+    height: var(--height);
+    width: 100%;
+    left: 0;
+    top: 0;;
+    z-index: var(--index);
+    visibility: var(--visibility);
   }
 </style>

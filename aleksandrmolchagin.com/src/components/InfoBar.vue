@@ -6,6 +6,7 @@
 </template>
 <script>
 
+
 export default {
     name: 'InfoBar',
     components: {

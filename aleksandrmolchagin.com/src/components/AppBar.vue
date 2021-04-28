@@ -1,8 +1,8 @@
 <template>
     <div class="container" :style="cssVars">
-        <button class="cube" id="SWRoS" @click="openClose"></button>
-        <div class="cube"></div>
-        <div class="cube"></div>
+        <div class="cube" id="SWRoS" @click="openClose(0)"></div>
+        <div class="cube" id="terminal" @click="openClose(1)"></div>
+        <div class="cube" id="calendly" @click="openClose(2)"></div>
         <div class="cube"></div>
         <div class="cube"></div>
         <div class="cube"></div>
@@ -26,8 +26,8 @@ export default {
         }
     },
     methods: {
-        openClose(){
-            this.$store.dispatch('openClose', 0);
+        openClose(id){
+            this.$store.dispatch('openClose', id);
         },
     },
     computed: {
@@ -67,7 +67,29 @@ export default {
     #SWRoS{
         font-size: 1rem;
         background-image: url("../assets/1.jpg");
-        background-position: center; 
+        background-position: center center; 
         background-size: cover;
+        background-repeat: no-repeat;
+        cursor: pointer;
+
+
+    }
+    #terminal{
+        font-size: 1rem;
+        background-color: white;
+        background-image: url("../assets/shortcuts/terminal.png");
+        background-size: 100%;
+        background-position: center center; 
+        background-repeat: no-repeat;
+        cursor: pointer;
+    }
+    #calendly{
+        font-size: 1rem;
+        background-color: white;
+        background-image: url("../assets/shortcuts/calendly_logo.png");
+        background-size: 130%;
+        background-position: center center; 
+        background-repeat: no-repeat;
+        cursor: pointer;
     }
 </style>

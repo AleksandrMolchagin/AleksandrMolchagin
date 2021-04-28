@@ -3,7 +3,7 @@
       <InfoBar/>
         <div class = "container">
         <Desktop/>
-          <Window/><Terminal/><TerminalTest/>
+          <Window/><Terminal/><Calendly/>
         </div>
       <AppBar/>
   </div>
@@ -14,16 +14,10 @@ import InfoBar from './components/InfoBar';
 import Desktop from './components/Desktop';
 import Window from './components/Window';
 import Terminal from './components/Terminal';
-import TerminalTest from './components/TerminalTest';
+import Calendly from './components/Calendly';
 import AppBar from './components/AppBar';
-import { createApp } from 'vue'
-import VueAnimXyz from '@animxyz/vue3'
-import '@animxyz/core' // Import css here if you haven't elsewhere
-import App from './App.vue' // Your entry component
 
-const app = createApp(App)
 
-app.use(VueAnimXyz)
 
 export default {
   name: 'App',
@@ -31,7 +25,7 @@ export default {
   components: {
     InfoBar,
       Desktop,
-        Window, Terminal, TerminalTest,
+        Window, Terminal, Calendly,
     AppBar
   },
   computed: {

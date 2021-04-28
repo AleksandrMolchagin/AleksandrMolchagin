@@ -12,16 +12,19 @@ export default createStore({
       //window
       { name: "REVENGE OF THE SITH",
         fullscreen: false,
-        z_index: -1, },
+        z_index: -1,
+        block: "visible" },
       //terminal
       { name: "Terminal",
         fullscreen: false,
-        z_index: 2, },
+        z_index: 2,
+        block: "visible" },
 
-      { name: "TerminalTest",
+      { name: "Calendly - Meet with me",
         fullscreen: false,
-        z_index: 3, }
-        
+        z_index: 3,
+        block: "hidden" },
+
     ]
 
   },
@@ -33,6 +36,15 @@ export default createStore({
     setZIndex(state, array){
       //alert('Send "' + this.state.apps[array[1]].name + '" to '+ array[0])
       this.state.apps[array[1]].z_index = array[0];
+    },
+    setNewVisibilityBlock(state, maxIndex){
+      for (var i = 0; i <= this.state.apps.length - 1; i++){
+        if(this.state.apps[i].z_index == maxIndex)
+          this.state.apps[i].block = "hidden";
+        else  
+          this.state.apps[i].block = "visible";
+        //alert(this.state.apps[i].block);
+      }
     },
     
   },
@@ -57,6 +69,7 @@ export default createStore({
         if (this.state.apps[k].z_index > maxIndex)
           maxIndex = this.state.apps[k].z_index;
       }
+
       if (this.state.apps[id].z_index == maxIndex){
         this.dispatch('hide', id);
 
@@ -69,6 +82,7 @@ export default createStore({
       else{
         this.dispatch('setNewZIndex', id);
       }
+      state.commit('setNewVisibilityBlock', maxIndex);
     },
     
     setNewZIndex(state, id){
@@ -83,6 +97,9 @@ export default createStore({
           maxIndex = this.state.apps[k].z_index;
       }
 
+      if (this.state.apps[id].z_index == maxIndex)
+        return;
+
       for (var i = currentIndex; i < maxIndex; i++){
         for (var j = 0; j <= this.state.apps.length -1; j++) {
           if  (this.state.apps[j].z_index == i+1){
@@ -93,8 +110,10 @@ export default createStore({
         state.commit('setZIndex', array);
         array = [i, nId]
         state.commit('setZIndex', array);
+        state.commit('setZIndex', array);
+        state.commit('setNewVisibilityBlock', maxIndex);
       }
-    }
+    },
 
   },
   getters:{
@@ -107,8 +126,10 @@ export default createStore({
     },
     getCurrentName: (state) => (id) => {
       return state.apps[id].name;
-    }
-
+    },
+    getCurrentVisibilityBlock: (state) => (id) => {
+      return state.apps[id].block;
+    },
   },
   modules: {
   }

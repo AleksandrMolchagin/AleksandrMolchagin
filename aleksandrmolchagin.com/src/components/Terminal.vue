@@ -59,7 +59,7 @@ export default {
           border: 0.66,
           shadow: 2,
           shadow_size: 8,
-          back_color: "black",
+          back_color: "#000000ee",
       };
     },
   computed: {
@@ -91,7 +91,7 @@ export default {
         this.border = 0;
         this.shadow = 0;
         this.shadow_size = 0;
-        this.back_color = "black";
+        this.back_color = "#000000";
         this.show = !this.show;
       }
       else 
@@ -104,7 +104,7 @@ export default {
         this.border = 0.66;
         this.shadow = 2;
         this.shadow_size = 5;
-        this.back_color = "black";
+        this.back_color = "#000000ee";
       }
     },
     bringToFront(){
