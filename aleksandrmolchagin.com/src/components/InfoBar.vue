@@ -23,6 +23,8 @@ export default {
         cssVars() {
             return {
             '--height': this.height + 'vh',
+            '--text-title-color': this.$store.getters.getCurrentTextTitleColor(),
+            '--title-color': this.$store.getters.getCurrentTitleColor(),
             }
         }
     },
@@ -34,8 +36,8 @@ export default {
         height: var(--height);
         width: 100%;
         text-align: center;
-        background: #585c5f;
-        color: white;
+        background: var(--title-color);
+        color: var(--text-title-color);
         align-items: center;
         user-select: none;
     }

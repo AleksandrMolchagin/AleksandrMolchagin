@@ -65,10 +65,7 @@ export default {
           left: `calc(${tW}px - ${tW / 2}px - 190px)`, 
           top: `calc(${tH}px - ${tH / 2}px - 190px)`,
 
-          //Size
-          height: 380, width: 380,
-          minW: 380, minH: 380,
-          maxW: 10000, maxH: 10000,
+        
 
           //Other appereance parameters
           fit: true, 
@@ -77,19 +74,25 @@ export default {
           border: 0.66,
           shadow: 2,
           shadow_size: 8,
-          back_color: "#ffffffee",
       };
     },
   computed: {
     cssVars() {
+      var main_color =  this.$store.getters.getCurrentMainColor(this.id) +  this.$store.getters.getCurrentTransperency();
       return {
         //Appereance paramaters for CSS
         '--border': this.border + 'rem',
         '--cursor': this.cursor,
         '--shadow': this.shadow + "px",
         '--shadow-size': this.shadow_size + "px",
-        '--back-color': this.back_color,
         '--index': this.$store.getters.getCurrentZIndex(this.id),
+        '--second-title-color': this.$store.getters.getCurrentSecondTitleColor(),
+        '--text-title-color': this.$store.getters.getCurrentTextTitleColor(),
+        '--title-color': this.$store.getters.getCurrentTitleColor(),
+        '--hide-btn-color': this.$store.getters.getCurrentHideBtnColor(),
+        '--fullscreen-btn-color': this.$store.getters.getCurrentFlscreenBtnColor(),
+        '--main-color': main_color,
+        '--text-main-color': this.$store.getters.getCurrentMainTextColor(this.id),
       }
     },
     maximize: function () {
@@ -98,6 +101,30 @@ export default {
     name: function(){
       return this.$store.getters.getCurrentName(this.id);
     },
+    main_color: function() {
+      return (this.$store.getters.getCurrentMainColor(this.id) +  this.$store.getters.transperency(this.id));
+    },
+
+
+    width: function () {
+      return this.$store.getters.getCurrentWidth(this.id);
+    },
+    height: function () {
+      return this.$store.getters.getCurrentHeight(this.id);
+    },
+    minW: function () {
+      return this.$store.getters.getCurrentMINwidth(this.id);
+    },
+    minH: function () {
+      return this.$store.getters.getCurrentMINheight(this.id);
+    },
+    maxW: function () {
+      return this.$store.getters.getCurrentMAXwidth(this.id);
+    },
+    maxH: function () {
+      return this.$store.getters.getCurrentMAXheight(this.id);
+    },
+
   },
   methods: {
     hide(){
@@ -109,7 +136,7 @@ export default {
         this.border = 0;
         this.shadow = 0;
         this.shadow_size = 0;
-        this.back_color = "#ffffff";
+        this.$store.dispatch('disableTransparency');
         this.show = !this.show;
       }
       else 
@@ -122,7 +149,7 @@ export default {
         this.border = 0.66;
         this.shadow = 2;
         this.shadow_size = 5;
-        this.back_color = "#ffffffee";
+        this.$store.dispatch('enableTransparency');
       }
     },
     bringToFront(){
@@ -142,8 +169,8 @@ export default {
   .resizable-content {
       height: 100%;
       width: 100%;
-      color: black;
-      background: var(--back-color);
+      color: var(--text-main-color);
+      background: var(--main-color);
       border-radius: var(--border) var(--border) var(--border) var(--border);
       box-shadow: var(--shadow) var(--shadow) var(--shadow-size) rgba(0, 0, 0, 0.45);
       z-index: var(--index);
@@ -167,9 +194,9 @@ export default {
     position: relative;
     width: 100%;
     height: 2rem;
-    background:#585c5f;
+    background: var(--title-color);
     border-radius: var(--border) var(--border) 0rem 0rem;
-    color: white;
+    color: var(--text-title-color);
     cursor: pointer;
     display: flex;
     align-items: center;
@@ -189,11 +216,11 @@ export default {
     height: 1em;
     width: 1em;
     border-radius: 100%;
-    border: 0.5em solid #bbc1c3;
+    border: 0.5em solid var(--second-title-color);
     z-index: calc(var(--index) + 1);
   }
   .btnHide:hover{
-    border: 0.275em solid #d5d826;
+    border: 0.275em solid var(--hide-btn-color);
     transition: border 0.25s;
   }
    .btnMax {
@@ -204,11 +231,11 @@ export default {
     height: 1em;
     width: 1em;
     border-radius: 100%;
-    border: 0.5em solid #bbc1c3;
+    border: 0.5em solid var(--second-title-color);
     z-index: calc(var(--index) + 1);
   }
   .btnMax:hover{
-    border: 0.275em solid #3fd347;
+    border: 0.275em solid var(--fullscreen-btn-color);
     transition: border 0.25s;
   }
   .item-zoom {
