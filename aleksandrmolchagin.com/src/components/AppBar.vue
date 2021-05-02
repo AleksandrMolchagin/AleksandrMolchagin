@@ -62,7 +62,7 @@ export default {
         margin: 0.5vh;
         background: #bbc1c3;
         --color: rgb(100, 68, 177);
-        box-shadow: 0px 0px 1px black;
+        box-shadow: 0px 0px 4px black;
     }
     #SWRoS{
         font-size: 1rem;
@@ -77,7 +77,7 @@ export default {
     #terminal{
         font-size: 1rem;
         background-color: white;
-        background-image: url("../assets/shortcuts/terminal.png");
+        background-image: url("../assets/app_icons/terminal.png");
         background-size: 100%;
         background-position: center center; 
         background-repeat: no-repeat;
@@ -86,8 +86,8 @@ export default {
     #calendly{
         font-size: 1rem;
         background-color: white;
-        background-image: url("../assets/shortcuts/calendly_logo.png");
-        background-size: 130%;
+        background-image: url("../assets/app_icons/calendly.png");
+        background-size: 100%;
         background-position: center center; 
         background-repeat: no-repeat;
         cursor: pointer;
