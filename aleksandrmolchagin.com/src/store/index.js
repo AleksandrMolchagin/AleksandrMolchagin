@@ -86,7 +86,7 @@ export default createStore({
       { name: "Calendly - Meet with me",
         fullscreen: false,
         z_index: -1,
-        block: "hidden",
+        block: "visible",
         
         main_color: "",
         text_main_color: "",

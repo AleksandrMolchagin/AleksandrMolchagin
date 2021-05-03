@@ -56,11 +56,11 @@ export default {
     }
     .cube {
         display: inline-block;
-        border-radius: 0.66rem;
+        border-radius: 0.75rem;
         width: var(--cube_height);
         height: var(--cube_height);
         margin: 0.5vh;
-        background: #bbc1c3;
+        background: transparent;
         --color: rgb(100, 68, 177);
         box-shadow: 0px 0px 4px black;
     }
