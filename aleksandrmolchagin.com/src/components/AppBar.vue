@@ -56,12 +56,12 @@ export default {
     }
     .cube {
         display: inline-block;
-        border-radius: 0.75rem;
+        border-radius: 25%;
         width: var(--cube_height);
         height: var(--cube_height);
-        margin: 0.5vh;
+        margin: 0.4vh;
         background: transparent;
-        --color: rgb(100, 68, 177);
+        --color: rgb(10, 9, 12);
         box-shadow: 0px 0px 4px black;
     }
     #SWRoS{

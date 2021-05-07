@@ -27,6 +27,14 @@ export default createStore({
       /* WINDOW GLOBAL MAX SIZE */
       maxW: 10000,
       maxH: 10000,
+
+      /*OTHER GLOBAL VALUES*/
+      border_radius: "0.66rem",
+      border_radius_icons: "25%",
+      shadowDR: "2px",
+      shadowUL: "8px",
+
+
     },
 
     apps: [
@@ -55,6 +63,9 @@ export default createStore({
         
         main_color: "",
         text_main_color: "",
+        border_radius: "0.66rem",
+        shadowDR: "2px",
+        shadowUL: "8px",
 
         width: 380,
         height: 380,
@@ -72,6 +83,9 @@ export default createStore({
         
         main_color: "#000000",
         text_main_color: "red",
+        border_radius: "0.66rem",
+        shadowDR: "2px",
+        shadowUL: "8px",
 
         width: 600,
         height: 400,
@@ -90,6 +104,9 @@ export default createStore({
         
         main_color: "",
         text_main_color: "",
+        border_radius: "0.66rem",
+        shadowDR: "2px",
+        shadowUL: "8px",
 
         width: 400,
         height: 620,
@@ -128,6 +145,14 @@ export default createStore({
 
     setNewTransparency(state, transparency){                                    //SET NEW TRANSPARENCY
       this.state.style.transperency = transparency;                             // transparency - transparency code ("ee", "ac"...)
+    },
+
+    setNewRadius(state, array){
+      this.state.apps[array[1]].border_radius = array[0];
+    },
+    setNewShadows(state, array){
+      this.state.apps[array[2]].shadowDR = array[0];
+      this.state.apps[array[2]].shadowUL = array[1];
     },
   },
   /*------------------------------------------------------------*/
@@ -206,8 +231,35 @@ export default createStore({
     },
     enableTransparency(state){                                                          //ENABLE TRANSPARENCY
       state.commit('setNewTransparency', this.state.style.DEFAULT_transperency);
-    }
+    },
 
+
+    setNewBorderRadius(state, id){                                                      //BORDER RADIUS
+      var newRadius;                                      
+      if (this.state.apps[id].border_radius != 0)
+        newRadius = 0;
+      else
+        newRadius = this.state.style.border_radius;
+      var array = [newRadius, id]
+      state.commit('setNewRadius', array);
+    },
+
+    setNewWindowShadows(state, id){                                                      //SHADOWS SIZE
+      var newShadowDR;  
+      var newShadowUL; 
+      //Shadow down - right                            
+      if (this.state.apps[id].shadowDR != "0px")
+        newShadowDR = "0px";
+      else
+        newShadowDR = this.state.style.shadowDR;
+      //Shadow up - left
+      if (this.state.apps[id].shadowUL != "0px")
+        newShadowUL = "0px";
+      else
+        newShadowUL = this.state.style.shadowUL;
+      var array = [newShadowDR, newShadowUL, id]
+      state.commit('setNewShadows', array);
+    },
   },
   /*------------------------------------------------------------*/
   /*-----------------------ALL-GETTERS--------------------------*/
@@ -230,7 +282,7 @@ export default createStore({
     },
 
 
-    /*GETTERS FOR COLORS AND TRANSPARENCY PARAMETERS*/
+    /*GETTERS FOR COLORS, TRANSPARENCY PARAMETERS AND OTHER STYLING*/
     /*------------------------------------------------------------*/
     getCurrentTitleColor: (state) => () => {          //TITLE
       return state.style.title_color;
@@ -261,6 +313,17 @@ export default createStore({
     },
     getCurrentTransperency: (state) => () => {        //TRANSPARENCY
       return state.style.transperency;
+    },
+
+    getCurrentBorderRadius: (state) => (id) => {       //BORDER RADIUS
+      return state.apps[id].border_radius;
+    },
+
+    getCurrentShadowDR: (state) => (id) => {          //SHADOW SIZE (DOWN-RIGHT)
+      return state.apps[id].shadowDR;
+    },
+    getCurrentShadowUL: (state) => (id) => {          //SHADOW SIZE (UP-LEFT)
+      return state.apps[id].shadowUL;
     },
     /*------------------------------------------------------------*/
     

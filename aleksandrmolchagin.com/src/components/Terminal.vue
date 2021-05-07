@@ -52,10 +52,6 @@ export default {
           fit: true, 
           show: true,
           cursor: 'move',
-          border: 0.66,
-          shadow: 2,
-          shadow_size: 8,
-          back_color: "#000000ee",
       };
     },
   computed: {
@@ -63,10 +59,10 @@ export default {
       var main_color =  this.$store.getters.getCurrentMainColor(this.id) +  this.$store.getters.getCurrentTransperency();
       return {
         //Appereance paramaters for CSS
-        '--border': this.border + 'rem',
+        '--border': this.$store.getters.getCurrentBorderRadius(this.id),
         '--cursor': this.cursor,
-        '--shadow': this.shadow + "px",
-        '--shadow-size': this.shadow_size + "px",
+        '--shadowDR': this.$store.getters.getCurrentShadowDR(this.id),
+        '--shadowUL': this.$store.getters.getCurrentShadowUL(this.id),
         '--index': this.$store.getters.getCurrentZIndex(this.id),
         '--second-title-color': this.$store.getters.getCurrentSecondTitleColor(),
         '--text-title-color': this.$store.getters.getCurrentTextTitleColor(),
@@ -110,11 +106,10 @@ export default {
     maximizeWindow() {
       if (this.maximize == false) {
         this.$store.dispatch('setFullScreen', this.id);
-        this.border = 0;
-        this.shadow = 0;
-        this.shadow_size = 0;
-        this.show = !this.show;
+        this.$store.dispatch('setNewBorderRadius', this.id);
+        this.$store.dispatch('setNewWindowShadows', this.id);
         this.$store.dispatch('disableTransparency');
+        this.show = !this.show;
       }
       else 
         this.minmizeWindow();
@@ -123,9 +118,8 @@ export default {
       this.bringToFront();
       if (this.maximize == true) {
         this.$store.dispatch('setFullScreen', this.id);
-        this.border = 0.66;
-        this.shadow = 2;
-        this.shadow_size = 5;
+        this.$store.dispatch('setNewBorderRadius', this.id);
+        this.$store.dispatch('setNewWindowShadows', this.id);
         this.$store.dispatch('enableTransparency');
       }
     },
@@ -151,7 +145,7 @@ export default {
       color: var(--text-main-color);
       background: var(--main-color);
       border-radius: var(--border) var(--border) var(--border) var(--border);
-      box-shadow: var(--shadow) var(--shadow) var(--shadow-size) rgba(0, 0, 0, 0.45);
+      box-shadow: var(--shadowDR) var(--shadowDR) var(--shadowUL) rgba(0, 0, 0, 0.45);
       z-index: var(--index);
   }
   .card {
@@ -202,7 +196,7 @@ export default {
     border: 0.275em solid var(--hide-btn-color);
     transition: border 0.25s;
   }
-   .btnMax {
+  .btnMax {
     position: absolute;
     display:block;
     margin-top: 0.55em;

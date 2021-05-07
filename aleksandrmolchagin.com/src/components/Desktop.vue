@@ -70,7 +70,7 @@ export default {
   
     .cube {
         display: inline-block;
-        border-radius: 0.66rem;
+        border-radius: 25%;
         width: 6vh;
         height:  6vh;
         margin: 4px;

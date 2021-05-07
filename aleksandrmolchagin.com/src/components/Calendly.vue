@@ -38,7 +38,7 @@ export default {
     const tH = window.screen.availHeight;
       return {
           //App ID
-            id: 2,
+          id: 2,
 
           //Resizing handlers and drag object
           handlers: ['r', 'rb', 'b', 'lb', 'l', 'lt', 't', 'rt'],
@@ -47,16 +47,11 @@ export default {
           //Location
           left: `calc(${tW}px - ${tW / 2}px - 200px)`, 
           top: `calc(${tH}px - ${tH / 2}px - 350px)`,
-
+          
           //Other appereance parameters
           fit: true, 
           show: true,
           cursor: 'move',
-          border: 0.66,
-          shadow: 2,
-          shadow_size: 8,
-          back_color: "white",
-          
           iframe: "visible",
       };
     },
@@ -65,10 +60,10 @@ export default {
       var main_color =  this.$store.getters.getCurrentMainColor(this.id) +  this.$store.getters.getCurrentTransperency();
       return {
         //Appereance paramaters for CSS
-        '--border': this.border + 'rem',
+        '--border': this.$store.getters.getCurrentBorderRadius(this.id),
         '--cursor': this.cursor,
-        '--shadow': this.shadow + "px",
-        '--shadow-size': this.shadow_size + "px",
+        '--shadowDR': this.$store.getters.getCurrentShadowDR(this.id),
+        '--shadowUL': this.$store.getters.getCurrentShadowUL(this.id),
         '--index': this.$store.getters.getCurrentZIndex(this.id),
         '--height': this.height-42 + "px",
         '--visibility': this.$store.getters.getCurrentVisibilityBlock(this.id),
@@ -87,7 +82,7 @@ export default {
     name: function(){
       return this.$store.getters.getCurrentName(this.id);
     },
-        width: function () {
+    width: function () {
       return this.$store.getters.getCurrentWidth(this.id);
     },
     height: function () {
@@ -120,12 +115,10 @@ export default {
     maximizeWindow() {
       if (this.maximize == false) {
         this.$store.dispatch('setFullScreen', this.id);
-        this.border = 0;
-        this.shadow = 0;
-        this.shadow_size = 0;
+        this.$store.dispatch('setNewBorderRadius', this.id);
+        this.$store.dispatch('setNewWindowShadows', this.id);
         this.$store.dispatch('disableTransparency');
         this.show = !this.show;
-        
       }
       else 
         this.minmizeWindow();
@@ -134,9 +127,8 @@ export default {
       this.bringToFront();
       if (this.maximize == true) {
         this.$store.dispatch('setFullScreen', this.id);
-        this.border = 0.66;
-        this.shadow = 2;
-        this.shadow_size = 5;
+        this.$store.dispatch('setNewBorderRadius', this.id);
+        this.$store.dispatch('setNewWindowShadows', this.id);
         this.$store.dispatch('enableTransparency');
       }
     },
@@ -163,7 +155,7 @@ export default {
       width: 100%;
       background: var(--main-color);
       border-radius: var(--border) var(--border) var(--border) var(--border);
-      box-shadow: var(--shadow) var(--shadow) var(--shadow-size) rgba(0, 0, 0, 0.45);
+      box-shadow: var(--shadowDR) var(--shadowDR) var(--shadowUL) rgba(0, 0, 0, 0.45);
       z-index: var(--index);
   }
   .card {
