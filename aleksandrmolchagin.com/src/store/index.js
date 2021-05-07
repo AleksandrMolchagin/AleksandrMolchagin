@@ -5,9 +5,17 @@ export default createStore({
     
     /*DESKTOP PARAMETERS */
     infobar_height: 3, 
+      infobar_margin: "0.3%",
+      infobar_margin_DEFAULT: "0.3%",
     desktop_height: 88.5,      
       appbar_cube_height: 6,
     appbar_height: 7.5,
+
+    /*OTHER PARAMETERS*/
+    help: {
+      something_is_full: false,
+
+    },
 
     style: {
       /*COLORS PARAMETERS*/
@@ -125,8 +133,13 @@ export default createStore({
   mutations: {
 
     setFullScreen(state, array){                                                //SET FULLSCREEN 
-      this.state.apps[array[1]].fullscreen = array[0];                          //array[1] - id
-    },                                                                          //array[2] - new fullscreen value
+      this.state.apps[array[1]].fullscreen = array[0];                          //array[1] - id  //array[2] - new fullscreen value
+      this.state.help.something_is_full = array[0];
+    },                                                                         
+
+    setInfobarMargin(state, newValue){
+      this.state.infobar_margin = newValue;
+    },
 
     setZIndex(state, array){
       //alert('Send "' + this.state.apps[array[1]].name + '" to '+ array[0])
@@ -160,12 +173,28 @@ export default createStore({
   /*------------------------------------------------------------*/
   actions: {
 
-    setFullScreen(state, id){                                                   //SET FULLSCREEN
+    switchFullScreen(state, id){                                                   //SET FULLSCREEN
       var newState = !this.state.apps[id].fullscreen;
       var array = [newState, id]
       state.commit('setFullScreen', array);
     },
     
+    switchInfobarMargin(state){                                                 //SWITCH MARGIN (0.1% - 0%)
+      var go = true;
+      for (var i = 0; i <= this.state.apps.length - 1; i++) {
+        if (this.state.apps[i].fullscreen == true && this.state.apps[i].z_index != -1)
+          go = false;
+      }
+      if (go == true) {
+        var newValue;
+        if (this.state.infobar_margin == "0%")
+          newValue = this.state.infobar_margin_DEFAULT;
+      }
+      else
+        newValue = "0%";
+      state.commit('setInfobarMargin', newValue);
+    },
+
     hide(state, id){                                                            //HIDE A WINDOW
       var newIndex = -1;
       var array = [newIndex, id]; 
@@ -173,7 +202,6 @@ export default createStore({
     },
 
     openClose(state, id) {                                                      //OPEN OR CLOSE(hide) WINDOW
-
       var maxIndex = 2;                                        //find maximum index
       for (var k = 0; k <= this.state.apps.length - 1; k++){
         if (this.state.apps[k].z_index > maxIndex)
@@ -187,15 +215,18 @@ export default createStore({
       else if (this.state.apps[id].z_index == -1){             //hiden window -> open it
         var array2 = [maxIndex+1, id]; 
         state.commit('setZIndex', array2);
-        this.dispatch('setNewZIndex', id);
+        this.dispatch('recalculateNewZIndex', id);
       }
       else {                                                    //neither top, nor hidden? -> put it on top
-        this.dispatch('setNewZIndex', id);
+        this.dispatch('recalculateNewZIndex', id);
       }
-      state.commit('setNewVisibilityBlock', maxIndex);          //visibility block on/off
+      //alert(maxIndex)
+      state.commit('setNewVisibilityBlock', maxIndex+1);          //visibility block on/off
+      if (this.state.apps[id].fullscreen == true)
+        this.dispatch('switchInfobarMargin');
     },
     
-    setNewZIndex(state, id){                                                    //RECALCULATE Z INDEXES
+    recalculateNewZIndex(state, id){                                                    //RECALCULATE Z INDEXES
 
       if (this.state.apps[id].z_index == -1)                    //hidden window? -> return
         return;
@@ -224,8 +255,7 @@ export default createStore({
         state.commit('setZIndex', array);
         state.commit('setNewVisibilityBlock', maxIndex);        //old top index -> visibility block on
       }
-    },
-      
+    },      
     disableTransparency(state){                                                         //DISABLE TRANSPARENCY
       state.commit('setNewTransparency', "");
     },
@@ -234,7 +264,7 @@ export default createStore({
     },
 
 
-    setNewBorderRadius(state, id){                                                      //BORDER RADIUS
+    switchBorderRadius(state, id){                                                      //BORDER RADIUS
       var newRadius;                                      
       if (this.state.apps[id].border_radius != 0)
         newRadius = 0;
@@ -243,8 +273,7 @@ export default createStore({
       var array = [newRadius, id]
       state.commit('setNewRadius', array);
     },
-
-    setNewWindowShadows(state, id){                                                      //SHADOWS SIZE
+    switchWindowShadows(state, id){                                                      //SHADOWS SIZE
       var newShadowDR;  
       var newShadowUL; 
       //Shadow down - right                            
@@ -260,13 +289,20 @@ export default createStore({
       var array = [newShadowDR, newShadowUL, id]
       state.commit('setNewShadows', array);
     },
+
   },
   /*------------------------------------------------------------*/
   /*-----------------------ALL-GETTERS--------------------------*/
   /*------------------------------------------------------------*/
   getters:{
 
-    /*KEY GETTERS*/
+    /*GLOBAK GETTERS*/
+    /*------------------------------------------------------------*/
+    getCurrentInfobarMargin: (state) => () => {       //INFOBAR MARGIN
+      return state.infobar_margin;
+    },
+    /*------------------------------------------------------------*/
+    /*KEY APP GETTERS*/
     /*------------------------------------------------------------*/
     getCurrentName: (state) => (id) => {              //APP NAME
       return state.apps[id].name;

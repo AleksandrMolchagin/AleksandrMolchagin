@@ -34,8 +34,6 @@ export default {
   name: 'Window',
   components: {VueResizable},  
   data() {
-    const tW = window.screen.availWidth;
-    const tH = window.screen.availHeight;
       return {
           //App ID
           id: 2,
@@ -45,8 +43,8 @@ export default {
           dragSelector: ".dragme",
 
           //Location
-          left: `calc(${tW}px - ${tW / 2}px - 200px)`, 
-          top: `calc(${tH}px - ${tH / 2}px - 350px)`,
+          right: 0, 
+          top: 0,
           
           //Other appereance parameters
           fit: true, 
@@ -114,11 +112,11 @@ export default {
     },
     maximizeWindow() {
       if (this.maximize == false) {
-        this.$store.dispatch('setFullScreen', this.id);
-        this.$store.dispatch('setNewBorderRadius', this.id);
-        this.$store.dispatch('setNewWindowShadows', this.id);
+        this.$store.dispatch('switchBorderRadius', this.id);
+        this.$store.dispatch('switchWindowShadows', this.id);
+        this.$store.dispatch('switchFullScreen', this.id);
+        this.$store.dispatch('switchInfobarMargin');
         this.$store.dispatch('disableTransparency');
-        this.show = !this.show;
       }
       else 
         this.minmizeWindow();
@@ -126,16 +124,15 @@ export default {
     minmizeWindow() {
       this.bringToFront();
       if (this.maximize == true) {
-        this.$store.dispatch('setFullScreen', this.id);
-        this.$store.dispatch('setNewBorderRadius', this.id);
-        this.$store.dispatch('setNewWindowShadows', this.id);
+        this.$store.dispatch('switchBorderRadius', this.id);
+        this.$store.dispatch('switchWindowShadows', this.id);
+        this.$store.dispatch('switchFullScreen', this.id);
+        this.$store.dispatch('switchInfobarMargin');
         this.$store.dispatch('enableTransparency');
       }
     },
     bringToFront(){
-      this.iframe = "hidden";
-      this.$store.dispatch('setNewZIndex', this.id);
-      
+      this.$store.dispatch('recalculateNewZIndex', this.id);
     },
   },
 }

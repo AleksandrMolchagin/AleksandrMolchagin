@@ -105,11 +105,11 @@ export default {
     },
     maximizeWindow() {
       if (this.maximize == false) {
-        this.$store.dispatch('setFullScreen', this.id);
-        this.$store.dispatch('setNewBorderRadius', this.id);
-        this.$store.dispatch('setNewWindowShadows', this.id);
+        this.$store.dispatch('switchBorderRadius', this.id);
+        this.$store.dispatch('switchWindowShadows', this.id);
+        this.$store.dispatch('switchFullScreen', this.id);
+        this.$store.dispatch('switchInfobarMargin');
         this.$store.dispatch('disableTransparency');
-        this.show = !this.show;
       }
       else 
         this.minmizeWindow();
@@ -117,14 +117,15 @@ export default {
     minmizeWindow() {
       this.bringToFront();
       if (this.maximize == true) {
-        this.$store.dispatch('setFullScreen', this.id);
-        this.$store.dispatch('setNewBorderRadius', this.id);
-        this.$store.dispatch('setNewWindowShadows', this.id);
+        this.$store.dispatch('switchBorderRadius', this.id);
+        this.$store.dispatch('switchWindowShadows', this.id);
+        this.$store.dispatch('switchFullScreen', this.id);
+        this.$store.dispatch('switchInfobarMargin');
         this.$store.dispatch('enableTransparency');
       }
     },
     bringToFront(){
-      this.$store.dispatch('setNewZIndex', this.id);
+      this.$store.dispatch('recalculateNewZIndex', this.id);
     },
   },
 }

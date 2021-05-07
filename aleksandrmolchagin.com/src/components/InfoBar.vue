@@ -23,6 +23,7 @@ export default {
         cssVars() {
             return {
             '--height': this.height + 'vh',
+            '--margin': this.$store.getters.getCurrentInfobarMargin(),
             '--text-title-color': this.$store.getters.getCurrentTextTitleColor(),
             '--title-color': this.$store.getters.getCurrentTitleColor(),
             }
@@ -40,6 +41,7 @@ export default {
         color: var(--text-title-color);
         align-items: center;
         user-select: none;
+        margin-bottom: var(--margin);
     }
       .title{
         position: absolute;
