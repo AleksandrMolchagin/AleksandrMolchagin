@@ -63,7 +63,7 @@ export default {
         '--shadowDR': this.$store.getters.getCurrentShadowDR(this.id),
         '--shadowUL': this.$store.getters.getCurrentShadowUL(this.id),
         '--index': this.$store.getters.getCurrentZIndex(this.id),
-        '--height': this.height-42 + "px",
+        '--height': this.height - 42 + "px",
         '--visibility': this.$store.getters.getCurrentVisibilityBlock(this.id),
         '--second-title-color': this.$store.getters.getCurrentSecondTitleColor(),
         '--text-title-color': this.$store.getters.getCurrentTextTitleColor(),
@@ -100,13 +100,6 @@ export default {
     },
   },
   methods: {
-    eHandler(data) {
-      this.width = data.width;
-      this.height = data.height;
-      this.left = data.left;
-      this.top = data.top;
-      this.event = data.eventName;
-    },
     hide(){
         this.$store.dispatch('hide', this.id);
     },
