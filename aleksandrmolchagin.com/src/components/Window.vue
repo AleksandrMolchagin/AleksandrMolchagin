@@ -65,6 +65,10 @@ export default {
           left: `calc(${tW}px - ${tW / 2}px - 190px)`, 
           top: `calc(${tH}px - ${tH / 2}px - 190px)`,
 
+          //Size
+          height: function() { return this.$store.getters.getCurrentHeight(this.id); },
+          width: function() { return this.$store.getters.getCurrentWidth(this.id); },
+
           //Other appereance parameters
           fit: true, 
           show: true,
@@ -99,14 +103,6 @@ export default {
     main_color: function() {
       return (this.$store.getters.getCurrentMainColor(this.id) +  this.$store.getters.transperency(this.id));
     },
-
-
-    width: function () {
-      return this.$store.getters.getCurrentWidth(this.id);
-    },
-    height: function () {
-      return this.$store.getters.getCurrentHeight(this.id);
-    },
     minW: function () {
       return this.$store.getters.getCurrentMINwidth(this.id);
     },
@@ -122,6 +118,10 @@ export default {
 
   },
   methods: {
+    eHandler(data) {
+      this.width = data.width;
+      this.height = data.height;
+    },
     hide(){
         this.$store.dispatch('hide', this.id);
     },

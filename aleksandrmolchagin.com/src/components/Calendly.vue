@@ -45,6 +45,10 @@ export default {
           //Location
           right: 0, 
           top: 0,
+
+          //Size
+          height: function() { return this.$store.getters.getCurrentHeight(this.id); },
+          width: function() { return this.$store.getters.getCurrentWidth(this.id); },
           
           //Other appereance parameters
           fit: true, 
@@ -63,7 +67,7 @@ export default {
         '--shadowDR': this.$store.getters.getCurrentShadowDR(this.id),
         '--shadowUL': this.$store.getters.getCurrentShadowUL(this.id),
         '--index': this.$store.getters.getCurrentZIndex(this.id),
-        '--height': this.height - 42 + "px",
+        '--height': this.height + "px",
         '--visibility': this.$store.getters.getCurrentVisibilityBlock(this.id),
         '--second-title-color': this.$store.getters.getCurrentSecondTitleColor(),
         '--text-title-color': this.$store.getters.getCurrentTextTitleColor(),
@@ -80,12 +84,6 @@ export default {
     name: function(){
       return this.$store.getters.getCurrentName(this.id);
     },
-    width: function () {
-      return this.$store.getters.getCurrentWidth(this.id);
-    },
-    height: function () {
-      return this.$store.getters.getCurrentHeight(this.id);
-    },
     minW: function () {
       return this.$store.getters.getCurrentMINwidth(this.id);
     },
@@ -100,6 +98,10 @@ export default {
     },
   },
   methods: {
+    eHandler(data) {
+      this.width = data.width;
+      this.height = data.height;
+    },
     hide(){
         this.$store.dispatch('hide', this.id);
     },
@@ -227,6 +229,7 @@ export default {
   position: relative;
   }
   iframe {
+    border-radius: var(--border) var(--border) var(--border) var(--border);
     border: 0;
     height: var(--height);
     width: 100%;
