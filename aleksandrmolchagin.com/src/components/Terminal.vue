@@ -14,8 +14,8 @@
           <div class="resizable-content" :style="cssVars" v-if="true">
               <div class="tab">
                 <button class = "btnHide" v-on:click="hide"></button>
-                <button class = "btnMax" v-on:click="maximizeWindow"></button>
-                <div class="dragme" v-on:click="minmizeWindow">
+                <button class = "btnMax" @mousedown="maximizeWindow"></button>
+                <div class="dragme" @mousedown="minmizeWindow">
                 <div class ="text">{{ name }}</div>
                 </div>
                   <section class = "card-text">
@@ -75,6 +75,7 @@ export default {
         '--fullscreen-btn-color': this.$store.getters.getCurrentFlscreenBtnColor(),
         '--main-color': main_color,
         '--text-main-color': this.$store.getters.getCurrentMainTextColor(this.id),
+        '--margin-top': this.$store.getters.getCurrentAppMarginTop(this.id)  + 'vh',
       }
     },
     maximize: function () {
@@ -108,8 +109,8 @@ export default {
       if (this.maximize == false) {
         this.$store.dispatch('switchBorderRadius', this.id);
         this.$store.dispatch('switchWindowShadows', this.id);
+        this.$store.dispatch('switchAppMarginTop', this.id);
         this.$store.dispatch('switchFullScreen', this.id);
-        this.$store.dispatch('switchInfobarMargin');
         this.$store.dispatch('disableTransparency');
       }
       else 
@@ -120,8 +121,8 @@ export default {
       if (this.maximize == true) {
         this.$store.dispatch('switchBorderRadius', this.id);
         this.$store.dispatch('switchWindowShadows', this.id);
+        this.$store.dispatch('switchAppMarginTop', this.id);
         this.$store.dispatch('switchFullScreen', this.id);
-        this.$store.dispatch('switchInfobarMargin');
         this.$store.dispatch('enableTransparency');
       }
     },
@@ -140,6 +141,7 @@ export default {
   }
   .resizable{
     position: absolute;
+    margin-top: var(--margin-top);
   }
   .resizable-content {
       height: 100%;

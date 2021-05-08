@@ -14,8 +14,8 @@
           <div class="resizable-content" :style="cssVars" v-if="true">
               <div class="tab">
                 <button class = "btnHide" v-on:click="hide"></button>
-                <button class = "btnMax" v-on:click="maximizeWindow"></button>
-                <div class="dragme" v-on:click="minmizeWindow">
+                <button class = "btnMax" @mousedown="maximizeWindow"></button>
+                <div class="dragme" @mousedown="minmizeWindow">
                 <div class ="text">{{ name }}</div>
               </div>
                 <div class = "container">
@@ -67,7 +67,7 @@ export default {
         '--shadowDR': this.$store.getters.getCurrentShadowDR(this.id),
         '--shadowUL': this.$store.getters.getCurrentShadowUL(this.id),
         '--index': this.$store.getters.getCurrentZIndex(this.id),
-        '--height': this.height + "px",
+        '--height': (this.height -32) + "px",
         '--visibility': this.$store.getters.getCurrentVisibilityBlock(this.id),
         '--second-title-color': this.$store.getters.getCurrentSecondTitleColor(),
         '--text-title-color': this.$store.getters.getCurrentTextTitleColor(),
@@ -76,6 +76,7 @@ export default {
         '--fullscreen-btn-color': this.$store.getters.getCurrentFlscreenBtnColor(),
         '--main-color': main_color,
         '--text-main-color': this.$store.getters.getCurrentMainTextColor(this.id),
+        '--margin-top': this.$store.getters.getCurrentAppMarginTop(this.id) + 'vh',
       }
     },
     maximize: function () {
@@ -110,7 +111,7 @@ export default {
         this.$store.dispatch('switchBorderRadius', this.id);
         this.$store.dispatch('switchWindowShadows', this.id);
         this.$store.dispatch('switchFullScreen', this.id);
-        this.$store.dispatch('switchInfobarMargin');
+        this.$store.dispatch('switchAppMarginTop', this.id);
         this.$store.dispatch('disableTransparency');
       }
       else 
@@ -122,7 +123,7 @@ export default {
         this.$store.dispatch('switchBorderRadius', this.id);
         this.$store.dispatch('switchWindowShadows', this.id);
         this.$store.dispatch('switchFullScreen', this.id);
-        this.$store.dispatch('switchInfobarMargin');
+        this.$store.dispatch('switchAppMarginTop', this.id);
         this.$store.dispatch('enableTransparency');
       }
     },
@@ -141,6 +142,7 @@ export default {
   }
   .resizable{
     position: absolute;
+    margin-top: var(--margin-top);
   }
   .resizable-content {
       height: 100%;

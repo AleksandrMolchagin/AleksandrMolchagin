@@ -5,10 +5,12 @@ export default createStore({
     
     /*DESKTOP PARAMETERS */
     infobar_height: 3, 
-      infobar_margin: "0.3%",
-      infobar_margin_DEFAULT: "0.3%",
-    desktop_height: 88.5,      
+
+    desktop_height: 88,
+    DEFAULT_desktop_height: 88,            
       appbar_cube_height: 6,
+      DEFAULT_app_margin_top: 0.5,
+
     appbar_height: 7.5,
 
     /*OTHER PARAMETERS*/
@@ -36,11 +38,16 @@ export default createStore({
       maxW: 10000,
       maxH: 10000,
 
+      /*FONTS*/
+      infobar_font: "1rem",
+      title_font: "1rem",
+      main_font: "1rem",
+
       /*OTHER GLOBAL VALUES*/
       border_radius: "0.66rem",
       border_radius_icons: "25%",
       shadowDR: "2px",
-      shadowUL: "8px",
+      shadowUL: "6px",
 
 
     },
@@ -73,7 +80,7 @@ export default createStore({
         text_main_color: "",
         border_radius: "0.66rem",
         shadowDR: "2px",
-        shadowUL: "8px",
+        shadowUL: "6px",
 
         width: 380,
         height: 380,
@@ -81,6 +88,8 @@ export default createStore({
         minH: 380,
         maxW: "",
         maxH: "",
+
+        margin_top: 0.5,
       },
 
           /* TERMINAL */
@@ -93,7 +102,7 @@ export default createStore({
         text_main_color: "red",
         border_radius: "0.66rem",
         shadowDR: "2px",
-        shadowUL: "8px",
+        shadowUL: "6px",
 
         width: 600,
         height: 400,
@@ -102,6 +111,7 @@ export default createStore({
         maxW: "",
         maxH: "",
 
+        margin_top: 0.5,
        },
 
          /* CALENDLY */
@@ -114,7 +124,7 @@ export default createStore({
         text_main_color: "",
         border_radius: "0.66rem",
         shadowDR: "2px",
-        shadowUL: "8px",
+        shadowUL: "6px",
 
         width: 400,
         height: 620,
@@ -122,6 +132,8 @@ export default createStore({
         minH: 620,
         maxW: "",
         maxH: "",
+
+        margin_top: 0.5,
       },
 
     ]
@@ -137,8 +149,12 @@ export default createStore({
       this.state.help.something_is_full = array[0];
     },                                                                         
 
-    setInfobarMargin(state, newValue){
-      this.state.infobar_margin = newValue;
+    setAppMarginTop(state, array){                                              //SET TOP MARGIN
+      this.state.apps[array[1]].margin_top = array[0];                          //array[1] - id  //array[2] - new value
+    },
+
+    setDesktopHeight(state, newValue){                                           //SET DESKTOP HEIGHT
+      this.state.desktop_height = newValue;                          
     },
 
     setZIndex(state, array){
@@ -173,26 +189,23 @@ export default createStore({
   /*------------------------------------------------------------*/
   actions: {
 
-    switchFullScreen(state, id){                                                   //SET FULLSCREEN
+    switchFullScreen(state, id){                                                //SWITCH FULLSCREEN
       var newState = !this.state.apps[id].fullscreen;
       var array = [newState, id]
       state.commit('setFullScreen', array);
     },
-    
-    switchInfobarMargin(state){                                                 //SWITCH MARGIN (0.1% - 0%)
-      var go = true;
-      for (var i = 0; i <= this.state.apps.length - 1; i++) {
-        if (this.state.apps[i].fullscreen == true && this.state.apps[i].z_index != -1)
-          go = false;
+    switchAppMarginTop(state, id){                                              //SWITCH TOP MARGIN FOR AN APP
+      var newValue;
+      if (this.state.apps[id].margin_top == "0") {
+        state.commit('setDesktopHeight', this.state.DEFAULT_desktop_height);
+        newValue = this.state.DEFAULT_app_margin_top;
       }
-      if (go == true) {
-        var newValue;
-        if (this.state.infobar_margin == "0%")
-          newValue = this.state.infobar_margin_DEFAULT;
+      else {
+        newValue = "0";
+        state.commit('setDesktopHeight', (this.state.DEFAULT_desktop_height + this.state.DEFAULT_app_margin_top + 0.1));
       }
-      else
-        newValue = "0%";
-      state.commit('setInfobarMargin', newValue);
+      var array = [newValue, id]
+      state.commit('setAppMarginTop', array);
     },
 
     hide(state, id){                                                            //HIDE A WINDOW
@@ -301,6 +314,19 @@ export default createStore({
     getCurrentInfobarMargin: (state) => () => {       //INFOBAR MARGIN
       return state.infobar_margin;
     },
+    //FONTS
+    getCurrentInfobarFont: (state) => () => {       //INFOBAR FONT
+      return state.style.infobar_font;
+    },
+    getCurrenttTitleFont: (state) => () => {       //TITLE FONT
+      return state.style.title_font;
+    },
+    getCurrentMainFont: (state) => () => {       //MAIN FONT
+      return state.style.main_font;
+    },
+    getCurrentDesktopHeight: (state) => () => {       //DESKTOP FONT
+      return state.desktop_height;
+    },
     /*------------------------------------------------------------*/
     /*KEY APP GETTERS*/
     /*------------------------------------------------------------*/
@@ -360,6 +386,9 @@ export default createStore({
     },
     getCurrentShadowUL: (state) => (id) => {          //SHADOW SIZE (UP-LEFT)
       return state.apps[id].shadowUL;
+    },
+    getCurrentAppMarginTop: (state) => (id) => {          //SHADOW SIZE (UP-LEFT)
+      return state.apps[id].margin_top;
     },
     /*------------------------------------------------------------*/
     

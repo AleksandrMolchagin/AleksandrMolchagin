@@ -31,7 +31,8 @@ export default {
   computed: {
     cssVars() {
       return {
-        '--desktop_height': this.$store.state.desktop_height + 'vh',
+        '--desktop_height': this.$store.getters.getCurrentDesktopHeight() + 'vh',
+        '--font': this.$store.getters.getCurrentMainFont(),
       }
     },
   },
@@ -43,7 +44,7 @@ export default {
       margin: 0;
       padding: 0;
       font-family: 'Poppins', sans-serif;      
-      font-size: 1rem;
+      font-size: var(--font);
   }
 
   html, body, #app {
