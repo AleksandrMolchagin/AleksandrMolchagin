@@ -2,8 +2,8 @@
     <div class="container" :style="cssVars">
         <div class="cube" id="SWRoS" @click="openClose(0)"></div>
         <div class="cube" id="terminal" @click="openClose(1)"></div>
+        <div class="cube" id="resume" @click="openClose(3)"></div>
         <div class="cube" id="calendly" @click="openClose(2)"></div>
-        <div class="cube"></div>
         <div class="cube"></div>
         <div class="cube"></div>
         <div class="cube"></div>
@@ -87,6 +87,15 @@ export default {
         font-size: 1rem;
         background-color: white;
         background-image: url("../assets/app_icons/calendly.png");
+        background-size: 100%;
+        background-position: center center; 
+        background-repeat: no-repeat;
+        cursor: pointer;
+    }
+     #resume{
+        font-size: 1rem;
+        background-color: black;
+        background-image: url("../assets/app_icons/resume.png");
         background-size: 100%;
         background-position: center center; 
         background-repeat: no-repeat;

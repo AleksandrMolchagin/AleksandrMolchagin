@@ -6,10 +6,10 @@ export default createStore({
     /*DESKTOP PARAMETERS */
     infobar_height: 3, 
 
-    desktop_height: 88,
-    DEFAULT_desktop_height: 88,            
+    desktop_height: 88.5,
+    DEFAULT_desktop_height: 88.5,            
       appbar_cube_height: 6,
-      DEFAULT_app_margin_top: 0.5,
+      DEFAULT_app_margin_top: 0.75,
 
     appbar_height: 7.5,
 
@@ -70,7 +70,7 @@ export default createStore({
           }      
       */
       
-          /* TEST WINDOW */
+        /* TEST WINDOW, ID: 00  */
       { name: "REVENGE OF THE SITH",
         fullscreen: false,
         z_index: -1,
@@ -89,10 +89,10 @@ export default createStore({
         maxW: "",
         maxH: "",
 
-        margin_top: 0.5,
+        margin_top: 0.75,
       },
 
-          /* TERMINAL */
+        /* TERMINAL, ID: 01  */
       { name: "Terminal",
         fullscreen: false,
         z_index: -1,
@@ -111,11 +111,11 @@ export default createStore({
         maxW: "",
         maxH: "",
 
-        margin_top: 0.5,
+        margin_top: 0.75,
        },
 
-         /* CALENDLY */
-      { name: "Calendly - Meet with me",
+        /* CALENDLY, ID: 02 */
+      { name: "Calendly - meet with me",
         fullscreen: false,
         z_index: -1,
         block: "visible",
@@ -133,8 +133,30 @@ export default createStore({
         maxW: "",
         maxH: "",
 
-        margin_top: 0.5,
+        margin_top: 0.75,
       },
+
+         /* RESUME, ID: 03 */ 
+         { name: "Resume",
+         fullscreen: false,
+         z_index: -1,
+         block: "visible",
+         
+         main_color: "",
+         text_main_color: "",
+         border_radius: "0.66rem",
+         shadowDR: "2px",
+         shadowUL: "6px",
+ 
+         width: 400,
+         height: 620,
+         minW: 400,
+         minH: 620,
+         maxW: "",
+         maxH: "",
+ 
+         margin_top: 0.75,
+       },
 
     ]
 
@@ -197,12 +219,10 @@ export default createStore({
     switchAppMarginTop(state, id){                                              //SWITCH TOP MARGIN FOR AN APP
       var newValue;
       if (this.state.apps[id].margin_top == "0") {
-        state.commit('setDesktopHeight', this.state.DEFAULT_desktop_height);
         newValue = this.state.DEFAULT_app_margin_top;
       }
       else {
         newValue = "0";
-        state.commit('setDesktopHeight', (this.state.DEFAULT_desktop_height + this.state.DEFAULT_app_margin_top + 0.1));
       }
       var array = [newValue, id]
       state.commit('setAppMarginTop', array);

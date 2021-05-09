@@ -20,7 +20,7 @@
               </div>
                 <div class = "container">
                     <div class="iframeToFront" v-on:click="bringToFront" ></div>
-                    <iframe allowtransparency = "true" style="background: #FFFFFFce;" src="https://calendly.com/aleksandrmolchagin"></iframe>
+                    <iframe allowtransparency = "true" style="background: #FFFFFFce;" src='https://docs.google.com/gview?url=https://dl.dropboxusercontent.com/s/2vuxvnch86ltctj/Molchagin_Aleksandr_Resume.pdf?dl=0&embedded=true'></iframe>
                 </div>  
               </div>
           </div>
@@ -36,7 +36,7 @@ export default {
   data() {
       return {
           //App ID
-          id: 2,
+          id: 3,
 
           //Resizing handlers and drag object
           handlers: ['r', 'rb', 'b', 'lb', 'l', 'lt', 't', 'rt'],
@@ -55,6 +55,8 @@ export default {
           show: true,
           cursor: 'move',
           iframe: "visible",
+
+          fileUrl: 'https://www.dropbox.com/s/2vuxvnch86ltctj/Molchagin_Aleksandr_Resume.pdf?dl=0'
       };
     },
   computed: {
@@ -76,7 +78,7 @@ export default {
         '--fullscreen-btn-color': this.$store.getters.getCurrentFlscreenBtnColor(),
         '--main-color': main_color,
         '--text-main-color': this.$store.getters.getCurrentMainTextColor(this.id),
-        '--margin-top': this.$store.getters.getCurrentAppMarginTop(this.id) +'vh',
+        '--margin-top': this.$store.getters.getCurrentAppMarginTop(this.id) + 'vh',
       }
     },
     maximize: function () {

@@ -3,7 +3,7 @@
       <InfoBar/>
         <div class = "container">
         <Desktop/>
-          <Window/><Terminal/><Calendly/>
+          <Window/><Terminal/><Calendly/><Resume/>
         </div>
       <AppBar/>
   </div>
@@ -15,6 +15,7 @@ import Desktop from './components/Desktop';
 import Window from './components/Window';
 import Terminal from './components/Terminal';
 import Calendly from './components/Calendly';
+import Resume from './components/Resume';
 import AppBar from './components/AppBar';
 
 
@@ -25,8 +26,8 @@ export default {
   components: {
     InfoBar,
       Desktop,
-        Window, Terminal, Calendly,
-    AppBar
+        Window, Terminal, Calendly, Resume, 
+    AppBar,
   },
   computed: {
     cssVars() {
