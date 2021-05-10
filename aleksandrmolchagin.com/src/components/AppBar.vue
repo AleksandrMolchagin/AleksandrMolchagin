@@ -4,7 +4,7 @@
         <div class="cube" id="terminal" @click="openClose(1)"></div>
         <div class="cube" id="resume" @click="openClose(3)"></div>
         <div class="cube" id="calendly" @click="openClose(2)"></div>
-        <div class="cube"></div>
+        <div class="cube" id="dogeminer" @click="openClose(4)"></div>
         <div class="cube"></div>
         <div class="cube"></div>
         <div class="cube"></div>
@@ -96,6 +96,15 @@ export default {
         font-size: 1rem;
         background-color: black;
         background-image: url("../assets/app_icons/resume.png");
+        background-size: 100%;
+        background-position: center center; 
+        background-repeat: no-repeat;
+        cursor: pointer;
+    }
+        #dogeminer{
+        font-size: 1rem;
+        background-color: black;
+        background-image: url("../assets/app_icons/dogeminer.png");
         background-size: 100%;
         background-position: center center; 
         background-repeat: no-repeat;

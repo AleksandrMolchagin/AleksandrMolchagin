@@ -3,7 +3,7 @@
       <InfoBar/>
         <div class = "container">
         <Desktop/>
-          <Window/><Terminal/><Calendly/><Resume/>
+          <Window/><Terminal/><Calendly/><Resume/><Dogeminer/>
         </div>
       <AppBar/>
   </div>
@@ -16,7 +16,9 @@ import Window from './components/Window';
 import Terminal from './components/Terminal';
 import Calendly from './components/Calendly';
 import Resume from './components/Resume';
+import Dogeminer from './components/Dogeminer';
 import AppBar from './components/AppBar';
+
 
 
 
@@ -26,7 +28,7 @@ export default {
   components: {
     InfoBar,
       Desktop,
-        Window, Terminal, Calendly, Resume, 
+        Window, Terminal, Calendly, Resume, Dogeminer,
     AppBar,
   },
   computed: {

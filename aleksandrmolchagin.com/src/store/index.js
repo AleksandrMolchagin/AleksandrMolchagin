@@ -158,6 +158,28 @@ export default createStore({
          margin_top: 0.75,
        },
 
+        /* Dogeminer, ID: 04 */ 
+        { name: "Dogeminer",
+        fullscreen: false,
+        z_index: -1,
+        block: "visible",
+        
+        main_color: "",
+        text_main_color: "",
+        border_radius: "0.66rem",
+        shadowDR: "2px",
+        shadowUL: "6px",
+
+        width: 1270,
+        height: 500,
+        minW: 200,
+        minH: 200,
+        maxW: "",
+        maxH: "",
+
+        margin_top: 0.75,
+      },
+
     ]
 
   },
@@ -415,12 +437,11 @@ export default createStore({
 
     /*GETTERS FOR SIZE PARAMETERS*/
     /*------------------------------------------------------------*/
-    getCurrentWidth: (state) => (id) => {             //WIDTH
-      return state.apps[id].width;
-    },
-
     getCurrentHeight: (state) => (id) => {            //HEIGHT
       return state.apps[id].height;
+    },
+    getCurrentWidth: (state) => (id) => {            //WIDTH
+      return state.apps[id].width;
     },
 
     getCurrentMINwidth: (state) => (id) => {          //MIN WIDTH
