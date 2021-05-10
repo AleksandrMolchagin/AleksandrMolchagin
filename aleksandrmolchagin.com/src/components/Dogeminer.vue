@@ -20,7 +20,7 @@
               </div>
                 <div class = "container">
                     <div class="iframeToFront" v-on:click="bringToFront" ></div>
-                    <iframe allowtransparency = "true" style="background: #FFFFFFce;" src="https://dogeminer2.com/"></iframe>
+                    <iframe allowtransparency = "true" style="background: #FFFFFFce;" src="https://dogeminer2.com/play"></iframe>
                 </div>  
               </div>
           </div>
@@ -34,21 +34,22 @@ export default {
   name: 'Window',
   components: {VueResizable},  
   data() {
+      const id = 4;
       return {
           //App ID
-          id: 4,
+          id: id,
 
           //Resizing handlers and drag object
           handlers: ['r', 'rb', 'b', 'lb', 'l', 'lt', 't', 'rt'],
           dragSelector: ".dragme",
 
-          //Location
-          right: 0, 
-          top: 0,
+           //Location
+          left: this.$store.getters.getCurrentLocLeft(id), 
+          top: this.$store.getters.getCurrentLocTop(id), 
 
           //Size
-          height: function() { return this.$store.getters.getCurrentHeight(this.id); },
-          width: function() { return this.$store.getters.getCurrentWidth(this.id); },
+          height: this.$store.getters.getCurrentHeight(id),
+          width: this.$store.getters.getCurrentWidth(id),
           
           //Other appereance parameters
           fit: true, 

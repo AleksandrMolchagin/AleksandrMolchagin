@@ -53,23 +53,6 @@ export default createStore({
     },
 
     apps: [
-      /*  WINDOW {
-            name,
-            z-index,
-            visibility of blocking block,
-
-            custom main color,
-            custom text color,
-
-            width,
-            height,
-            min width,
-            min height,
-            max width,
-            max height,
-          }      
-      */
-      
         /* TEST WINDOW, ID: 00  */
       { name: "REVENGE OF THE SITH",
         fullscreen: false,
@@ -88,6 +71,8 @@ export default createStore({
         minH: 380,
         maxW: "",
         maxH: "",
+        left: 500,
+        top: 200,
 
         margin_top: 0.75,
       },
@@ -110,6 +95,8 @@ export default createStore({
         minH: 400,
         maxW: "",
         maxH: "",
+        left: 800,
+        top: 100,
 
         margin_top: 0.75,
        },
@@ -127,11 +114,13 @@ export default createStore({
         shadowUL: "6px",
 
         width: 400,
-        height: 620,
-        minW: 400,
-        minH: 620,
+        height: 650,
+        minW: 300,
+        minH: 500,
         maxW: "",
         maxH: "",
+        left: 8,
+        top: 0,
 
         margin_top: 0.75,
       },
@@ -154,6 +143,8 @@ export default createStore({
          minH: 620,
          maxW: "",
          maxH: "",
+         left: 500,
+         top: 100,
  
          margin_top: 0.75,
        },
@@ -170,12 +161,14 @@ export default createStore({
         shadowDR: "2px",
         shadowUL: "6px",
 
-        width: 1270,
-        height: 500,
-        minW: 200,
-        minH: 200,
+        width: 1100,
+        height: 550,
+        minW: 600,
+        minH: 300,
         maxW: "",
         maxH: "",
+        left: 50,
+        top: 50,
 
         margin_top: 0.75,
       },
@@ -437,11 +430,17 @@ export default createStore({
 
     /*GETTERS FOR SIZE PARAMETERS*/
     /*------------------------------------------------------------*/
-    getCurrentHeight: (state) => (id) => {            //HEIGHT
+    getCurrentHeight: (state) => (id) => {           //HEIGHT
       return state.apps[id].height;
     },
     getCurrentWidth: (state) => (id) => {            //WIDTH
       return state.apps[id].width;
+    },
+    getCurrentLocLeft: (state) => (id) => {        //Location LEFT
+      return state.apps[id].left;
+    },
+    getCurrentLocTop: (state) => (id) => {           //Location TOP
+      return state.apps[id].top;
     },
 
     getCurrentMINwidth: (state) => (id) => {          //MIN WIDTH

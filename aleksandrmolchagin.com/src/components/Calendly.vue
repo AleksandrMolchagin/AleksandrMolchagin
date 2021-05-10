@@ -34,21 +34,22 @@ export default {
   name: 'Window',
   components: {VueResizable},  
   data() {
+      const id = 2;
       return {
           //App ID
-          id: 2,
+          id: id,
 
           //Resizing handlers and drag object
           handlers: ['r', 'rb', 'b', 'lb', 'l', 'lt', 't', 'rt'],
           dragSelector: ".dragme",
 
           //Location
-          right: 0, 
-          top: 0,
+          left: this.$store.getters.getCurrentLocLeft(id), 
+          top: this.$store.getters.getCurrentLocTop(id), 
 
           //Size
-          height: function() { return this.$store.getters.getCurrentHeight(this.id); },
-          width: function() { return this.$store.getters.getCurrentWidth(this.id); },
+          height: this.$store.getters.getCurrentHeight(id),
+          width: this.$store.getters.getCurrentWidth(id),
           
           //Other appereance parameters
           fit: true, 

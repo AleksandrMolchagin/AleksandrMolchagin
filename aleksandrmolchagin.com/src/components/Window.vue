@@ -51,23 +51,22 @@ export default {
   name: 'Window',
   components: {VueResizable},  
   data() {
-    const tW = window.screen.availWidth;
-    const tH = window.screen.availHeight;
+      const id = 0;  
       return {
           //App ID
-            id: 0,
+          id: id,
 
           //Resizing handlers and drag object
           handlers: ['r', 'rb', 'b', 'lb', 'l', 'lt', 't', 'rt'],
           dragSelector: ".dragme",
 
           //Location
-          left: `calc(${tW}px - ${tW / 2}px - 190px)`, 
-          top: `calc(${tH}px - ${tH / 2}px - 190px)`,
+          left: this.$store.getters.getCurrentLocLeft(id), 
+          top: this.$store.getters.getCurrentLocTop(id), 
 
           //Size
-          height: function() { return this.$store.getters.getCurrentHeight(this.id); },
-          width: 380, //getters doesn't work here :/
+          height: this.$store.getters.getCurrentHeight(id),
+          width: this.$store.getters.getCurrentWidth(id),
 
           //Other appereance parameters
           fit: true, 
