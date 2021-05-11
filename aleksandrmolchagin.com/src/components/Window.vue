@@ -92,6 +92,7 @@ export default {
         '--main-color': main_color,
         '--text-main-color': this.$store.getters.getCurrentMainTextColor(this.id),
         '--margin-top': this.$store.getters.getCurrentAppMarginTop(this.id) +  'vh',
+        '--border-bottom': this.$store.getters.getCurrentBottomBorder(this.id) + 'vh solid ' + this.$store.getters.getCurrentTitleColor(),
       }
     },
     maximize: function () {
@@ -132,6 +133,7 @@ export default {
         this.$store.dispatch('switchFullScreen', this.id);
         this.$store.dispatch('switchAppMarginTop', this.id);
         this.$store.dispatch('disableTransparency');
+        this.$store.dispatch('switchBottomBorder', this.id);
       }
       else 
         this.minmizeWindow();
@@ -144,6 +146,8 @@ export default {
         this.$store.dispatch('switchFullScreen', this.id);
         this.$store.dispatch('switchAppMarginTop', this.id);
         this.$store.dispatch('enableTransparency');
+        this.$store.dispatch('switchBottomBorder', this.id);
+
       }
     },
     bringToFront(){
@@ -169,6 +173,7 @@ export default {
       border-radius: var(--border) var(--border) var(--border) var(--border);
       box-shadow: var(--shadowDR) var(--shadowDR) var(--shadowUL) rgba(0, 0, 0, 0.45);
       z-index: var(--index);
+      border-bottom: var(--border-bottom);
   }
   .card {
       height:100%;

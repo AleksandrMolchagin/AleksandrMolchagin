@@ -9,13 +9,15 @@ export default createStore({
     desktop_height: 88.5,
     DEFAULT_desktop_height: 88.5,            
       appbar_cube_height: 6,
-      DEFAULT_app_margin_top: 0.75,
+      DEFAULT_app_margin_top: 0.2,
+      DEFAULT_bottom_border_enabled: 0.8,
 
     appbar_height: 7.5,
 
     /*OTHER PARAMETERS*/
     help: {
       something_is_full: false,
+
 
     },
 
@@ -47,7 +49,7 @@ export default createStore({
       border_radius: "0.66rem",
       border_radius_icons: "25%",
       shadowDR: "2px",
-      shadowUL: "6px",
+      shadowUL: "8px",
 
 
     },
@@ -63,7 +65,8 @@ export default createStore({
         text_main_color: "",
         border_radius: "0.66rem",
         shadowDR: "2px",
-        shadowUL: "6px",
+        shadowUL: "8px",
+
 
         width: 380,
         height: 380,
@@ -74,7 +77,8 @@ export default createStore({
         left: 500,
         top: 200,
 
-        margin_top: 0.75,
+        margin_top: 0.2,
+        bottom_border: 0
       },
 
         /* TERMINAL, ID: 01  */
@@ -87,7 +91,7 @@ export default createStore({
         text_main_color: "red",
         border_radius: "0.66rem",
         shadowDR: "2px",
-        shadowUL: "6px",
+        shadowUL: "8px",
 
         width: 600,
         height: 400,
@@ -98,7 +102,8 @@ export default createStore({
         left: 800,
         top: 100,
 
-        margin_top: 0.75,
+        margin_top: 0.2,
+        bottom_border: 0
        },
 
         /* CALENDLY, ID: 02 */
@@ -111,7 +116,7 @@ export default createStore({
         text_main_color: "",
         border_radius: "0.66rem",
         shadowDR: "2px",
-        shadowUL: "6px",
+        shadowUL: "8px",
 
         width: 400,
         height: 650,
@@ -122,7 +127,8 @@ export default createStore({
         left: 8,
         top: 0,
 
-        margin_top: 0.75,
+        margin_top: 0.2,
+        bottom_border: 0
       },
 
          /* RESUME, ID: 03 */ 
@@ -146,7 +152,8 @@ export default createStore({
          left: 500,
          top: 100,
  
-         margin_top: 0.75,
+         margin_top: 0.2,
+         bottom_border: 0
        },
 
         /* Dogeminer, ID: 04 */ 
@@ -159,7 +166,7 @@ export default createStore({
         text_main_color: "",
         border_radius: "0.66rem",
         shadowDR: "2px",
-        shadowUL: "6px",
+        shadowUL: "8px",
 
         width: 1100,
         height: 550,
@@ -170,11 +177,11 @@ export default createStore({
         left: 50,
         top: 50,
 
-        margin_top: 0.75,
+        margin_top: 0.2,
+        bottom_border: 0
       },
 
     ]
-
   },
   /*------------------------------------------------------------*/
   /*-----------------------ALL-MUTATIONS------------------------*/
@@ -182,7 +189,7 @@ export default createStore({
   mutations: {
 
     setFullScreen(state, array){                                                //SET FULLSCREEN 
-      this.state.apps[array[1]].fullscreen = array[0];                          //array[1] - id  //array[2] - new fullscreen value
+      this.state.apps[array[1]].fullscreen = array[0];                          //array[1] - id  //array[0] - new fullscreen value
       this.state.help.something_is_full = array[0];
     },                                                                         
 
@@ -208,7 +215,13 @@ export default createStore({
         //alert(this.state.apps[i].block);
       }
     },
-
+    setVisibilityBlock(state, array){                                         //SET  VISIBILITY TO THE SPRCIFIC BLOCKING BLOCK
+        this.state.apps[array[1]].block = array[0];       
+        //alert(this.state.apps[i].block);
+    },
+    setNewBottomBorder(state, array){                                          //SET BOTTOM BORDER VALUE
+        this.state.apps[array[1]].bottom_border = array[0];
+    },
     setNewTransparency(state, transparency){                                    //SET NEW TRANSPARENCY
       this.state.style.transperency = transparency;                             // transparency - transparency code ("ee", "ac"...)
     },
@@ -242,7 +255,13 @@ export default createStore({
       var array = [newValue, id]
       state.commit('setAppMarginTop', array);
     },
-
+    switchBottomBorder(state, id){                                              //SWITCH BOTTOM BORDER VALUE
+      var newValue = 0;
+      if (this.state.apps[id].bottom_border == 0)
+        newValue = this.state.DEFAULT_bottom_border_enabled;
+      var array = [newValue, id] 
+      state.commit('setNewBottomBorder', array);
+    },
     hide(state, id){                                                            //HIDE A WINDOW
       var newIndex = -1;
       var array = [newIndex, id]; 
@@ -311,6 +330,9 @@ export default createStore({
       state.commit('setNewTransparency', this.state.style.DEFAULT_transperency);
     },
 
+    switchVisibilityBlock(state, array){                                                  //Switch visibility block
+      state.commit('setVisibilityBlock', array); 
+    },
 
     switchBorderRadius(state, id){                                                      //BORDER RADIUS
       var newRadius;                                      
@@ -422,11 +444,13 @@ export default createStore({
     getCurrentShadowUL: (state) => (id) => {          //SHADOW SIZE (UP-LEFT)
       return state.apps[id].shadowUL;
     },
-    getCurrentAppMarginTop: (state) => (id) => {          //SHADOW SIZE (UP-LEFT)
+    getCurrentAppMarginTop: (state) => (id) => {      //SHADOW SIZE (UP-LEFT)
       return state.apps[id].margin_top;
     },
+    getCurrentBottomBorder: (state) => (id) => {      //border bottom
+      return state.apps[id].bottom_border;
+    },
     /*------------------------------------------------------------*/
-    
 
     /*GETTERS FOR SIZE PARAMETERS*/
     /*------------------------------------------------------------*/

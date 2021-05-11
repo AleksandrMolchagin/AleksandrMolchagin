@@ -8,8 +8,8 @@
         :width="width" :height="height"
         :left="left" :top="top"
         @mount="eHandler"
-        @resize:move="eHandler" @resize:start="eHandler" @resize:end="eHandler"
-        @drag:move="eHandler" @drag:start="eHandler" @drag:end="eHandler" @maximize="eHandler"
+        @resize:move="eHandlerStart" @resize:start="eHandlerStart" @resize:end="eHandlerFinish"
+        @drag:move="eHandlerStart" @drag:start="eHandlerStart" @drag:end="eHandlerFinish" @maximize="eHandlerFinish"
         > 
           <div class="resizable-content" :style="cssVars" v-if="true">
               <div class="tab">
@@ -80,6 +80,7 @@ export default {
         '--main-color': main_color,
         '--text-main-color': this.$store.getters.getCurrentMainTextColor(this.id),
         '--margin-top': this.$store.getters.getCurrentAppMarginTop(this.id) + 'vh',
+        '--border-bottom': this.$store.getters.getCurrentBottomBorder(this.id) + 'vh solid ' + this.$store.getters.getCurrentTitleColor(),
       }
     },
     maximize: function () {
@@ -102,9 +103,17 @@ export default {
     },
   },
   methods: {
-    eHandler(data) {
+    eHandlerStart(data) {
       this.width = data.width;
       this.height = data.height;
+      var array = ["visible", this.id];
+      this.$store.dispatch('switchVisibilityBlock', array);
+    },
+    eHandlerFinish(data) {
+      this.width = data.width;
+      this.height = data.height;
+      var array = ["hidden", this.id];
+      this.$store.dispatch('switchVisibilityBlock', array);
     },
     hide(){
         this.$store.dispatch('hide', this.id);
@@ -116,6 +125,7 @@ export default {
         this.$store.dispatch('switchFullScreen', this.id);
         this.$store.dispatch('switchAppMarginTop', this.id);
         this.$store.dispatch('disableTransparency');
+        this.$store.dispatch('switchBottomBorder', this.id);
       }
       else 
         this.minmizeWindow();
@@ -128,6 +138,7 @@ export default {
         this.$store.dispatch('switchFullScreen', this.id);
         this.$store.dispatch('switchAppMarginTop', this.id);
         this.$store.dispatch('enableTransparency');
+        this.$store.dispatch('switchBottomBorder', this.id);
       }
     },
     bringToFront(){
@@ -154,6 +165,7 @@ export default {
       border-radius: var(--border) var(--border) var(--border) var(--border);
       box-shadow: var(--shadowDR) var(--shadowDR) var(--shadowUL) rgba(0, 0, 0, 0.45);
       z-index: var(--index);
+      border-bottom: var(--border-bottom);
   }
   .card {
       height:100%;

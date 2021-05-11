@@ -31,6 +31,9 @@ export default {
 };
 </script>
 <style scoped>
+    * {    
+        z-index: 999;
+    }
     .container{
         position: relative;
         height: var(--height);
