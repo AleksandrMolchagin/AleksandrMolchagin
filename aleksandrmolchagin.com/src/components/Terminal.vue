@@ -18,9 +18,9 @@
                 <div class="dragme" @mousedown="minmizeWindow">
                 <div class ="text">{{ name }}</div>
                 </div>
-                  <section class = "card-text">
-                    aleksandrmolchagin.com: ~$ welcome to the terminal
-                  </section>
+                  <div class = "card-text">
+                    aleksandrmolchagin.com: ~$aleksandrmolchagin.com: ~$ aleksandrmolchagin.com: ~$ aleksandrmolchagin.com: ~$ aleksandrmolchagin.com: ~$ aleksandrmolchagin.com: ~$ aleksandrmolchagin.com: ~$ aleksandrmolchagin.com: ~$ aleksandrmolchagin.com: ~$ aleksandrmolchagin.com: ~$ aleksandrmolchagin.com: ~$ aleksandrmolchagin.com: ~$ aleksandrmolchagin.com: ~$ aleksandrmolchagin.com: ~$ aleksandrmolchagin.com: ~$ aleksandrmolchagin.com: ~$ aleksandrmolchagin.com: ~$ aleksandrmolchagin.com: ~$ aleksandrmolchagin.com: ~$ aleksandrmolchagin.com: ~$ aleksandrmolchagin.com: ~$ aleksandrmolchagin.com: ~$ aleksandrmolchagin.com: ~$ aleksandrmolchagin.com: ~$ aleksandrmolchagin.com: ~$ aleksandrmolchagin.com: ~$ aleksandrmolchagin.com: ~$ aleksandrmolchagin.com: ~$ aleksandrmolchagin.com: ~$ aleksandrmolchagin.com: ~$ aleksandrmolchagin.com: ~$ aleksandrmolchagin.com: ~$ aleksandrmolchagin.com: ~$ aleksandrmolchagin.com: ~$ aleksandrmolchagin.com: ~$ aleksandrmolchagin.com: ~$  
+                  </div>
                 </div>
           </div>
     </VueResizable>
@@ -76,6 +76,7 @@ export default {
         '--text-main-color': this.$store.getters.getCurrentMainTextColor(this.id),
         '--margin-top': this.$store.getters.getCurrentAppMarginTop(this.id)  + 'vh',
         '--border-bottom': this.$store.getters.getCurrentBottomBorder(this.id) + 'vh solid ' + this.$store.getters.getCurrentTitleColor(),
+        '--height': (this.height -64) + "px",
       }
     },
     maximize: function () {
@@ -163,8 +164,10 @@ export default {
 
   }
   .card-text{
+      height: var(--height);
       max-width: max-content;
       margin: 1rem;
+      overflow-y:scroll;
 
   }
   .tab{
