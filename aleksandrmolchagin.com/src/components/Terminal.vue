@@ -19,7 +19,9 @@
                 <div class ="text">{{ name }}</div>
                 </div>
                   <div class = "card-text">
-                    aleksandrmolchagin.com: ~$aleksandrmolchagin.com: ~$ aleksandrmolchagin.com: ~$ aleksandrmolchagin.com: ~$ aleksandrmolchagin.com: ~$ aleksandrmolchagin.com: ~$ aleksandrmolchagin.com: ~$ aleksandrmolchagin.com: ~$ aleksandrmolchagin.com: ~$ aleksandrmolchagin.com: ~$ aleksandrmolchagin.com: ~$ aleksandrmolchagin.com: ~$ aleksandrmolchagin.com: ~$ aleksandrmolchagin.com: ~$ aleksandrmolchagin.com: ~$ aleksandrmolchagin.com: ~$ aleksandrmolchagin.com: ~$ aleksandrmolchagin.com: ~$ aleksandrmolchagin.com: ~$ aleksandrmolchagin.com: ~$ aleksandrmolchagin.com: ~$ aleksandrmolchagin.com: ~$ aleksandrmolchagin.com: ~$ aleksandrmolchagin.com: ~$ aleksandrmolchagin.com: ~$ aleksandrmolchagin.com: ~$ aleksandrmolchagin.com: ~$ aleksandrmolchagin.com: ~$ aleksandrmolchagin.com: ~$ aleksandrmolchagin.com: ~$ aleksandrmolchagin.com: ~$ aleksandrmolchagin.com: ~$ aleksandrmolchagin.com: ~$ aleksandrmolchagin.com: ~$ aleksandrmolchagin.com: ~$ aleksandrmolchagin.com: ~$  
+                    <div>
+                    aleksandrmolchagin.com: ~$ <input>
+                    </div>
                   </div>
                 </div>
           </div>
@@ -231,5 +233,20 @@ export default {
   }
   .trfull {
     transition: opacity 0.5s ease;
+  }
+  ::-webkit-scrollbar {
+    position: absolute;
+    width: 5px;
+    background-color: transparent;
+    margin: 1rem;
+}
+
+  ::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background-color: var(--title-color);
+  }
+
+  ::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.2);
   }
 </style>
