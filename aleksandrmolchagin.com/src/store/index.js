@@ -107,7 +107,7 @@ export default createStore({
        },
 
         /* CALENDLY, ID: 02 */
-      { name: "Calendly - meet with me",
+      { name: "Calendly",
         fullscreen: false,
         z_index: -1,
         block: "visible",
@@ -387,6 +387,9 @@ export default createStore({
     /*------------------------------------------------------------*/
     /*KEY APP GETTERS*/
     /*------------------------------------------------------------*/
+    getAllApps: (state) => () => {                 //ALL APPS
+        return state.apps;
+    },
     getCurrentName: (state) => (id) => {              //APP NAME
       return state.apps[id].name;
     },

@@ -61,6 +61,7 @@ export default {
           cursor: 'move',
 
           items: [{ message: 'aleksandrmolchagin.com: ~ '}],
+          apps: this.$store.getters.getAllApps(),
 
       };
     },
@@ -141,7 +142,29 @@ export default {
       this.$refs.cmd.focus();
     },
     submit(){
-            this.items.push({ message: '\tCommand not found.'});
+            var str = (this.$refs.cmd.value).toString();
+            const words = str.split(' ');
+            var message = '';
+            switch(words[0]){
+              case 'sudo':
+                message = '\tpermission denied';
+                break;
+              case 'mkdir':
+                message = ''.concat('\tmkdir:\t', words[1], ':\tread-only file system');
+                break; 
+              case 'cd':
+                message = ''.concat('\tcd:\tno such file or directory:\t', words[1]);
+                break; 
+              case 'ls':
+                for (var i = 0; i < this.apps.length; i++){
+                message = message.concat(' ',this.apps[i].name, '\n');
+                }
+                break;
+              default: 
+                message = '\tCommand not found.'; 
+                break;
+            }
+            this.items.push({ message: message});
             this.items.push({ message: 'aleksandrmolchagin.com: ~ '});
             setTimeout(() => this.$refs.cmd.focus(), 10);
     },
@@ -152,10 +175,11 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-  * {    
+  @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@200&display=swap');  
+* {    
       z-index: var(--index);
   }
-  .resizable{
+  .resizable{ 
     position: absolute;
     margin-top: var(--margin-top);
 
@@ -250,12 +274,14 @@ export default {
     padding-left: 1rem;
     display: flex;
     white-space: pre-wrap;
+    font-size: 1rem;
 } 
   .cmd{
     background: transparent;
     border: 0;
     color: red;
     flex-grow: 2;
+    font-size: 1rem;
   }
   .cmd:focus {
     outline: none;
