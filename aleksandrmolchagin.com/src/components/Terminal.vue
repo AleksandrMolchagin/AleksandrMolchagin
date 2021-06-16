@@ -19,9 +19,11 @@
                 <div class ="text">{{ name }}</div>
                 </div>
                   <div class = "card-text">
-                    
-                    <div class="input-block"> aleksandrmolchagin.com: ~&nbsp; <input v-on:keyup.enter="submit" class="cmd" ref="cmd" > </div>
-                    
+                    <ul id="array-rendering">
+                        <li v-for="item in items" :key="item.id" >
+                           <div class="input-block"> {{item.message}} <input v-on:keyup.enter="submit" class="cmd" ref="cmd" > </div>
+                        </li>
+                    </ul>
                   </div>
                 </div>
           </div>
@@ -57,6 +59,9 @@ export default {
           fit: true, 
           show: true,
           cursor: 'move',
+
+          items: [{ message: 'aleksandrmolchagin.com: ~ '}],
+
       };
     },
   computed: {
@@ -136,8 +141,10 @@ export default {
       this.$refs.cmd.focus();
     },
     submit(){
-      alert(this.$refs.cmd.value);
-    }
+            this.items.push({ message: '\tCommand not found.'});
+            this.items.push({ message: 'aleksandrmolchagin.com: ~ '});
+            setTimeout(() => this.$refs.cmd.focus(), 10);
+    },
   },
 }
 </script>
@@ -242,6 +249,7 @@ export default {
   .input-block {
     padding-left: 1rem;
     display: flex;
+    white-space: pre-wrap;
 } 
   .cmd{
     background: transparent;
