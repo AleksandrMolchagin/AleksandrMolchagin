@@ -84,7 +84,7 @@ export default {
         '--text-main-color': this.$store.getters.getCurrentMainTextColor(this.id),
         '--margin-top': this.$store.getters.getCurrentAppMarginTop(this.id)  + 'vh',
         '--border-bottom': this.$store.getters.getCurrentBottomBorder(this.id) + 'vh solid ' + this.$store.getters.getCurrentTitleColor(),
-        '--height': (this.height -64) + "px",
+        '--height': (this.height -32) + "px",
       }
     },
     maximize: function () {
@@ -142,31 +142,54 @@ export default {
       this.$refs.cmd.focus();
     },
     submit(){
+            //Get the input, split it into words
             var str = (this.$refs.cmd.value).toString();
-            const words = str.split(' ');
+            const words = str.toLowerCase().split(' ');
+
             var message = '';
+            var startAppName = 'NAMEOFTHEAPP';
+            var startAppId = 0;
+
+            //Finding an app to start based on the first word
+            for (var i = 0; i < this.apps.length; i++){
+              if (words[0] == this.apps[i].name.toLowerCase()){
+                startAppName = this.apps[i].name.toLowerCase();
+                startAppId = i;
+              }
+            }
+
+            //Output specific message based on command
             switch(words[0]){
               case 'sudo':
-                message = '\tpermission denied';
+                message = '   permission denied';
                 break;
               case 'mkdir':
-                message = ''.concat('\tmkdir:\t', words[1], ':\tread-only file system');
+                message = ''.concat('   mkdir:  ', words[1], ':  read-only file system');
                 break; 
               case 'cd':
-                message = ''.concat('\tcd:\tno such file or directory:\t', words[1]);
+                message = ''.concat('   cd:  no such file or directory:  ', words[1]);
                 break; 
               case 'ls':
-                for (var i = 0; i < this.apps.length; i++){
-                message = message.concat(' ',this.apps[i].name, '\n');
+                for (i = 1; i < this.apps.length; i++){
+                message = message.concat(' ',this.apps[i].name);
+                if (i + 1 !=  this.apps.length)
+                  message = message.concat('\n')
                 }
                 break;
+              case startAppName:
+                this.$store.dispatch('open', startAppId);
+                message = "   done"
+                break;
+
               default: 
-                message = '\tCommand not found.'; 
+                message = '   Command not found.'; 
                 break;
             }
+
+            //Print the message and create a new line
             this.items.push({ message: message});
             this.items.push({ message: 'aleksandrmolchagin.com: ~ '});
-            setTimeout(() => this.$refs.cmd.focus(), 10);
+            setTimeout(() => this.$refs.cmd.focus(), 10);             //Put focus to a new line's input
     },
   },
 }
@@ -175,7 +198,7 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-  @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@200&display=swap');  
+@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
 * {    
       z-index: var(--index);
   }
@@ -204,7 +227,6 @@ export default {
   .card-text{
       height: var(--height);
       max-width: 100%;
-      margin: 1rem;
       overflow-y:scroll;
 
   }
@@ -271,17 +293,22 @@ export default {
     transition: opacity 0.5s ease;
   }
   .input-block {
+    font-family: 'Share Tech Mono', monospace;
+    padding-top: 0.5rem;
     padding-left: 1rem;
+    margin: 0.5rem;
     display: flex;
     white-space: pre-wrap;
-    font-size: 1rem;
+    font-size: 1.2rem;
 } 
   .cmd{
+    width: 0.01%;
+    font-family: 'Share Tech Mono', monospace;
     background: transparent;
     border: 0;
-    color: red;
+    color: var(--second-title-color);
     flex-grow: 2;
-    font-size: 1rem;
+    font-size: 1.2rem;
   }
   .cmd:focus {
     outline: none;

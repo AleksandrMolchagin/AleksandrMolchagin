@@ -88,7 +88,7 @@ export default createStore({
         block: "visible",
         
         main_color: "#000000",
-        text_main_color: "red",
+        text_main_color: "#bf0000",
         border_radius: "0.66rem",
         shadowDR: "2px",
         shadowUL: "8px",
@@ -277,7 +277,6 @@ export default createStore({
 
       if (this.state.apps[id].z_index == maxIndex){            //top window? -> close(hide) it
         this.dispatch('hide', id);
-
       }
       else if (this.state.apps[id].z_index == -1){             //hiden window -> open it
         var array2 = [maxIndex+1, id]; 
@@ -287,6 +286,24 @@ export default createStore({
       else {                                                    //neither top, nor hidden? -> put it on top
         this.dispatch('recalculateNewZIndex', id);
       }
+      //alert(maxIndex)
+      state.commit('setNewVisibilityBlock', maxIndex+1);          //visibility block on/off
+      if (this.state.apps[id].fullscreen == true)
+        this.dispatch('switchInfobarMargin');
+    },
+
+    open(state, id) {                                                      //OPEN  WINDOW
+      var maxIndex = 2;                                           //find maximum index
+      for (var k = 0; k <= this.state.apps.length - 1; k++){
+        if (this.state.apps[k].z_index > maxIndex)
+          maxIndex = this.state.apps[k].z_index;
+      }
+
+      var array2 = [maxIndex+1, id];                                //OpenWindow
+      state.commit('setZIndex', array2);
+      this.dispatch('recalculateNewZIndex', id);
+    
+
       //alert(maxIndex)
       state.commit('setNewVisibilityBlock', maxIndex+1);          //visibility block on/off
       if (this.state.apps[id].fullscreen == true)
