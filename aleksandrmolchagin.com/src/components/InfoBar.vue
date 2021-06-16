@@ -1,11 +1,11 @@
 <template>
     <div class="container" :style="cssVars">
       <div class ="title">Menu</div>
-      <div class ="time">EN | 7:55AM</div>
+      <div class ="time">{{date}}</div>
     </div>
 </template>
 <script>
-
+import moment from 'moment'
 
 export default {
     name: 'InfoBar',
@@ -14,6 +14,7 @@ export default {
     data() {
         return {
             height: this.$store.state.infobar_height,
+            date: new Date(),
         }
     },
     methods: {
@@ -26,7 +27,14 @@ export default {
             '--text-title-color': this.$store.getters.getCurrentTextTitleColor(),
             '--title-color': this.$store.getters.getCurrentTitleColor(),
             }
-        }
+        },
+   
+    },
+    created: function () {
+        var self = this
+        setInterval(function () {
+        self.date = moment().format('ddd MMM D YYYY\th:mm A');
+        }, 1000)
     },
 };
 </script>
@@ -57,6 +65,7 @@ export default {
         text-align: center;
     }
         .time{
+        white-space: pre-wrap;
         position: absolute;
         right: 0;
         margin-right: 0.5rem;

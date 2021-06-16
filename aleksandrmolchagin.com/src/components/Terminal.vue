@@ -32,6 +32,7 @@
 
 <script>
 import VueResizable from 'vue-resizable';
+import moment from 'moment'
 
 export default {
   name: 'Window',
@@ -171,7 +172,7 @@ export default {
                 break; 
               case 'ls':
                 for (i = 1; i < this.apps.length; i++){
-                message = message.concat(' ',this.apps[i].name);
+                message = message.concat('   ',this.apps[i].name);
                 if (i + 1 !=  this.apps.length)
                   message = message.concat('\n')
                 }
@@ -179,6 +180,9 @@ export default {
               case startAppName:
                 this.$store.dispatch('open', startAppId);
                 message = "   done"
+                break;
+              case 'date':
+                message = message.concat('   ',moment().format('LLLL'));
                 break;
 
               default: 
