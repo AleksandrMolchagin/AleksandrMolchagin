@@ -19,9 +19,9 @@
                 <div class ="text">{{ name }}</div>
                 </div>
                   <div class = "card-text">
-                    <div>
-                    aleksandrmolchagin.com: ~$ <input>
-                    </div>
+                    
+                    <div class="input-block"> aleksandrmolchagin.com: ~&nbsp; <input v-on:keyup.enter="submit" class="cmd" ref="cmd" > </div>
+                    
                   </div>
                 </div>
           </div>
@@ -133,7 +133,11 @@ export default {
     },
     bringToFront(){
       this.$store.dispatch('recalculateNewZIndex', this.id);
+      this.$refs.cmd.focus();
     },
+    submit(){
+      alert(this.$refs.cmd.value);
+    }
   },
 }
 </script>
@@ -158,6 +162,7 @@ export default {
       box-shadow: var(--shadowDR) var(--shadowDR) var(--shadowUL) rgba(0, 0, 0, 0.45);
       z-index: var(--index);
       border-bottom: var(--border-bottom);
+      cursor: text;
 
   }
   .card {
@@ -167,7 +172,7 @@ export default {
   }
   .card-text{
       height: var(--height);
-      max-width: max-content;
+      max-width: 100%;
       margin: 1rem;
       overflow-y:scroll;
 
@@ -234,6 +239,19 @@ export default {
   .trfull {
     transition: opacity 0.5s ease;
   }
+  .input-block {
+    padding-left: 1rem;
+    display: flex;
+} 
+  .cmd{
+    background: transparent;
+    border: 0;
+    color: red;
+    flex-grow: 2;
+  }
+  .cmd:focus {
+    outline: none;
+  }
   ::-webkit-scrollbar {
     position: absolute;
     width: 5px;
@@ -249,4 +267,5 @@ export default {
   ::-webkit-scrollbar-track {
     background: rgba(0, 0, 0, 0.2);
   }
+  
 </style>

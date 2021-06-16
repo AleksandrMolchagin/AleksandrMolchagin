@@ -3491,6 +3491,11 @@ es-to-primitive@^1.2.1:
     is-date-object "^1.0.1"
     is-symbol "^1.0.2"
 
+es6-object-assign@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/es6-object-assign/-/es6-object-assign-1.1.0.tgz#c2c3582656247c39ea107cb1e6652b6f9f24523c"
+  integrity sha1-wsNYJlYkfDnqEHyx5mUrb58kUjw=
+
 escalade@^3.1.1:
   version "3.1.1"
   resolved "https://registry.yarnpkg.com/escalade/-/escalade-3.1.1.tgz#d8cfdc7000965c5a0174b4a82eaa5c0552742e40"
@@ -8370,6 +8375,13 @@ vm-browserify@^1.0.1:
   resolved "https://registry.yarnpkg.com/vm-browserify/-/vm-browserify-1.1.2.tgz#78641c488b8e6ca91a75f511e7a3b32a86e5dda0"
   integrity sha512-2ham8XPWTONajOR0ohOKOHXkm3+gaBmGut3SRuu75xLd/RRaY6vqgh8NBYYk7+RW3u5AtzPQZG8F10LHkl0lAQ==
 
+vue-autosize-input@^0.1.0:
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/vue-autosize-input/-/vue-autosize-input-0.1.0.tgz#e704ac66b0c6dce93adeddf837cef800300fcf8f"
+  integrity sha512-9ztx7NKWqwWbCBZuoAVJ+E1yrRfAbYwALDsNbd/mSZDpb6TV9GBmnCysduYykhIgDGuXpRfyWlK4I2SLJIvPcw==
+  dependencies:
+    vue "^2.6.11"
+
 vue-calendly@^0.0.4:
   version "0.0.4"
   resolved "https://registry.yarnpkg.com/vue-calendly/-/vue-calendly-0.0.4.tgz#fc13094b2f19dd9785a1da98a89cca02fde04c8d"
@@ -8400,6 +8412,13 @@ vue-hot-reload-api@^2.3.0:
   resolved "https://registry.yarnpkg.com/vue-hot-reload-api/-/vue-hot-reload-api-2.3.4.tgz#532955cc1eb208a3d990b3a9f9a70574657e08f2"
   integrity sha512-BXq3jwIagosjgNVae6tkHzzIk6a8MHFtzAdwhnV5VlvPTFxDCvIttgSiHWjdGoTJvXtmRu5HacExfdarRcFhog==
 
+vue-input-autowidth@^1.0.11:
+  version "1.0.11"
+  resolved "https://registry.yarnpkg.com/vue-input-autowidth/-/vue-input-autowidth-1.0.11.tgz#98227e6c52befacc00554dd0af8541e22cdd5486"
+  integrity sha512-uwIUHBRfueDacjjS7/lTXMHE6bDRA/RH/Jgg7WnM+Z3NnOMXlOz3hMOOBPqZZn13dT78Pc835RX8eX+Z6qNG/w==
+  dependencies:
+    es6-object-assign "^1.1.0"
+
 "vue-loader-v16@npm:vue-loader@^16.1.0":
   version "16.2.0"
   resolved "https://registry.yarnpkg.com/vue-loader/-/vue-loader-16.2.0.tgz#046a53308dd47e58efe20ddec1edec027ce3b46e"
@@ -8424,6 +8443,11 @@ vue-resizable@^2.0.1:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/vue-resizable/-/vue-resizable-2.0.1.tgz#6dfce74e64bce27952e12acfab76c480d279490f"
   integrity sha512-3CueadexPK2/243Z4QDrvz1Ya+2T1V2S2MGvKVovyNf+Q0aORJAEyc0Qm63YrvSkEmb9DI5ESgwb5sZFvOhl4A==
+
+vue-scrollbar-custom@^1.0.9:
+  version "1.0.9"
+  resolved "https://registry.yarnpkg.com/vue-scrollbar-custom/-/vue-scrollbar-custom-1.0.9.tgz#63b341955fd67b5ce6f02586b92191d1345fcabe"
+  integrity sha1-Y7NBlV/We1zm8CWGuSGR0TRfyr4=
 
 vue-style-loader@^4.1.0, vue-style-loader@^4.1.2:
   version "4.1.3"
