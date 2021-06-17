@@ -1,7 +1,12 @@
 <template>
     <div class="container" :style="cssVars">
-      <div class ="title">Menu</div>
+      <div class ="title" @click="openMenu()">{{menu}}</div>
       <div class ="time">{{date}}</div>
+      <div class="menu" v-if="menuVisibile">
+        <div class ="element">{{element1}}</div>
+        <div  class ="element">{{element2}}</div>
+        <div  class ="element">{{element3}}</div>
+      </div>
     </div>
 </template>
 <script>
@@ -14,26 +19,52 @@ export default {
     data() {
         return {
             height: this.$store.state.infobar_height,
+            menu: '   Menu   ',
             date: new Date(),
+            element1: '   About This Website   ',
+            element2: '   Preferences   ',
+            element3: '   Log Out   ',
+            
         }
     },
     methods: {
-
+        openMenu(){
+            if (this.menuVisibile == true)
+                this.closeMenu()
+            else
+                this.$store.dispatch('openMenu');
+        },
+        closeMenu(){
+            this.$store.dispatch('closeMenu');
+        },
     },
     computed: {
         cssVars() {
+            var main_color =  this.$store.getters.getCurrentTitleColor() +  this.$store.getters.getCurrentTransperency();
             return {
             '--height': this.height + 'vh',
             '--text-title-color': this.$store.getters.getCurrentTextTitleColor(),
             '--title-color': this.$store.getters.getCurrentTitleColor(),
+            '--second-title-color': this.$store.getters.getCurrentSecondTitleColor(),
+
+
+            '--left-margin': (this.height - 2.5) + 'vh',
+            '--top-margin': (this.height + 0.25) +'vh',
+            '--border': this.$store.getters.getCurrentMenuBorderRadius(),
+            '--main-color': main_color,
+            '--border-width': this.$store.getters.getCurrentBorderWidth(),
+
             }
         },
+        menuVisibile: function () {
+            return this.$store.getters.getCurrentMenuVisibility();
+    },
    
     },
     created: function () {
         var self = this
         setInterval(function () {
-        self.date = moment().format('ddd MMM D YYYY\th:mm A');
+        self.date = moment().format('   ddd MMM D YYYY\th:mm A   ');
         }, 1000)
     },
 };
@@ -47,28 +78,56 @@ export default {
         height: var(--height);
         width: 100%;
         text-align: center;
-        background: var(--title-color);
+        background: var(--main-color);
         color: var(--text-title-color);
         align-items: center;
         user-select: none;
+
+
+
     }
-      .title{
+    .title{
+        white-space: pre-wrap;
         position: absolute;
         left: 0;
         margin-left: 0.5rem;
         text-align: center;
     }
-        .timeAleks{
-        position: absolute;
-        right: 0;
-        margin-right: 10rem;
-        text-align: center;
+    .title:hover{
+        cursor: pointer;
+        background-color: grey;
+        border-radius: var(--border);
     }
-        .time{
+    .time{
         white-space: pre-wrap;
         position: absolute;
         right: 0;
         margin-right: 0.5rem;
         text-align: center;
+     }
+    .menu{
+        white-space: pre-wrap;
+        top: var(--top-margin);
+        left: var(--left-margin);
+        position: relative;
+        text-align: left;
+        width: max-content;
+        background-color: var(--main-color);
+        border-radius: var(--border);
+        border-color: gray;
+        border-style: solid;
+        border-width: var(--border-width);
+        visibility: visible;
+    }
+    .element{
+        font-size: 0.8rem;
+        margin: 0.25rem;
+        padding: 0.25rem;
+        white-space: pre-wrap;
+    }
+    .element:hover{
+        cursor: pointer;
+        background-color: grey;
+        border-radius: var(--border);
     }
 </style>

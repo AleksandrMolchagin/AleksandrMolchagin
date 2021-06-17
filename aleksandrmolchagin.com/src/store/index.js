@@ -50,8 +50,9 @@ export default createStore({
       border_radius_icons: "25%",
       shadowDR: "2px",
       shadowUL: "8px",
-
-
+      border_radius_infobar_menu: "0.66rem",
+      border_width: "0.1rem",
+      menu_visible: false,
     },
 
     apps: [
@@ -226,13 +227,16 @@ export default createStore({
       this.state.style.transperency = transparency;                             // transparency - transparency code ("ee", "ac"...)
     },
 
-    setNewRadius(state, array){
+    setNewRadius(state, array){                                                 //SET NEW RADIUS
       this.state.apps[array[1]].border_radius = array[0];
     },
-    setNewShadows(state, array){
+    setNewShadows(state, array){                                                //SET NEW SHADOWS
       this.state.apps[array[2]].shadowDR = array[0];
       this.state.apps[array[2]].shadowUL = array[1];
     },
+    setMenuState(state, boolean){                                             //SET NEW STATE OF THE MENU
+      this.state.style.menu_visible = boolean;
+    }
   },
   /*------------------------------------------------------------*/
   /*-----------------------ALL-ACTIONS--------------------------*/
@@ -266,6 +270,12 @@ export default createStore({
       var newIndex = -1;
       var array = [newIndex, id]; 
       state.commit('setZIndex', array);
+    },
+    openMenu(state){                                                            //OPEN MENU
+      state.commit('setMenuState', true);
+    },
+    closeMenu(state){                                                            //CLOSE MENU
+      state.commit('setMenuState', false);
     },
 
     openClose(state, id) {                                                      //OPEN OR CLOSE(hide) WINDOW
@@ -383,7 +393,7 @@ export default createStore({
   /*------------------------------------------------------------*/
   getters:{
 
-    /*GLOBAK GETTERS*/
+    /*GLOBAL GETTERS*/
     /*------------------------------------------------------------*/
     getCurrentInfobarMargin: (state) => () => {       //INFOBAR MARGIN
       return state.infobar_margin;
@@ -391,6 +401,15 @@ export default createStore({
     //FONTS
     getCurrentInfobarFont: (state) => () => {       //INFOBAR FONT
       return state.style.infobar_font;
+    },
+    getCurrentMenuBorderRadius: (state) => () => {       //MENU BORDER RADIUS
+      return state.style.border_radius_infobar_menu;
+    },
+    getCurrentBorderWidth: (state) => () => {       //MENU BORDER RADIUS
+      return state.style.border_width;
+    },
+    getCurrentMenuVisibility: (state) => () => {       //MENU BORDER RADIUS
+      return state.style.menu_visible;
     },
     getCurrenttTitleFont: (state) => () => {       //TITLE FONT
       return state.style.title_font;
