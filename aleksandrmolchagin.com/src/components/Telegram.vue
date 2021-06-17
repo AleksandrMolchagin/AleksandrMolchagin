@@ -18,16 +18,20 @@
                 <div class="dragme" @mousedown="minmizeWindow">
                 <div class ="text">{{ name }}</div>
                 </div>
-                  <div class = "head">
-                    <a class = "telegram-logo" href="https://telegram.org" target="_blank"></a>
-                  </div>
-                  <a class = "adv" href="https://telegram.org/" target="_blank">Don't have <strong>Telegram</strong> yet? Try it now!<i class="tgme_icon_arrow"></i> </a>
-                  <div class = "name-container">
-                    <div class = "name">Aleksandr Molchagin</div>
-                    <div class = "username">@AleksandrM09</div>
-                  </div>
-                  <div class = "button-container">
-                    <a class="send" href="tg://resolve?domain=Aleksandrm09">Send Message</a>
+                  <div class = "container">
+                    <div class="ToFront" v-on:click="bringToFront" ></div>
+
+                    <div class = "head">
+                      <a class = "telegram-logo" href="https://telegram.org" target="_blank"></a>
+                    </div>
+                    <a class = "adv" href="https://telegram.org/" target="_blank">Don't have <strong>Telegram</strong> yet? Try it now!<i class="tgme_icon_arrow"></i> </a>
+                    <div class = "name-container">
+                      <div class = "name">Aleksandr Molchagin</div>
+                      <div class = "username">@AleksandrM09</div>
+                    </div>
+                    <div class = "button-container">
+                      <a class="send" href="tg://resolve?domain=Aleksandrm09">Send Message</a>
+                    </div>
                   </div>
                 </div>
           </div>
@@ -83,6 +87,8 @@ export default {
         '--text-main-color': this.$store.getters.getCurrentMainTextColor(this.id),
         '--margin-top': this.$store.getters.getCurrentAppMarginTop(this.id) +  'vh',
         '--border-bottom': this.$store.getters.getCurrentBottomBorder(this.id) + 'vh solid ' + this.$store.getters.getCurrentTitleColor(),
+        '--height': (this.height -32) + "px",
+        '--visibility': this.$store.getters.getCurrentVisibilityBlock(this.id),
       }
     },
     maximize: function () {
@@ -237,6 +243,21 @@ export default {
   }
   .trfull {
     transition: opacity 0.5s ease;
+  }
+  .container {
+    height: var(--height);
+    overflow: hidden;
+    position: relative;
+  }
+  .ToFront{
+    background-color: transparent;
+    position: absolute;
+    height: var(--height);
+    width: 100%;
+    left: 0;
+    top: 0;;
+    z-index: var(--index);
+    visibility: var(--visibility);
   }
   .telegram-logo{
     background-image: url("../assets/Apps/Telegram/Logo.png");
