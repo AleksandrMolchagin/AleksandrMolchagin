@@ -5,7 +5,7 @@
         <div class="cube" id="resume" @click="openClose(3)"></div>
         <div class="cube" id="calendly" @click="openClose(2)"></div>
         <div class="cube" id="dogeminer" @click="openClose(4)"></div>
-        <div class="cube"></div>
+        <div class="cube" id="telegram" @click="openClose(5)"></div>
         <div class="cube"></div>
         <div class="cube"></div>
         <div class="cube"></div>
@@ -63,51 +63,34 @@ export default {
         background: transparent;
         --color: rgb(10, 9, 12);
         box-shadow: 0px 0px 4px black;
-    }
-    #SWRoS{
         font-size: 1rem;
-        background-image: url("../assets/1.jpg");
-        background-position: center center; 
+        -webkit-background-position-x: center;
+        -webkit-background-position-y: center; 
         background-size: cover;
         background-repeat: no-repeat;
         cursor: pointer;
-
-
+    }
+    #SWRoS{
+        background-image: url("../assets/1.jpg");
     }
     #terminal{
-        font-size: 1rem;
         background-color: white;
         background-image: url("../assets/app_icons/terminal.png");
-        background-size: 100%;
-        background-position: center center; 
-        background-repeat: no-repeat;
-        cursor: pointer;
     }
     #calendly{
-        font-size: 1rem;
         background-color: white;
         background-image: url("../assets/app_icons/calendly.png");
-        background-size: 100%;
-        background-position: center center; 
-        background-repeat: no-repeat;
-        cursor: pointer;
     }
      #resume{
-        font-size: 1rem;
         background-color: black;
         background-image: url("../assets/app_icons/resume.png");
-        background-size: 100%;
-        background-position: center center; 
-        background-repeat: no-repeat;
-        cursor: pointer;
     }
-        #dogeminer{
-        font-size: 1rem;
+    #dogeminer{
         background-color: black;
         background-image: url("../assets/app_icons/dogeminer.png");
-        background-size: 100%;
-        background-position: center center; 
-        background-repeat: no-repeat;
-        cursor: pointer;
+    }
+    #telegram{
+        background-color: white;
+        background-image: url("../assets/app_icons/telegram.png");
     }
 </style>

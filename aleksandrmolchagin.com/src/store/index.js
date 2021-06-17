@@ -181,7 +181,30 @@ export default createStore({
         margin_top: 0.2,
         bottom_border: 0
       },
+      /* Telegram, ID: 05 */ 
+      { name: "Telegram",
+      fullscreen: false,
+      z_index: -1,
+      block: "visible",
+      
+      main_color: "white",
+      text_main_color: "",
+      border_radius: "0.66rem",
+      shadowDR: "2px",
+      shadowUL: "8px",
 
+      width: 400,
+      height: 600,
+      minW: 400,
+      minH: 600,
+      maxW: "",
+      maxH: "",
+      left: 50,
+      top: 50,
+
+      margin_top: 0.2,
+      bottom_border: 0
+    },
     ]
   },
   /*------------------------------------------------------------*/
