@@ -193,9 +193,9 @@ export default createStore({
       shadowDR: "2px",
       shadowUL: "8px",
 
-      width: 400,
+      width: 350,
       height: 600,
-      minW: 400,
+      minW: 350,
       minH: 600,
       maxW: "",
       maxH: "",

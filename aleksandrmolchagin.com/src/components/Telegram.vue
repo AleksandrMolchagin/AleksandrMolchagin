@@ -20,17 +20,19 @@
                 </div>
                   <div class = "container">
                     <div class="ToFront" v-on:click="bringToFront" ></div>
-
-                    <div class = "head">
                       <a class = "telegram-logo" href="https://telegram.org" target="_blank"></a>
-                    </div>
                     <a class = "adv" href="https://telegram.org/" target="_blank">Don't have <strong>Telegram</strong> yet? Try it now!<i class="tgme_icon_arrow"></i> </a>
                     <div class = "name-container">
+                      <div class = "image-container">
+                        <a href="tg://resolve?domain=AleksandrM09">
+                          <img class = "image" src="../assets/Apps/Telegram/Aleksandr.png">
+                        </a>
+                      </div>
                       <div class = "name">Aleksandr Molchagin</div>
                       <div class = "username">@AleksandrM09</div>
                     </div>
                     <div class = "button-container">
-                      <a class="send" href="tg://resolve?domain=Aleksandrm09">Send Message</a>
+                      <a class="send" href="tg://resolve?domain=AleksandrM09">Send Message</a>
                     </div>
                   </div>
                 </div>
@@ -291,6 +293,18 @@ export default {
     height: 45px;
     line-height: 43px;
     text-align: center;
+  }
+  .image-container{
+    /*Coppied from 'https://telegram.me/AleksandrM09'*/
+    text-align: center;
+    margin-top: -15px;
+    margin-bottom: 15px;
+  }
+  .image{
+    /*Coppied from 'https://telegram.me/AleksandrM09'*/
+    width: 122px;
+    height: 122px;
+    border-radius: 61px;
   }
   .name{
     /*Coppied from 'https://telegram.me/AleksandrM09'*/
