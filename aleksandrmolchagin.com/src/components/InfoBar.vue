@@ -5,7 +5,7 @@
       <div class="menu" v-if="menuVisibile">
         <div class ="element">{{element1}}</div>
         <div  class ="element">{{element2}}</div>
-        <div  class ="element">{{element3}}</div>
+        <div  class ="element" @click="lock()" >{{element3}}</div>
       </div>
     </div>
 </template>
@@ -37,6 +37,9 @@ export default {
         closeMenu(){
             this.$store.dispatch('closeMenu');
         },
+        lock(){
+            this.$store.dispatch('lockTaggle');
+        }
     },
     computed: {
         cssVars() {

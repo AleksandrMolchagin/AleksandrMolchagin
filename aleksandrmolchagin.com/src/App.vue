@@ -1,4 +1,5 @@
 <template>
+  <Login/>
   <div class="main" :style="cssVars">
       <InfoBar/>
         <div class = "container">
@@ -19,6 +20,7 @@ import Resume from './components/Resume';
 import Dogeminer from './components/Dogeminer';
 import Telegram from './components/Telegram';
 import AppBar from './components/AppBar';
+import Login from './components/Login';
 
 
 
@@ -26,12 +28,16 @@ import AppBar from './components/AppBar';
 
 export default {
   name: 'App',
-
   components: {
+    Login,
     InfoBar,
       Desktop,
         Window, Terminal, Calendly, Resume, Dogeminer, Telegram, 
     AppBar,
+  },
+  data() {
+    return {
+    }
   },
   computed: {
     cssVars() {
@@ -56,7 +62,7 @@ export default {
     height: 100%;
     width: 100%;
     overflow: hidden;
-    background-image: url("assets/bg.jpg");
+    background-image: url("assets/snowy_dusk.jpg");
     background-size: 100% 100%;
   }
 

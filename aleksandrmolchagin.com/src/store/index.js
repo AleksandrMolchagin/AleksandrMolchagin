@@ -4,6 +4,8 @@ export default createStore({
   state: {
     
     /*DESKTOP PARAMETERS */
+    locked: true,
+
     infobar_height: 3, 
 
     desktop_height: 88.5,
@@ -20,7 +22,6 @@ export default createStore({
 
 
     },
-
     style: {
       /*COLORS PARAMETERS*/
       /* TITLE */
@@ -211,6 +212,9 @@ export default createStore({
   /*-----------------------ALL-MUTATIONS------------------------*/
   /*------------------------------------------------------------*/
   mutations: {
+    setNewLockStatus(state, boolean){                                           //SET NEW LOCK STATUS
+      this.state.locked = boolean;                                              //boolean - new lock status 
+    },      
 
     setFullScreen(state, array){                                                //SET FULLSCREEN 
       this.state.apps[array[1]].fullscreen = array[0];                          //array[1] - id  //array[0] - new fullscreen value
@@ -265,7 +269,9 @@ export default createStore({
   /*-----------------------ALL-ACTIONS--------------------------*/
   /*------------------------------------------------------------*/
   actions: {
-
+    lockTaggle(state){                                                //LOCK TAGGLE
+      state.commit('setNewLockStatus', !this.state.locked);
+    },
     switchFullScreen(state, id){                                                //SWITCH FULLSCREEN
       var newState = !this.state.apps[id].fullscreen;
       var array = [newState, id]
@@ -418,6 +424,9 @@ export default createStore({
 
     /*GLOBAL GETTERS*/
     /*------------------------------------------------------------*/
+    getLockStatus: (state) => () => {       //LOCK STATUS
+      return state.locked;
+    },
     getCurrentInfobarMargin: (state) => () => {       //INFOBAR MARGIN
       return state.infobar_margin;
     },

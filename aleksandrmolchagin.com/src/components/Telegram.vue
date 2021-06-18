@@ -274,7 +274,7 @@ export default {
     position: relative;
   }
   .name-container{
-         justify-items: center;
+    justify-items: center;
 
     /*Coppied from 'https://telegram.me/AleksandrM09'*/
     position: relative;
