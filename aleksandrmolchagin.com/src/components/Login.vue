@@ -24,6 +24,11 @@ export default {
         }
     },
     computed:{
+        cssVars(){
+          return{
+            '--title-color': this.$store.getters.getCurrentTitleColor(),
+          }
+        },
         locked: function () {
             return this.$store.getters.getLockStatus();
         },
@@ -36,34 +41,32 @@ export default {
 };
 </script>
 <style scoped>
-    .main-container{
-        position: absolute;
-        z-index: 10001;
-        width: 100%;
-        height: 100%;
-        height: 100%;
-        width: 100%;
-        overflow: hidden;
-        background-image: url("../assets/Login/Background.jpg");
-        background-size: 100% 100%;
+  .main-container{
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    z-index: 10001;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background-image: url("../assets/Login/Background.jpg");
+    background-size: cover;
 }
   .center-container{
-    justify-items: center;
+    margin: auto;
     position: relative;
-    top: 10%;
-    margin: 50px auto 50px;
   }
   .image-container{
     /*Coppied from 'https://telegram.me/AleksandrM09'*/
-    text-align: center;
+    margin-top: -150px;
     margin-bottom: 15px;
 
   }
   .image{
     /*Coppied from 'https://telegram.me/AleksandrM09'*/
-    width: 183px;
-    height: 183px;
-    border-radius: 91.5px;
+    width: 122px;
+    height: 122px;
+    border-radius: 61px;
   }
     .name{
     color: white;
@@ -72,10 +75,10 @@ export default {
     font-weight: bold;
     text-align: center;
   }
-.button-container{
-    text-align: center;
-    margin-top: 32px;
-    line-height: 0;
+    .button-container{
+        text-align: center;
+        margin-top: 16px;
+        line-height: 0;
   }
   .login-button{
     text-decoration: none;
@@ -84,7 +87,7 @@ export default {
     font-size: 14px;
     font-weight: bold;
     line-height: 100%;
-    background: grey;
+    background: var(--title-color);
     border-radius: 0.66rem;
     display: block-inline;
     padding: 6px 27px 6px;
