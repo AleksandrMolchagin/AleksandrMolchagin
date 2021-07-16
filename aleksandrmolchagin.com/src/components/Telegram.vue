@@ -308,7 +308,6 @@ export default {
   }
   .name{
     /*Coppied from 'https://telegram.me/AleksandrM09'*/
-    font-family: 'Roboto', sans-serif;
     color: #333;
     font-size: 26px;
     line-height: 32px;
@@ -318,7 +317,6 @@ export default {
   }
   .username{
     /*Coppied from 'https://telegram.me/AleksandrM09'*/
-    font-family: 'Roboto', sans-serif;
     font-size: 15px;
     line-height: 27px;
     text-align: center;
@@ -334,7 +332,6 @@ export default {
     text-decoration: none;
     text-align: center;
        /*Coppied from 'https://telegram.me/AleksandrM09'*/
-    font-family: 'Roboto', sans-serif;
     font-size: 14px;
     font-weight: bold;
     line-height: 100%;

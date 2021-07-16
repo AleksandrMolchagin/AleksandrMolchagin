@@ -108,11 +108,11 @@ export default {
     }
     .Container-element-clock{
         height: var(--height);
-        padding: 5px;
+        padding: 7px;
         position: absolute;
         display: block;
         right: 0;
-        margin-right: 16px;
+        margin-right: 15px;
     }
     .Button{
         height: 10px !important;
