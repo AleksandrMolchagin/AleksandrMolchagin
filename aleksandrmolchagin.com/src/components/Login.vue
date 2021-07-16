@@ -8,7 +8,7 @@
             </div>
             <div class = "name">Guest</div>
             <div class="button-container">
-                <button class="login-button" @click="unlock()">login</button> 
+                <el-button plain class="Button" size="mini" round @click="unlock()">login</el-button> 
             </div>
         </div>
     </div>
@@ -80,21 +80,15 @@ export default {
         margin-top: 16px;
         line-height: 0;
   }
-  .login-button{
+  .Button{
     text-decoration: none;
     text-align: center;
        /*Coppied from 'https://telegram.me/AleksandrM09'*/
-    font-size: 14px;
-    font-weight: bold;
     line-height: 100%;
-    background: var(--title-color);
-    border-radius: 0.66rem;
     display: block-inline;
-    padding: 6px 27px 6px;
+    padding: 3px 27px 3px;
     border: none;
     cursor: pointer;;
   }
-  .login-button:hover{
-    background: grey;
-  } 
+
 </style>

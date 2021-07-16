@@ -1,13 +1,36 @@
 <template>
-    <div class="container" :style="cssVars">
-      <div class ="title" @click="openMenu()">{{menu}}</div>
-      <div class ="time">{{date}}</div>
-      <div class="menu" v-if="menuVisibile">
+    <!-- <div class="container" :style="cssVars"> -->
+      <!-- <div class ="title" @click="openMenu()">{{menu}}</div> -->
+      <!-- <div class="time">{{date}}</div> -->
+      <!-- <div class="menu" v-if="menuVisibile">
         <div class ="element">{{element1}}</div>
         <div  class ="element">{{element2}}</div>
         <div  class ="element" @click="lock()" >{{element3}}</div>
-      </div>
-    </div>
+      </div> -->
+    <!-- </div> -->
+    <div class="Container" :style="cssVars">
+    <el-row :gutter="12">
+        <el-col :span="6">
+            <div>
+            <el-dropdown>
+                <el-button class="Button" size="small" type="primary"> Menu </el-button>
+                <template #dropdown>
+                    <el-dropdown-menu>
+                    <el-dropdown-item>About this website</el-dropdown-item>
+                    <el-dropdown-item>Preferences</el-dropdown-item>
+                    <el-dropdown-item @click="lock()">Log out</el-dropdown-item>
+                    </el-dropdown-menu>
+                </template>
+            </el-dropdown>
+            </div>
+        </el-col>
+        <el-col :span="6">
+            <div class="Container-element-clock">
+                    <div>{{date}}</div>
+            </div>
+        </el-col>
+     </el-row>
+     </div>
 </template>
 <script>
 import moment from 'moment'
@@ -45,12 +68,10 @@ export default {
         cssVars() {
             var main_color =  this.$store.getters.getCurrentTitleColor() +  this.$store.getters.getCurrentTransperency();
             return {
-            '--height': this.height + 'vh',
+            '--height': this.height + 'px',
             '--text-title-color': this.$store.getters.getCurrentTextTitleColor(),
             '--title-color': this.$store.getters.getCurrentTitleColor(),
             '--second-title-color': this.$store.getters.getCurrentSecondTitleColor(),
-
-
             '--left-margin': (this.height - 2.5) + 'vh',
             '--top-margin': (this.height + 0.25) +'vh',
             '--border': this.$store.getters.getCurrentMenuBorderRadius(),
@@ -76,7 +97,32 @@ export default {
     * {    
         z-index: 999;
     }
-    .container{
+    .Container{
+        background-color: var(--title-color);
+        color: white;
+        height: var(--height);
+    }
+    .Container-element{
+        height: var(--height);
+        padding: 5px;
+    }
+    .Container-element-clock{
+        height: var(--height);
+        padding: 5px;
+        position: absolute;
+        display: block;
+        right: 0;
+        margin-right: 16px;
+    }
+    .Button{
+        height: 10px !important;
+    }
+    .Calendar{
+        zoom: 75%;
+        font-size: 1.2rem
+    }
+
+    /* .container{
         position: relative;
         height: var(--height);
         width: 100%;
@@ -85,8 +131,6 @@ export default {
         color: var(--text-title-color);
         align-items: center;
         user-select: none;
-
-
 
     }
     .title{
@@ -132,5 +176,5 @@ export default {
         cursor: pointer;
         background-color: grey;
         border-radius: var(--border);
-    }
+    } */
 </style>

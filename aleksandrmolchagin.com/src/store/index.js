@@ -6,10 +6,10 @@ export default createStore({
     /*DESKTOP PARAMETERS */
     locked: true,
 
-    infobar_height: 3, 
+    infobar_height: 33, 
 
-    desktop_height: 88.5,
-    DEFAULT_desktop_height: 88.5,            
+    desktop_height: 87,
+    DEFAULT_desktop_height: 87,            
       appbar_cube_height: 6,
       DEFAULT_app_margin_top: 0.2,
       DEFAULT_bottom_border_enabled: 0.8,
@@ -25,6 +25,7 @@ export default createStore({
     style: {
       /*COLORS PARAMETERS*/
       /* TITLE */
+      //"#585c5f",
       title_color: "#585c5f",
       second_title_color: "#bbc1c3",
       text_title_color: "#ffffff",
