@@ -5,7 +5,7 @@
                 <div class = "language-container-buttons">
                     <a class="Button-language" @click="setEnglish()">English</a>
                     <a></a>
-                    <a class="Button-language" @click="setAurebish()">Aurebesh</a>
+                    <a class="Button-language" @click="setAurebesh()">Aurebesh</a>
                 </div>
             </div>
           <div class = "card">
@@ -39,8 +39,9 @@ export default {
             '--border': this.$store.getters.getCurrentBorderRadius(-1),
             '--shadowDR': this.$store.getters.getCurrentShadowDR(-1),
             '--shadowUL': this.$store.getters.getCurrentShadowUL(-1),
-            '--avatar-half': "61px",
-            '--avatar-full': "122px",
+            '--avatar-half': "75px",
+            '--avatar-full': "150px",
+            '--font-name': this.$store.getters.getCurrentFontName(),
           }
         },
         locked: function () {
@@ -50,11 +51,23 @@ export default {
     methods: {
         unlock(){
             this.$store.dispatch('lockTaggle');
+        },
+        setEnglish(){
+            this.$store.dispatch('changeFont', "Nunito")
+        },
+        setAurebesh(){
+            this.$store.dispatch('changeFont', "Aurebesh")
         }
     },
 };
 </script>
 <style scoped>
+  * {
+    margin: 0;
+    padding: 0;
+    font-family: var(--font-name), sans-serif;      
+    font-size: var(--font);
+  }
   .main-container {
     position: absolute;
     display: flex;

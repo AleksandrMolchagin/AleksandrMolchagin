@@ -8,6 +8,8 @@ export default createStore({
 
     infobar_height: 33, 
 
+    font: "Nunito",
+
     desktop_height: 87,
     DEFAULT_desktop_height: 87,            
       appbar_cube_height: 6,
@@ -216,6 +218,9 @@ export default createStore({
   /*-----------------------ALL-MUTATIONS------------------------*/
   /*------------------------------------------------------------*/
   mutations: {
+    setNewFont(state, name){                                                   //SET NEW SYSTEM FONT
+      this.state.font = name                                                   //name - new system font name
+    },
     setNewLockStatus(state, boolean){                                           //SET NEW LOCK STATUS
       this.state.locked = boolean;                                              //boolean - new lock status 
     },      
@@ -273,7 +278,10 @@ export default createStore({
   /*-----------------------ALL-ACTIONS--------------------------*/
   /*------------------------------------------------------------*/
   actions: {
-    lockTaggle(state){                                                //LOCK TAGGLE
+    changeFont(state, name){                                                   //SET NEW FONT
+      state.commit('setNewFont', name)
+    },
+    lockTaggle(state){                                                          //LOCK TAGGLE
       state.commit('setNewLockStatus', !this.state.locked);
     },
     switchFullScreen(state, id){                                                //SWITCH FULLSCREEN
@@ -435,6 +443,9 @@ export default createStore({
       return state.infobar_margin;
     },
     //FONTS
+    getCurrentFontName: (state) => () =>{           //SYSTEM FONT
+      return state.font
+    },
     getCurrentInfobarFont: (state) => () => {       //INFOBAR FONT
       return state.style.infobar_font;
     },

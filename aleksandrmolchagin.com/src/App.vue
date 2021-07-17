@@ -40,6 +40,7 @@ export default {
       return {
         '--desktop_height': this.$store.getters.getCurrentDesktopHeight() + 'vh',
         '--font': this.$store.getters.getCurrentMainFont(),
+        '--font-name': this.$store.getters.getCurrentFontName(),
       }
     },
   },
@@ -48,10 +49,10 @@ export default {
 <style >
 @import url('https://fonts.googleapis.com/css2?family=Lato&family=Nunito&display=swap');
   * {
-      margin: 0;
-      padding: 0;
-      font-family: 'Nunito', sans-serif;      
-      font-size: var(--font);
+    margin: 0;
+    padding: 0;
+    font-family: var(--font-name), sans-serif;      
+    font-size: var(--font);
   }
 
   html, body, #app {

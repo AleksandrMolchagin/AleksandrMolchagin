@@ -16,9 +16,9 @@
                 <el-button class="Button" size="small" type="primary"> Menu </el-button>
                 <template #dropdown>
                     <el-dropdown-menu>
-                    <el-dropdown-item>About this website</el-dropdown-item>
-                    <el-dropdown-item>Preferences</el-dropdown-item>
-                    <el-dropdown-item @click="lock()">Log out</el-dropdown-item>
+                    <el-dropdown-item class="ForceFont">About this website</el-dropdown-item>
+                    <el-dropdown-item class="ForceFont">Preferences</el-dropdown-item>
+                    <el-dropdown-item class="ForceFont" @click="lock()">Log out</el-dropdown-item>
                     </el-dropdown-menu>
                 </template>
             </el-dropdown>
@@ -77,7 +77,7 @@ export default {
             '--border': this.$store.getters.getCurrentMenuBorderRadius(),
             '--main-color': main_color,
             '--border-width': this.$store.getters.getCurrentBorderWidth(),
-
+            '--font-name': this.$store.getters.getCurrentFontName(),
             }
         },
         menuVisibile: function () {
@@ -96,6 +96,9 @@ export default {
 <style scoped>
     * {    
         z-index: 999;
+    }
+    .ForceFont{
+        font-family: "Nunito";      
     }
     .Container{
         background-color: var(--title-color);
