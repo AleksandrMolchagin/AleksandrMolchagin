@@ -16,9 +16,9 @@
                 <el-button class="Button" size="small" type="primary"> Menu </el-button>
                 <template #dropdown>
                     <el-dropdown-menu>
-                    <el-dropdown-item class="ForceFont">About this website</el-dropdown-item>
-                    <el-dropdown-item class="ForceFont">Preferences</el-dropdown-item>
-                    <el-dropdown-item class="ForceFont" @click="lock()">Log out</el-dropdown-item>
+                    <el-dropdown-item :style="cssVars" class="ForceFont" >About this website</el-dropdown-item>
+                    <el-dropdown-item :style="cssVars" class="ForceFont">Preferences</el-dropdown-item>
+                    <el-dropdown-item :style="cssVars" class="ForceFont" @click="lock()">Log out</el-dropdown-item>
                     </el-dropdown-menu>
                 </template>
             </el-dropdown>
@@ -82,7 +82,8 @@ export default {
             '--main-color': main_color,
             '--border-width': this.$store.getters.getCurrentBorderWidth(),
             '--font': this.$store.getters.getCurrentMainFont(),
-            '--font-name': "aurebesh",            }
+            '--font-name': this.$store.getters.getCurrentFontName(),
+           }
         },
         menuVisibile: function () {
             return this.$store.getters.getCurrentMenuVisibility();
@@ -101,16 +102,9 @@ export default {
 <style scoped>
     * {    
         z-index: 999;
-    }
-    .ForceEnglishFont{
-        font-family: "Nunito";      
-    }
-    .ForceAurebeshFont{
-        font-family: "aurebesh";      
-    }
-    ForceFont{
-        -webkit-appearance: none;
-        font-family: inherit;
+    }  
+    .ForceFont{
+        font-family: var(--font-name);
     }
     .Container{
         background-color: var(--title-color);
