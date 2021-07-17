@@ -62,12 +62,12 @@ export default {
 };
 </script>
 <style scoped>
-  * {
-    margin: 0;
-    padding: 0;
-    font-family: var(--font-name), sans-serif;      
-    font-size: var(--font);
-  }
+ @font-face { 
+    font-family: "aurebesh"; 
+    src: url('../assets/Fonts/Aurebesh.otf');
+    font-weight: 900;
+    font-style: normal;
+  } 
   .main-container {
     position: absolute;
     display: flex;

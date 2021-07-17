@@ -48,13 +48,18 @@ export default {
 </script>
 <style >
 @import url('https://fonts.googleapis.com/css2?family=Lato&family=Nunito&display=swap');
+  @font-face { 
+    font-family: "aurebesh"; 
+    src: url('./assets/Fonts/Aurebesh.otf');
+    font-weight: 900;
+    font-style: normal;
+  } 
   * {
     margin: 0;
     padding: 0;
-    font-family: var(--font-name), sans-serif;      
+    font-family: var(--font-name);      
     font-size: var(--font);
   }
-
   html, body, #app {
     height: 100%;
     width: 100%;

@@ -65,8 +65,12 @@ export default {
         }
     },
     computed: {
+   
+
         cssVars() {
             var main_color =  this.$store.getters.getCurrentTitleColor() +  this.$store.getters.getCurrentTransperency();
+            
+   
             return {
             '--height': this.height + 'px',
             '--text-title-color': this.$store.getters.getCurrentTextTitleColor(),
@@ -77,11 +81,12 @@ export default {
             '--border': this.$store.getters.getCurrentMenuBorderRadius(),
             '--main-color': main_color,
             '--border-width': this.$store.getters.getCurrentBorderWidth(),
-            '--font-name': this.$store.getters.getCurrentFontName(),
-            }
+            '--font': this.$store.getters.getCurrentMainFont(),
+            '--font-name': "aurebesh",            }
         },
         menuVisibile: function () {
             return this.$store.getters.getCurrentMenuVisibility();
+        
     },
    
     },
@@ -97,8 +102,15 @@ export default {
     * {    
         z-index: 999;
     }
-    .ForceFont{
+    .ForceEnglishFont{
         font-family: "Nunito";      
+    }
+    .ForceAurebeshFont{
+        font-family: "aurebesh";      
+    }
+    ForceFont{
+        -webkit-appearance: none;
+        font-family: inherit;
     }
     .Container{
         background-color: var(--title-color);
