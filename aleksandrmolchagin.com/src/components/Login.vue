@@ -1,15 +1,15 @@
 <template>
-    <div class="main-container" v-if="locked">
+    <div :style="cssVars" class="main-container" v-if="locked">
         <div class = "center-container">
-            <div class = "image-container">
-                <a>
-                    <img class = "image" src="../assets/Login/Avatar.png">
-                </a>
+          <div class = "card">
+            <div class = "center-container-elements"> 
+                  <a>
+                      <img class = "image" src="../assets/Login/Avatar.png">
+                  </a>
+              <div class = "name">Guest</div>
+                  <el-button plain class="Button" size="mini" round @click="unlock()">login</el-button> 
             </div>
-            <div class = "name">Guest</div>
-            <div class="button-container">
-                <el-button plain class="Button" size="mini" round @click="unlock()">login</el-button> 
-            </div>
+          </div>
         </div>
     </div>
 </template>
@@ -25,8 +25,13 @@ export default {
     },
     computed:{
         cssVars(){
+        var main_color =  this.$store.getters.getCurrentTitleColor() +  this.$store.getters.getCurrentTransperency();
           return{
             '--title-color': this.$store.getters.getCurrentTitleColor(),
+            '--main-color': main_color,
+            '--border': this.$store.getters.getCurrentBorderRadius(-1),
+            '--shadowDR': this.$store.getters.getCurrentShadowDR(-1),
+            '--shadowUL': this.$store.getters.getCurrentShadowUL(-1),
           }
         },
         locked: function () {
@@ -41,7 +46,7 @@ export default {
 };
 </script>
 <style scoped>
-  .main-container{
+  .main-container {
     position: absolute;
     display: flex;
     flex-direction: column;
@@ -55,40 +60,36 @@ export default {
   .center-container{
     margin: auto;
     position: relative;
+    
   }
-  .image-container{
-    /*Coppied from 'https://telegram.me/AleksandrM09'*/
-    margin-top: -150px;
-    margin-bottom: 15px;
+  .card{
+    padding-left: 7rem;
+    padding-right: 7rem;
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+    border-radius: var(--border);
+    background-color: var(--main-color);
+    box-shadow: var(--shadowDR) var(--shadowDR) var(--shadowUL) rgba(0, 0, 0, 0.45);
+  }
+  .center-container-elements{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 
-  }
   .image{
     /*Coppied from 'https://telegram.me/AleksandrM09'*/
     width: 122px;
     height: 122px;
     border-radius: 61px;
+    border: 2px solid white
   }
-    .name{
+  .name{
     color: white;
-    font-size: 22px;
-    line-height: 32px;
-    font-weight: bold;
-    text-align: center;
-  }
-    .button-container{
-        text-align: center;
-        margin-top: 16px;
-        line-height: 0;
+    padding: 1rem;
   }
   .Button{
-    text-decoration: none;
-    text-align: center;
-       /*Coppied from 'https://telegram.me/AleksandrM09'*/
-    line-height: 100%;
-    display: block-inline;
-    padding: 3px 27px 3px;
-    border: none;
-    cursor: pointer;;
+    width: 100%
   }
 
 </style>

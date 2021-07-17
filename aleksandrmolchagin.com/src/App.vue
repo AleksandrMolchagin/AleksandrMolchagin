@@ -20,11 +20,7 @@ import Resume from './components/Resume';
 import Dogeminer from './components/Dogeminer';
 import Telegram from './components/Telegram';
 import AppBar from './components/AppBar';
-import Login from './components/Login';
-
-
-
-
+import Login from './components/Login'; 
 
 export default {
   name: 'App',

@@ -13,6 +13,9 @@ export default createStore({
       appbar_cube_height: 6,
       DEFAULT_app_margin_top: 0.2,
       DEFAULT_bottom_border_enabled: 0.8,
+      DEFAULT_border_radius: "0.66rem",
+      DEFAULT_shadowDR: "2px",
+      DEFAULT_shadowUL: "8px",
 
     appbar_height: 7.5,
 
@@ -144,7 +147,7 @@ export default createStore({
          text_main_color: "",
          border_radius: "0.66rem",
          shadowDR: "2px",
-         shadowUL: "6px",
+         shadowUL: "8px",
  
          width: 400,
          height: 620,
@@ -491,7 +494,7 @@ export default createStore({
       return state.style.fullscreen_btn_color;
     },
     getCurrentMainColor: (state) => (id) => {         //BODY
-      if (state.apps[id].main_color == "")
+      if (state.apps[id].main_color == "" || id == -1)
         return state.style.main_color;
       else
         return state.apps[id].main_color;
@@ -507,14 +510,23 @@ export default createStore({
     },
 
     getCurrentBorderRadius: (state) => (id) => {       //BORDER RADIUS
-      return state.apps[id].border_radius;
+      if (id == -1)
+        return state.DEFAULT_border_radius;
+      else
+        return state.apps[id].border_radius;
     },
 
     getCurrentShadowDR: (state) => (id) => {          //SHADOW SIZE (DOWN-RIGHT)
-      return state.apps[id].shadowDR;
+      if (id == -1)
+        return state.DEFAULT_shadowDR;
+      else
+        return state.apps[id].shadowDR;
     },
     getCurrentShadowUL: (state) => (id) => {          //SHADOW SIZE (UP-LEFT)
-      return state.apps[id].shadowUL;
+      if (id == -1)
+        return state.DEFAULT_shadowUL;
+      else
+        return state.apps[id].shadowUL;
     },
     getCurrentAppMarginTop: (state) => (id) => {      //SHADOW SIZE (UP-LEFT)
       return state.apps[id].margin_top;
