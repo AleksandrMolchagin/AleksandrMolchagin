@@ -53,6 +53,7 @@ export default {
     src: url('./assets/Fonts/Aurebesh.otf');
     font-weight: 900;
     font-style: normal;
+    font-size: var(--font);
   } 
   * {
     margin: 0;

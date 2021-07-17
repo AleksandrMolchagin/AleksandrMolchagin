@@ -69,6 +69,17 @@ export default {
   computed: {
     cssVars() {
       var main_color =  this.$store.getters.getCurrentMainColor(this.id) +  this.$store.getters.getCurrentTransperency();
+      
+      var font_name = "Share Tech Mono"
+
+        if (this.$store.getters.getCurrentFontName() == "Aurebesh"){
+          font_name = "Aurebesh"
+        }
+
+        if (this.$store.getters.getCurrentFontName() == "Nunito"){
+          font_name = "Share Tech Mono"
+        }
+
       return {
         //Appereance paramaters for CSS
         '--border': this.$store.getters.getCurrentBorderRadius(this.id),
@@ -86,6 +97,7 @@ export default {
         '--margin-top': this.$store.getters.getCurrentAppMarginTop(this.id)  + 'vh',
         '--border-bottom': this.$store.getters.getCurrentBottomBorder(this.id) + 'vh solid ' + this.$store.getters.getCurrentTitleColor(),
         '--height': (this.height -32) + "px",
+        '--font-name': font_name,
       }
     },
     maximize: function () {
@@ -297,7 +309,7 @@ export default {
     transition: opacity 0.5s ease;
   }
   .input-block {
-    font-family: 'Share Tech Mono', monospace;
+    font-family: var(--font-name), monospace;
     padding-top: 0.5rem;
     padding-left: 1rem;
     margin: 0.5rem;
@@ -307,7 +319,7 @@ export default {
 } 
   .cmd{
     width: 0.01%;
-    font-family: 'Share Tech Mono', monospace;
+    font-family: var(--font-name), monospace;
     background: transparent;
     border: 0;
     color: var(--second-title-color);

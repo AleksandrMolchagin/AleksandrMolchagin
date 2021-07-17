@@ -2,10 +2,29 @@
     <div :style="cssVars" class="main-container" v-if="locked">
         <div class = "center-container">
           <div class = "language-container">
-                <div class = "language-container-buttons">
-                    <a class="Button-language" @click="setEnglish()">English</a>
-                    <a></a>
-                    <a class="Button-language" @click="setAurebesh()">Aurebesh</a>
+                <div :class = "language-container-buttons">
+                  <el-popover :style="cssVars" class="ForceFont"
+                    placement="left"
+                    :width="160"
+                    trigger="hover"
+                    content="this is content, this is content, this is content">
+                      <template #reference>
+                        <a class="Button-english" @click="setEnglish()">English</a>
+                      </template>
+                      <div :style="cssVars" class="ForceFont">International <br> language at planet Earth.</div>
+                    </el-popover>
+
+                    <el-popover
+                    placement="right"
+                    :width="130"
+                    trigger="hover"
+                    content="this is content, this is content, this is content">
+                      <template #reference>
+                    <a class="Button-aurebesh" @click="setAurebesh()">Galactic Basic</a>
+                      </template>
+                      <div :style="cssVars" class="ForceFont">The most common <br> language in the Galaxy.</div>
+                    </el-popover>
+                     <a class="invisible">I am invisible</a>
                 </div>
             </div>
           <div class = "card">
@@ -14,7 +33,7 @@
                       <img class = "image" src="../assets/Login/Avatar.png">
                   </a>
               <div class = "name">Guest</div>
-                  <el-button plain class="Button-login" size="mini" round @click="unlock()">login</el-button> 
+                  <el-button plain class="Button-login" size="mini" round @click="unlock()">Login</el-button> 
             </div>
           </div>
         </div>
@@ -33,6 +52,19 @@ export default {
     computed:{
         cssVars(){
         var main_color =  this.$store.getters.getCurrentTitleColor() +  this.$store.getters.getCurrentTransperency();
+        var opcaity_english = 1;
+        var opacity_aurebesh = 0.5;
+
+        if (this.$store.getters.getCurrentFontName() == "Aurebesh"){
+          opcaity_english = 0.5;
+          opacity_aurebesh = 1;
+        }
+
+        if (this.$store.getters.getCurrentFontName() == "Nunito"){
+          opcaity_english = 1;
+          opacity_aurebesh = 0.5;
+        }
+
           return{
             '--title-color': this.$store.getters.getCurrentTitleColor(),
             '--main-color': main_color,
@@ -42,6 +74,8 @@ export default {
             '--avatar-half': "75px",
             '--avatar-full': "150px",
             '--font-name': this.$store.getters.getCurrentFontName(),
+            '--opacity-english': opcaity_english,
+            '--opacity-aurebesh': opacity_aurebesh
           }
         },
         locked: function () {
@@ -54,6 +88,7 @@ export default {
         },
         setEnglish(){
             this.$store.dispatch('changeFont', "Nunito")
+            this.opcaity_english = 1
         },
         setAurebesh(){
             this.$store.dispatch('changeFont', "Aurebesh")
@@ -68,11 +103,14 @@ export default {
     font-weight: 900;
     font-style: normal;
   } 
+  .ForceFont{
+        font-family: var(--font-name);
+    }
   .main-container {
     position: absolute;
     display: flex;
     flex-direction: column;
-    z-index: 10001;
+    z-index: 1000;
     width: 100%;
     height: 100%;
     overflow: hidden;
@@ -85,8 +123,7 @@ export default {
     
   }
   .card{
-    padding-left: 7rem;
-    padding-right: 7rem;
+    width: 23rem;
     padding-top: 3rem;
     padding-bottom: 3rem;
     border-radius: var(--border);
@@ -111,15 +148,14 @@ export default {
     padding: 1rem;
   }
   .Button-login{
-    width: 100%
+    width: 40%
   }
   .language-container{
     position: fixed;
-    width: inherit;
-    padding-left: 3rem;
-    padding-right: 3rem;
+    width: 23rem;
     padding-top: 0.5rem;
     padding-bottom: 0.5rem;
+    align-self: center;
     top: 0;
     color: white;
     border-radius: 0 0 var(--border) var(--border);
@@ -127,17 +163,41 @@ export default {
     box-shadow: var(--shadowDR) var(--shadowDR) var(--shadowUL) rgba(0, 0, 0, 0.45);
   }
   .language-container-buttons{
+    width: inherit;
     display: flex;
     flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-between;
     text-align: center;
   }
-  .Button-language{
-    width: var(--avatar-half);
-    position: relative;
+  .Button-english{
+    position: absolute;
+    left: 0;
     padding-left: 2rem;
+    cursor: pointer;
+    opacity: var(--opacity-english);
+    transition: opacity .5s ease-out;
+    -moz-transition: opacity .5s ease-out;
+    -webkit-transition: opacity .5s ease-out;
+    -o-transition: opacity .5s ease-out;
+  }
+   .Button-aurebesh{
+    position: absolute;
+    right: 0;
     padding-right: 2rem;
     cursor: pointer;
+    opacity: var(--opacity-aurebesh);
+    transition: opacity .5s ease-out;
+    -moz-transition: opacity .5s ease-out;
+    -webkit-transition: opacity .5s ease-out;
+    -o-transition: opacity .5s ease-out;
+  }
+  .Button-english:hover {
+    opacity: 1;
+  }
+  .Button-aurebesh:hover {
+    opacity: 1;
+  }
+  .invisible{
+    text-align: center;
+    color: transparent
   }
 </style>
