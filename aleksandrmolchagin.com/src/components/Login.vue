@@ -1,13 +1,20 @@
 <template>
     <div :style="cssVars" class="main-container" v-if="locked">
         <div class = "center-container">
+          <div class = "language-container">
+                <div class = "language-container-buttons">
+                    <a class="Button-language" @click="setEnglish()">English</a>
+                    <a></a>
+                    <a class="Button-language" @click="setAurebish()">Aurebesh</a>
+                </div>
+            </div>
           <div class = "card">
             <div class = "center-container-elements"> 
                   <a>
                       <img class = "image" src="../assets/Login/Avatar.png">
                   </a>
               <div class = "name">Guest</div>
-                  <el-button plain class="Button" size="mini" round @click="unlock()">login</el-button> 
+                  <el-button plain class="Button-login" size="mini" round @click="unlock()">login</el-button> 
             </div>
           </div>
         </div>
@@ -32,6 +39,8 @@ export default {
             '--border': this.$store.getters.getCurrentBorderRadius(-1),
             '--shadowDR': this.$store.getters.getCurrentShadowDR(-1),
             '--shadowUL': this.$store.getters.getCurrentShadowUL(-1),
+            '--avatar-half': "61px",
+            '--avatar-full': "122px",
           }
         },
         locked: function () {
@@ -79,17 +88,43 @@ export default {
 
   .image{
     /*Coppied from 'https://telegram.me/AleksandrM09'*/
-    width: 122px;
-    height: 122px;
-    border-radius: 61px;
+    width: var(--avatar-full);
+    height: var(--avatar-full);
+    border-radius: var(--avatar-half);
     border: 2px solid white
   }
   .name{
     color: white;
     padding: 1rem;
   }
-  .Button{
+  .Button-login{
     width: 100%
   }
-
+  .language-container{
+    position: fixed;
+    width: inherit;
+    padding-left: 3rem;
+    padding-right: 3rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    top: 0;
+    color: white;
+    border-radius: 0 0 var(--border) var(--border);
+    background-color: var(--main-color);
+    box-shadow: var(--shadowDR) var(--shadowDR) var(--shadowUL) rgba(0, 0, 0, 0.45);
+  }
+  .language-container-buttons{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    text-align: center;
+  }
+  .Button-language{
+    width: var(--avatar-half);
+    position: relative;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    cursor: pointer;
+  }
 </style>
