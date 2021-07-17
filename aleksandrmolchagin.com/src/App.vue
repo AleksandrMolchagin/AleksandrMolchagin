@@ -4,7 +4,7 @@
       <InfoBar/>
         <div class = "container">
         <Desktop/>
-          <Window/><Terminal/><Calendly/><Resume/><Dogeminer/><Telegram/>
+          <Window/><Terminal/><Calendly/><Resume/><Dogeminer/><Telegram/><Settings/>
         </div>
       <AppBar/>
   </div>
@@ -21,6 +21,7 @@ import Dogeminer from './components/Dogeminer';
 import Telegram from './components/Telegram';
 import AppBar from './components/AppBar';
 import Login from './components/Login'; 
+import Settings from './components/Settings';
 
 export default {
   name: 'App',
@@ -28,8 +29,8 @@ export default {
     Login,
     InfoBar,
       Desktop,
-        Window, Terminal, Calendly, Resume, Dogeminer, Telegram, 
-    AppBar,
+        Window, Terminal, Calendly, Resume, Dogeminer, Telegram, Settings,
+    AppBar
   },
   data() {
     return {

@@ -6,7 +6,7 @@
         <div class="cube" id="calendly" @click="openClose(2)"></div>
         <div class="cube" id="dogeminer" @click="openClose(4)"></div>
         <div class="cube" id="telegram" @click="openClose(5)"></div>
-        <div class="cube"></div>
+        <div class="cube" id="settings" @click="openClose(6)"></div>
         <div class="cube"></div>
         <div class="cube"></div>
         <div class="cube"></div>   

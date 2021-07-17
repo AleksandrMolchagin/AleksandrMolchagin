@@ -19,11 +19,7 @@
                 <div class ="text">{{ name }}</div>
                 </div>
                   <div class = "card-text">
-                    <ul id="array-rendering">
-                        <li v-for="item in items" :key="item.id" >
-                           <div class="input-block"> {{item.message}} <input v-on:keyup.enter="submit" class="cmd" ref="cmd" > </div>
-                        </li>
-                    </ul>
+                    Hello World! I am here
                   </div>
                 </div>
           </div>
@@ -32,13 +28,12 @@
 
 <script>
 import VueResizable from 'vue-resizable';
-import moment from 'moment'
 
 export default {
   name: 'Window',
   components: {VueResizable},  
   data() {
-      const id = 5;
+      const id = 6;
       return {
           //App ID
           id: id,
@@ -70,16 +65,6 @@ export default {
     cssVars() {
       var main_color =  this.$store.getters.getCurrentMainColor(this.id) +  this.$store.getters.getCurrentTransperency();
       
-      var font_name = "Share Tech Mono"
-
-        if (this.$store.getters.getCurrentFontName() == "Aurebesh"){
-          font_name = "Aurebesh"
-        }
-
-        if (this.$store.getters.getCurrentFontName() == "Nunito"){
-          font_name = "Share Tech Mono"
-        }
-
       return {
         //Appereance paramaters for CSS
         '--border': this.$store.getters.getCurrentBorderRadius(this.id),
@@ -97,7 +82,6 @@ export default {
         '--margin-top': this.$store.getters.getCurrentAppMarginTop(this.id)  + 'vh',
         '--border-bottom': this.$store.getters.getCurrentBottomBorder(this.id) + 'vh solid ' + this.$store.getters.getCurrentTitleColor(),
         '--height': (this.height -32) + "px",
-        '--font-name': font_name,
       }
     },
     maximize: function () {
@@ -153,59 +137,6 @@ export default {
     bringToFront(){
       this.$store.dispatch('recalculateNewZIndex', this.id);
       this.$refs.cmd.focus();
-    },
-    submit(){
-            //Get the input, split it into words
-            var str = (this.$refs.cmd.value).toString();
-            const words = str.toLowerCase().split(' ');
-
-            var message = '';
-            var startAppName = 'NAMEOFTHEAPP';
-            var startAppId = 0;
-
-            //Finding an app to start based on the first word
-            for (var i = 0; i < this.apps.length; i++){
-              if (words[0] == this.apps[i].name.toLowerCase()){
-                startAppName = this.apps[i].name.toLowerCase();
-                startAppId = i;
-              }
-            }
-
-            //Output specific message based on command
-            switch(words[0]){
-              case 'sudo':
-                message = '   permission denied';
-                break;
-              case 'mkdir':
-                message = ''.concat('   mkdir:  ', words[1], ':  read-only file system');
-                break; 
-              case 'cd':
-                message = ''.concat('   cd:  no such file or directory:  ', words[1]);
-                break; 
-              case 'ls':
-                for (i = 1; i < this.apps.length; i++){
-                message = message.concat('   ',this.apps[i].name);
-                if (i + 1 !=  this.apps.length)
-                  message = message.concat('\n')
-                }
-                break;
-              case startAppName:
-                this.$store.dispatch('open', startAppId);
-                message = "   done"
-                break;
-              case 'date':
-                message = message.concat('   ',moment().format('LLLL'));
-                break;
-
-              default: 
-                message = '   Command not found.'; 
-                break;
-            }
-
-            //Print the message and create a new line
-            this.items.push({ message: message});
-            this.items.push({ message: 'aleksandrmolchagin.com: ~ '});
-            setTimeout(() => this.$refs.cmd.focus(), 10);             //Put focus to a new line's input
     },
   },
 }
@@ -317,32 +248,4 @@ export default {
     white-space: pre-wrap;
     font-size: 1.2rem;
 } 
-  .cmd{
-    width: 0.01%;
-    font-family: var(--font-name), monospace;
-    background: transparent;
-    border: 0;
-    color: var(--second-title-color);
-    flex-grow: 2;
-    font-size: 1.2rem;
-  }
-  .cmd:focus {
-    outline: none;
-  }
-  ::-webkit-scrollbar {
-    position: absolute;
-    width: 5px;
-    background-color: transparent;
-    margin: 1rem;
-}
-
-  ::-webkit-scrollbar-thumb {
-    border-radius: 10px;
-    background-color: var(--title-color);
-  }
-
-  ::-webkit-scrollbar-track {
-    background: rgba(0, 0, 0, 0.2);
-  }
-  
 </style>
