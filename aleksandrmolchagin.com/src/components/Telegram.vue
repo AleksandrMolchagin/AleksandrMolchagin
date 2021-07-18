@@ -44,7 +44,7 @@
 import VueResizable from 'vue-resizable';
 
 export default {
-  name: 'Window',
+  name: 'Terminal',
   components: {VueResizable},  
   data() {
       const id = 5;  

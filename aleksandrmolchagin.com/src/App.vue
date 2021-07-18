@@ -79,7 +79,7 @@ export default {
       display: none;
   }
   .container{
-    height: var(--desktop_height);
+    height: -webkit-calc(100% - 33px - 40px - 8px);     
     position: relative;
   }
 

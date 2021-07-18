@@ -38,7 +38,7 @@ export default {
   name: 'Window',
   components: {VueResizable},  
   data() {
-      const id = 5;
+      const id = 1;
       return {
           //App ID
           id: id,

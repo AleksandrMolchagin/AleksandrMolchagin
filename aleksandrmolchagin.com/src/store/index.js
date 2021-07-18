@@ -4,7 +4,7 @@ export default createStore({
   state: {
     
     /*DESKTOP PARAMETERS */
-    locked: true,
+    locked: false,
 
     infobar_height: 33, 
 
@@ -12,19 +12,18 @@ export default createStore({
 
     desktop_height: 87,
     DEFAULT_desktop_height: 87,            
-      appbar_cube_height: 6,
+      appbar_cube_height: 40,
       DEFAULT_app_margin_top: 0.2,
-      DEFAULT_bottom_border_enabled: 0.8,
+      DEFAULT_bottom_border_enabled: 0.2,
       DEFAULT_border_radius: "0.66rem",
       DEFAULT_shadowDR: "2px",
       DEFAULT_shadowUL: "8px",
-
+ 
     appbar_height: 7.5,
 
     /*OTHER PARAMETERS*/
     help: {
       something_is_full: false,
-
 
     },
     style: {

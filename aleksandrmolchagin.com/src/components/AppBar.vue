@@ -8,8 +8,6 @@
         <div class="cube" id="telegram" @click="openClose(5)"></div>
         <div class="cube" id="settings" @click="openClose(6)"></div>
         <div class="cube"></div>
-        <div class="cube"></div>
-        <div class="cube"></div>   
     </div>
 </template>
 <script>
@@ -33,8 +31,8 @@ export default {
     computed: {
         cssVars() {
             return {
-            '--height': this.height + 'vh',
-            '--cube_height': this.cube_height + 'vh'
+            '--height': this.height + 'px',
+            '--cube_height': this.cube_height + 'px'
             }
         }
     },
@@ -42,12 +40,13 @@ export default {
 </script>s
 <style scoped>
     .container{
-        position: absolute;
+        position: relative;
+        margin-top: 4px;
+        margin-bottom: 4px;
         font-size: 1rem;
         display: flex;
         flex-direction: row;
         bottom: 0;
-        height: var(--height);
         width: 100%;
         background: transparent;
         justify-content: center;
@@ -59,7 +58,8 @@ export default {
         border-radius: 25%;
         width: var(--cube_height);
         height: var(--cube_height);
-        margin: 0.4vh;
+        margin-left: 4px;
+        margin-right: 4px;
         background: transparent;
         --color: rgb(10, 9, 12);
         box-shadow: 0px 0px 4px black;

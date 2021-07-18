@@ -18,8 +18,46 @@
                 <div class="dragme" @mousedown="minmizeWindow">
                 <div class ="text">{{ name }}</div>
                 </div>
-                  <div class = "card-text">
-                    Hello World! I am here
+                  <div class = "main-view">
+                    <el-row class="tac">
+                        <el-col :span="12">
+                            <el-menu
+                            default-active="2"
+                            class="nav-panel"
+                            @open="handleOpen"
+                            @close="handleClose">
+                            <el-submenu index="1">
+                                <template #title>
+                                <i class="el-icon-location"></i>
+                                <span>Navigator One</span>
+                                </template>
+                                <el-menu-item-group title="Group One">
+                                <el-menu-item index="1-1">item one</el-menu-item>
+                                <el-menu-item index="1-2">item one</el-menu-item>
+                                </el-menu-item-group>
+                                <el-menu-item-group title="Group Two">
+                                <el-menu-item index="1-3">item three</el-menu-item>
+                                </el-menu-item-group>
+                                <el-submenu index="1-4">
+                                <template #title>item four</template>
+                                <el-menu-item index="1-4-1">item one</el-menu-item>
+                                </el-submenu>
+                            </el-submenu>
+                            <el-menu-item index="2">
+                                <i class="el-icon-menu"></i>
+                                <span>Navigator Two</span>
+                            </el-menu-item>
+                            <el-menu-item index="3" disabled>
+                                <i class="el-icon-document"></i>
+                                <span>Navigator Three</span>
+                            </el-menu-item>
+                            <el-menu-item index="4">
+                                <i class="el-icon-setting"></i>
+                                <span>Navigator Four</span>
+                            </el-menu-item>
+                            </el-menu>
+                        </el-col>
+                    </el-row>
                   </div>
                 </div>
           </div>
@@ -147,42 +185,31 @@ export default {
 <style scoped>
 @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
 * {    
-      z-index: var(--index);
-  }
-  .resizable{ 
+    z-index: var(--index);
+}
+.resizable{ 
     position: absolute;
     margin-top: var(--margin-top);
-
-  }
-  .resizable-content {
-      height: 100%;
-      width: 100%;
-      color: var(--text-main-color);
-      background: var(--main-color);
-      border-radius: var(--border) var(--border) var(--border) var(--border);
-      box-shadow: var(--shadowDR) var(--shadowDR) var(--shadowUL) rgba(0, 0, 0, 0.45);
-      z-index: var(--index);
-      border-bottom: var(--border-bottom);
-      cursor: text;
-
-  }
-  .card {
+}
+.resizable-content {
+    height: 100%;
+    width: 100%;
+    color: var(--text-main-color);
+    background: var(--main-color);
+    border-radius: var(--border) var(--border) var(--border) var(--border);
+    box-shadow: var(--shadowDR) var(--shadowDR) var(--shadowUL) rgba(0, 0, 0, 0.45);
+    z-index: var(--index);
+    border-bottom: var(--border-bottom);
+    cursor: text;
+}
+.card {
       height:100%;
-      
-
-  }
-  .card-text{
-      height: var(--height);
-      max-width: 100%;
-      overflow-y:scroll;
-
-  }
-  .tab{
+}
+.tab{
     width: 100%;
     height: 0rem;
-
-  }
-  .dragme {
+ }
+.dragme {
     position: relative;
     width: 100%;
     height: 2rem;
@@ -195,12 +222,12 @@ export default {
     justify-content: center;
     user-select: none;
   }
-  .text{
+.text{
     margin-top: 0rem;
     text-align: center;
 
   }
-  .btnHide {
+.btnHide {
     position: absolute;
     display:block;
     margin-top: 0.55em;
@@ -211,11 +238,11 @@ export default {
     border: 0.5em solid var(--second-title-color);
     z-index: calc(var(--index) + 1);
   }
-  .btnHide:hover{
+.btnHide:hover{
     border: 0.275em solid var(--hide-btn-color);
     transition: border 0.25s;
   }
-  .btnMax {
+.btnMax {
     position: absolute;
     display:block;
     margin-top: 0.55em;
@@ -226,20 +253,20 @@ export default {
     border: 0.5em solid var(--second-title-color);
     z-index: calc(var(--index) + 1);
   }
-  .btnMax:hover{
+.btnMax:hover{
     border: 0.275em solid var(--fullscreen-btn-color);
     transition: border 0.25s;
-  }
-  .item-zoom {
+}
+.item-zoom {
     --xyz-opacity: 0;
     --xyz-scale-x: 2;
     --xyz-scale-y: 2;
     --xyz-scale-z: 2;
-  }
-  .trfull {
+}
+.trfull {
     transition: opacity 0.5s ease;
-  }
-  .input-block {
+}
+.input-block {
     font-family: var(--font-name), monospace;
     padding-top: 0.5rem;
     padding-left: 1rem;
@@ -248,4 +275,13 @@ export default {
     white-space: pre-wrap;
     font-size: 1.2rem;
 } 
+.main-view{
+    background-color: white;
+    height: var(--height);
+    overflow-y:scroll;
+}
+.nav-panel{
+    height: var(--height);
+    width: min-content;
+}
 </style>
