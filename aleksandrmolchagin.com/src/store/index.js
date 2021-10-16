@@ -4,7 +4,7 @@ export default createStore({
   state: {
     
     /*DESKTOP PARAMETERS */
-    locked: false,
+    locked: true,
 
     infobar_height: 33, 
 

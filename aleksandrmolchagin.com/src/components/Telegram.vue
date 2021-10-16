@@ -25,7 +25,7 @@
                     <div class = "name-container">
                       <div class = "image-container">
                         <a href="tg://resolve?domain=AleksandrM09">
-                          <img class = "image" src="../assets/Apps/Telegram/Aleksandr.png">
+                          <img class = "image" src="../assets/Apps/Telegram/Aleksandr.jpg">
                         </a>
                       </div>
                       <div class = "name">Aleksandr Molchagin</div>

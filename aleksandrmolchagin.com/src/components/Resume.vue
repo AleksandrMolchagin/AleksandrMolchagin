@@ -57,7 +57,7 @@ export default {
           cursor: 'move',
           iframe: "visible",
 
-          fileUrl: 'https://www.dropbox.com/s/2vuxvnch86ltctj/Molchagin_Aleksandr_Resume.pdf?dl=0'
+          fileUrl: 'https://www.dropbox.com/s/ejc111tkvoyfcng/Aleksandr_Molchagin_Resume.pdf?dl=0'
       };
     },
   computed: {

@@ -16,8 +16,8 @@
                 <el-button class="Button" size="small" type="primary"> Menu </el-button>
                 <template #dropdown>
                     <el-dropdown-menu>
-                    <el-dropdown-item :style="cssVars" class="ForceFont" >About this website</el-dropdown-item>
-                    <el-dropdown-item :style="cssVars" class="ForceFont">Preferences</el-dropdown-item>
+                    <el-dropdown-item :style="cssVars" class="ForceFont" >About this website (in progress) </el-dropdown-item>
+                    <el-dropdown-item :style="cssVars" class="ForceFont">Preferences (in progress) </el-dropdown-item>
                     <el-dropdown-item :style="cssVars" class="ForceFont" @click="lock()">Log out</el-dropdown-item>
                     </el-dropdown-menu>
                 </template>
@@ -124,7 +124,19 @@ export default {
         margin-right: 15px;
     }
     .Button{
+        background-color: transparent;
+        border: none; 
         height: 10px !important;
+    }
+    
+    .Button:focus{
+        background-color: grey;
+    }
+    .Button:active{
+        background-color: grey;
+    }
+    .Button:hover{
+        background-color: grey;
     }
     .Calendar{
         zoom: 75%;
