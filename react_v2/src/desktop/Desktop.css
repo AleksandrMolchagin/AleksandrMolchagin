@@ -28,6 +28,9 @@
 }
 .Applications-container{
     height: calc(100vh - var(--header-height) - var(--dock-height));
+    background: url('../assets/wallpapers/snowy_dusk.jpg');
+    background-size: cover;
+    background-position: center;
 }
 .Dock-container{
     height: var(--dock-height);
