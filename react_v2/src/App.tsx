@@ -1,4 +1,5 @@
 import './App.css';
+import './antd.css';
 import { Desktop } from './desktop/Desktop';
 
 function App() {

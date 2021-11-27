@@ -2,6 +2,9 @@
     --header-height: 1.5rem;
     --header-color: white;
     --dock-height: 2.5rem;
+    --main-color: rgb(177, 129, 129);
+    --second-color: rgb(145, 135, 135);
+    --third-color: rgb(140, 94, 94);
 }
 .Desktop-container{
     width: 100vw;
@@ -11,6 +14,12 @@
     height: var(--header-height);
     background-color: grey;
     color: var(--header-color);
+    display: flex;
+    flex-direction: row;
+}
+.Header-button{
+    height: var(--header-height);
+    line-height: 1;
 }
 .Header-timer{
     width: fit-content;
