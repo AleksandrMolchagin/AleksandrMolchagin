@@ -37,3 +37,45 @@
     background-color: grey;
 
 }
+
+.WelcomeText{
+    height: 100vh;
+    width: 100vw;
+    margin: auto;
+    background-color: black;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+.WelcomeText-particles-container{
+    width: fit-content;
+    height: fit-content;
+    margin: auto;
+    visibility: visible;
+}
+.WelcomeText-socialmedia{
+    width: fit-content;
+    height: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 2rem;
+    opacity: 0.4;
+}
+
+@media screen and (max-width: 700px){
+    .WelcomeText-particles-container{
+        -ms-transform:scale(0.8); /* IE 9 */
+        -moz-transform:scale(0.8); /* Firefox */
+        -webkit-transform:scale(0.8); /* Safari and Chrome */
+        -o-transform:scale(0.8); /* Opera */
+    }
+}
+
+@media screen and (max-width: 500px){
+    .WelcomeText-particles-container{
+        -ms-transform:scale(0.6); /* IE 9 */
+        -moz-transform:scale(0.6); /* Firefox */
+        -webkit-transform:scale(0.6); /* Safari and Chrome */
+        -o-transform:scale(0.6); /* Opera */
+    }
+}
