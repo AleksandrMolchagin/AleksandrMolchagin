@@ -1,8 +1,10 @@
-import { Route, Routes } from "react-router-dom";
+import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
+import { Home } from "./Home";
 
 export function Main(): JSX.Element {
   return (
     <div className="App-main">
+        
         <Switcher/>
     </div>
   )
@@ -10,8 +12,10 @@ export function Main(): JSX.Element {
 
 function Switcher(): JSX.Element {
   return (
-    <Routes>
-      <Route path="/" element={<></>} />
-    </Routes>
+    <Router>
+        <Routes>
+            <Route path="/" element={<Home/>} />
+        </Routes>
+    </Router>
   );
 }
