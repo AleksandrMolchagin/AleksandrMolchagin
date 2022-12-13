@@ -26,21 +26,26 @@ interface CardProps {
   img_hover?: string;
   title: string;
   link: string;
+  year: string;
 }
 
 
 function Card(props: CardProps):JSX.Element{
 
   return (
+    <div className='SingleCard'>
     <a href={props.link} target="_blank" rel="noopener noreferrer">
-      <div className='SingleCard'>
+      <div className='InnerCard'>
           {props.img_hover &&
             <img alt={props.title} className='CardImage CardImageHover' src={props.img_hover}/>
           }
           <img alt={props.title} className='CardImage' src={props.img}/>
-
+          
       </div>
     </a>
+    {/* <p className='SingleCard-Year'>{props.year}</p> */}
+    </div>
+
     );
 };
 

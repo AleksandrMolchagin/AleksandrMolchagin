@@ -4,19 +4,37 @@
             "img": "/portfolio/dvox/dvox.webp",
             "img_hover": "/portfolio/dvox/dvox.gif",
             "title": "dVox - Voice Your Thoughts",
-            "link": "https://github.com/Decentralized-People/dVox-ios"
+            "link": "https://github.com/Decentralized-People/dVox-ios",
+            "year": "2022"
+        },
+        {
+            "img": "/portfolio/woe/woe.webp",
+            "img_hover": "",
+            "title": "World of English",
+            "link": "https://github.com/AleksandrMolchagin/world-of-english",
+            "year": "2019"
         },
         {
             "img": "/portfolio/zvonok/zvonok.webp",
             "img_hover": "",
             "title": "Zvonok Na Orbitu",
-            "link": "https://github.com/AleksandrMolchagin/call-to-orbit"
+            "link": "https://github.com/AleksandrMolchagin/call-to-orbit",
+            "year": "2019"
         },
+        {
+            "img": "/portfolio/bg/bg.webp",
+            "img_hover": "",
+            "title": "Borisoglebsk Guide",
+            "link": "https://github.com/AleksandrMolchagin/borisoglebsk-guide",
+            "year": "2018"
+        },
+      
         {
             "img": "/portfolio/acs/acs.webp",
             "img_hover": "",
             "title": "Atomic Cross Soccer",
-            "link": "https://github.com/AleksandrMolchagin/atomic-cross-soccer"
+            "link": "https://github.com/AleksandrMolchagin/atomic-cross-soccer",
+            "year": "2016"            
         }
     ]
 }

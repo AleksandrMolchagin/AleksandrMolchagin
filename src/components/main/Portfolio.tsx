@@ -57,7 +57,7 @@ export function Portfolio(): JSX.Element {
                 <DotGrid />
                 <div className='CardContainer'>
                   {data.projects.map((project: any) => (
-                      <Card img={project.img} img_hover={project.img_hover} title={project.title} link = {project.link} />
+                      <Card img={project.img} img_hover={project.img_hover} title={project.title} link = {project.link} year={project.year} />
                   ))}
                 </div>
             </Container>
