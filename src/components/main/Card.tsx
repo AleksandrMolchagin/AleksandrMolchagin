@@ -37,9 +37,9 @@ function Card(props: CardProps):JSX.Element{
     <a href={props.link} target="_blank" rel="noopener noreferrer">
       <div className='InnerCard'>
           {props.img_hover &&
-            <img alt={props.title} className='CardImage CardImageHover' src={props.img_hover}/>
+            <img alt={props.title} className='CardImage CardImageHover saturateOnHover' src={props.img_hover}/>
           }
-          <img alt={props.title} className='CardImage' src={props.img}/>
+          <img alt={props.title} className='CardImage saturateOnHover' src={props.img}/>
           
       </div>
     </a>

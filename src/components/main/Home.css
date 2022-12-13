@@ -1,10 +1,16 @@
+.Home{
+    width: 100vw !important;
+    position: relative;
+    overflow: hidden;
+    transform: scale(1);
+}
+
 .Home-TopContainer{
     margin-top: 48px;
     margin-bottom: 48px;
     margin-inline: auto;
     height: fit-content;
     width: fit-content;
-    overflow: hidden;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -30,21 +36,26 @@
     transition: all 0.2s ease-in-out;
 
 }
+
+.Home-TopContainer-Left:hover{
+    transform: perspective(-500px)
+}
+
 .Home-TopContainer-Left:hover > .IamACircle{
-    position: absolute;
     height: 3500px;
     width: 3500px;
 }
 
 .Home-TopContainer-Left:hover > .IamACircleButBlue{
-    position: absolute;
     height: 3500px;
     width: 3500px;
 
 }
 
 .Home-TopContainer-Left:hover > img{
-    filter: brightness(1.1) saturate(1.1);
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+    border-radius: 20px;
+    transform: scale(1.1);
 }
 
 
