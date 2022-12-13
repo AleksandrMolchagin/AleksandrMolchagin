@@ -1,13 +1,46 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway');
+@import url('https://fonts.googleapis.com/css2?family=Darker+Grotesque');
+
+:root{
+  --red: #c00000;
+  --blue: #2B3A67;
+  --black: #292428;
+  --yellow: #FFFAE3;
+  --white: #ffffff;
+  --greyish: #d6dbd7;
+  --header-color: var(--black);
+}
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: "Darker Grotesque", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  /* background-color: var(--black); */
+  height: 100%;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+h1, h2, h3, h4, h5, h6{
+  margin: 0px;
+  padding: 0px;
+}
+
+h1{
+  font-size: 48px;
+  line-height: 36px;
+}
+
+.WhiteCoverContainer{
+  background-color: var(--white);
+  width: fit-content;
+  height: min-content;
+  border-radius: 10px;
+  padding-left: 5px;
+  padding-right: 5px;
+  line-height: fit-content;
 }

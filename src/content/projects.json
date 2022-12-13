@@ -1,0 +1,22 @@
+{
+    "projects": [
+        {
+            "img": "/portfolio/dvox/dvox.webp",
+            "img_hover": "/portfolio/dvox/dvox.gif",
+            "title": "dVox - Voice Your Thoughts",
+            "link": "https://github.com/Decentralized-People/dVox-ios"
+        },
+        {
+            "img": "/portfolio/zvonok/zvonok.webp",
+            "img_hover": "",
+            "title": "Zvonok Na Orbitu",
+            "link": "https://github.com/AleksandrMolchagin/call-to-orbit"
+        },
+        {
+            "img": "/portfolio/acs/acs.webp",
+            "img_hover": "",
+            "title": "Atomic Cross Soccer",
+            "link": "https://github.com/AleksandrMolchagin/atomic-cross-soccer"
+        }
+    ]
+}

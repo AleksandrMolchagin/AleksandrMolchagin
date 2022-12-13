@@ -1,0 +1,74 @@
+.Home-TopContainer{
+    margin-top: 48px;
+    margin-bottom: 48px;
+    margin-inline: auto;
+    height: fit-content;
+    width: fit-content;
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 48px;
+}
+
+.Home-TopContainer-Left{
+    border: solid 1px #000000;
+    border-radius: 20px;
+    width: fit-content;
+    height: 350px !important;
+    transition: all 0.2s ease-in-out;
+}
+
+.Home-TopContainer-Left > img {
+    height: 350px;
+    border-radius: 20px;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+    transition: all 0.2s ease-in-out;
+    overflow: visible;
+    z-index: 10;
+    transition: all 0.2s ease-in-out;
+
+}
+.Home-TopContainer-Left:hover > .IamACircle{
+    position: absolute;
+    height: 3500px;
+    width: 3500px;
+}
+
+.Home-TopContainer-Left:hover > .IamACircleButBlue{
+    position: absolute;
+    height: 3500px;
+    width: 3500px;
+
+}
+
+.Home-TopContainer-Left:hover > img{
+    filter: brightness(1.1) saturate(1.1);
+}
+
+
+
+.IamACircle, .IamACircleButBlue{
+    position: absolute;
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    background-color: var(--red);
+    transition: all 1.2s ease-in-out;
+    z-index: -1;
+}
+
+.IamACircleButBlue{
+    margin-top: 350px;
+    margin-left: 250px;
+    background-color: var(--blue);
+    -webkit-transform: translate(-100%, -100%);
+    transform: translate(-100%, -100%)
+}
+
+.Home-TopContainer-Right {
+    margin-left: auto;
+    margin-right: 30px;
+    color: var(--black);
+}

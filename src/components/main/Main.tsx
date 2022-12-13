@@ -1,11 +1,12 @@
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import { Home } from "./Home";
+import { Portfolio } from "./Portfolio";
 
 export function Main(): JSX.Element {
   return (
     <div className="App-main">
-        
-        <Switcher/>
+        <Home/>
+        <Portfolio/>
     </div>
   )
 }
