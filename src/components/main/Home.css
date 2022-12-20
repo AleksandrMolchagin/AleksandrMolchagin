@@ -22,34 +22,36 @@
     border: solid 1px #000000;
     border-radius: 20px;
     width: fit-content;
+    overflow: hidden;
     height: 350px !important;
     transition: all 0.2s ease-in-out;
 }
 
+
 .Home-TopContainer-Left > img {
     height: 350px;
-    border-radius: 20px;
     box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
     transition: all 0.2s ease-in-out;
     overflow: visible;
-    z-index: 10;
     transition: all 0.2s ease-in-out;
-
 }
 
 .Home-TopContainer-Left:hover{
-    transform: perspective(-500px)
+    transform: perspective(-500px);
 }
 
 .Home-TopContainer-Left:hover > .IamACircle{
-    height: 3500px;
-    width: 3500px;
+    height: 2100px;
+    width: 2200px;
+    animation: spin 40s linear infinite;
 }
 
 .Home-TopContainer-Left:hover > .IamACircleButBlue{
-    height: 3500px;
-    width: 3500px;
-
+    height: 2150px;
+    width: 2150px;
+    margin-top: -1700px;
+    margin-left: -1700px;
+    animation: spin-negative 40s linear infinite;
 }
 
 .Home-TopContainer-Left:hover > img{
@@ -65,21 +67,44 @@
     height: 30px;
     width: 30px;
     border-radius: 50%;
-    background-color: var(--red);
     transition: all 1.2s ease-in-out;
     z-index: -1;
 }
 
 .IamACircleButBlue{
-    margin-top: 350px;
-    margin-left: 250px;
-    background-color: var(--blue);
-    -webkit-transform: translate(-100%, -100%);
-    transform: translate(-100%, -100%)
+    margin-top: 300px;
+    margin-left: 200px;
 }
 
 .Home-TopContainer-Right {
     margin-left: auto;
     margin-right: 30px;
     color: var(--black);
+}
+
+
+@-moz-keyframes spin { 
+    100% { -moz-transform: rotate(360deg); } 
+}
+@-webkit-keyframes spin { 
+    100% { -webkit-transform: rotate(360deg); } 
+}
+@keyframes spin { 
+    100% { 
+        -webkit-transform: rotate(360deg); 
+        transform:rotate(360deg); 
+    } 
+}
+
+@-moz-keyframes spin-negative { 
+    100% { -moz-transform: rotate(-360deg); } 
+}
+@-webkit-keyframes spin-negative { 
+    100% { -webkit-transform: rotate(-360deg); } 
+}
+@keyframes spin-negative { 
+    100% { 
+        -webkit-transform: rotate(-360deg); 
+        transform:rotate(-360deg); 
+    } 
 }

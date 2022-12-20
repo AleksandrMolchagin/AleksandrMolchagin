@@ -1,11 +1,32 @@
 {
     "projects": [
         {
+            "img": "/portfolio/kraigslist/kraigslist.webp",
+            "img_hover": "",
+            "title": "Kraigslist",
+            "link": "https://kraigslist.kzoocss.org/",
+            "year": "2022"
+        },
+        {
+            "img": "/portfolio/pangolino/pangolino.webp",
+            "img_hover": "/portfolio/pangolino/Pangolino.gif",
+            "title": "dVox - Voice Your Thoughts",
+            "link": "https://github.com/Decentralized-People/dVox-ios",
+            "year": "2022"
+        },
+        {
             "img": "/portfolio/dvox/dvox.webp",
             "img_hover": "/portfolio/dvox/dvox.gif",
             "title": "dVox - Voice Your Thoughts",
             "link": "https://github.com/Decentralized-People/dVox-ios",
             "year": "2022"
+        },
+        {
+            "img": "/portfolio/fl/fl.webp",
+            "img_hover": "",
+            "title": "Financial Literatus",
+            "link": "https://showcase.codeday.org/project/ckqtyhgj591625410quvcqm7kmw",
+            "year": "2021"
         },
         {
             "img": "/portfolio/woe/woe.webp",
