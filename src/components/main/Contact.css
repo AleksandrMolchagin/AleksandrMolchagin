@@ -1,0 +1,15 @@
+.Contact{
+    background-color: var(--white);
+    color: var(--greyish);
+}
+
+.Contact > *{
+    color: var(--black);
+    margin-inline: auto;
+    width: fit-content;
+}
+
+.Contact-SocialsContainer{    
+    margin-top: 48px;
+    margin-bottom: 48px;
+}

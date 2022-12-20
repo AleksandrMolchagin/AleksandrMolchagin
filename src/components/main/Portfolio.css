@@ -1,7 +1,10 @@
 .Portfolio{
     background-color: var(--black);
     color: var(--greyish);
-    padding-top: 12px;
+    padding-top: 48px;
+    padding-bottom: 48px;
+    width: 100vw;
+    height: fit-content;
 }
 
 .Portfolio > *{
@@ -11,6 +14,9 @@
 
 
 .CardContainer{
+    max-width: 1300px;
+    width: 100vw;
+    height: fit-content;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;

@@ -24,10 +24,8 @@ const DotGrid = styled.div`
 
 const Container = styled.div`
   position: relative;
-  width: 1100px;
   padding-top: 12px;
   padding-bottom: 12px;
-  height: 100vh;
   overflow: hidden;
   margin-inline: auto;
 `;

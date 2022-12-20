@@ -18,13 +18,33 @@
     gap: 48px;
 }
 
+
 .Home-TopContainer-Left{
-    border: solid 1px #000000;
-    border-radius: 20px;
-    width: fit-content;
-    overflow: hidden;
+    min-width: 275px;
+    height: 350px !important;
+}
+
+.Home-TopContainer-LeftImage{
+    position: absolute;
+    min-width: 275px !important;
+    width: 275px;
     height: 350px !important;
     transition: all 0.2s ease-in-out;
+    background-image: url("/public/Aleksandr.jpg");
+    background-size: cover;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+    border: solid 1px #000000;
+    border-radius: 20px;
+}
+
+.Home-TopContainer-LeftImage:hover{
+    transform: scale(1.1);
+}
+
+
+.Home-TopContainer-LeftImage{
+    border-radius: 20px;
+    border: solid 1px #000000;
 }
 
 
@@ -36,9 +56,6 @@
     transition: all 0.2s ease-in-out;
 }
 
-.Home-TopContainer-Left:hover{
-    transform: perspective(-500px);
-}
 
 .Home-TopContainer-Left:hover > .IamACircle{
     height: 2100px;
@@ -54,12 +71,6 @@
     animation: spin-negative 40s linear infinite;
 }
 
-.Home-TopContainer-Left:hover > img{
-    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
-    border-radius: 20px;
-    transform: scale(1.1);
-}
-
 
 
 .IamACircle, .IamACircleButBlue{
@@ -68,7 +79,7 @@
     width: 30px;
     border-radius: 50%;
     transition: all 1.2s ease-in-out;
-    z-index: -1;
+    z-index: -10;
 }
 
 .IamACircleButBlue{
@@ -80,6 +91,20 @@
     margin-left: auto;
     margin-right: 30px;
     color: var(--black);
+}
+
+@media screen and (max-width: 768px) {
+    .Home-TopContainer{
+        flex-direction: column;
+        gap: 24px;
+    }
+    
+    .Home-TopContainer > * {
+        width: fit-content;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
 }
 
 

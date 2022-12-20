@@ -1,6 +1,13 @@
 {
     "projects": [
         {
+            "img": "/portfolio/css/css.webp",
+            "img_hover": "",
+            "title": "CSS - Computer Science Society",
+            "link": "https://kzoocss.org/",
+            "year": "2022"
+        },
+        {
             "img": "/portfolio/kraigslist/kraigslist.webp",
             "img_hover": "",
             "title": "Kraigslist",
@@ -10,16 +17,30 @@
         {
             "img": "/portfolio/pangolino/pangolino.webp",
             "img_hover": "/portfolio/pangolino/Pangolino.gif",
-            "title": "dVox - Voice Your Thoughts",
-            "link": "https://github.com/Decentralized-People/dVox-ios",
+            "title": "Panoglino - Pangolin Protection Network",
+            "link": "https://pangolino.org",
             "year": "2022"
         },
         {
             "img": "/portfolio/dvox/dvox.webp",
             "img_hover": "/portfolio/dvox/dvox.gif",
             "title": "dVox - Voice Your Thoughts",
-            "link": "https://github.com/Decentralized-People/dVox-ios",
+            "link": "https://www.youtube.com/watch?v=X_9bzjMV16I",
             "year": "2022"
+        },
+        {
+            "img": "/portfolio/ow/ow.webp",
+            "img_hover": "",
+            "title": "Ocean Whisper",
+            "link": "https://devpost.com/software/ocean-s-whisper",
+            "year": "2021"
+        },
+        {
+            "img": "/portfolio/vbw/vbw.webp",
+            "img_hover": "",
+            "title": "Project VBW - Explring the Imapct of the Internet",
+            "link": "https://vbw-decentralized-people-github-io.pages.dev/energy",
+            "year": "2021"
         },
         {
             "img": "/portfolio/fl/fl.webp",

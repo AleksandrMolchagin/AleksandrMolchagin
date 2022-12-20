@@ -42,9 +42,15 @@ h1{
   border-radius: 10px;
   padding-left: 5px;
   padding-right: 5px;
+  padding-top: 5px;
+  padding-bottom: 10px;
   line-height: fit-content;
 }
 
 .saturateOnHover:hover{
   filter: brightness(1.1) saturate(1.1);
+}
+
+.BigZindex{
+  z-index: 1000;
 }
